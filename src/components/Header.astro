@@ -1,9 +1,11 @@
 ---
 import MobileMenu from "./MobileMenu.astro";
+
+const currentPath = Astro.url.pathname;
 ---
 
 <header>
-  <div class="flex items-center justify-between py-2">
+  <div class="flex items-center justify-between pt-2 pb-8">
     <a href="/" class="flex items-center space-x-2">
       <img
         src="/logo2.svg"
@@ -16,21 +18,37 @@ import MobileMenu from "./MobileMenu.astro";
     </a>
 
     <nav class="hidden md:flex gap-6">
-      <a href="/" class="hover:underline">Home</a>
-      <a href="/about" class="hover:underline">About Us</a>
-      <a href="/shop" class="hover:underline">Wellness Shop</a>
-      <a href="/blog" class="hover:underline">Health Tips</a>
+      <a
+        href="/"
+        class={`hover:text-amber-700 font-medium ${currentPath === "/" ? "text-amber-700 [font-weight:600]" : ""}`}
+        >Home</a
+      >
+      <a
+        href="/about"
+        class={`hover:text-amber-700 font-medium ${currentPath === "/about" ? "text-amber-700 [font-weight:600]" : ""}`}
+        >About Us</a
+      >
+      <a
+        href="/shop"
+        class={`hover:text-amber-700 font-medium ${currentPath === "/shop" ? "text-amber-700 [font-weight:600]" : ""}`}
+        >Wellness Shop</a
+      >
+      <a
+        href="/blog"
+        class={`hover:text-amber-700 font-medium ${currentPath === "/blog" ? "text-amber-700 [font-weight:600]" : ""}`}
+        >Health Tips</a
+      >
     </nav>
     <button
       id="menuToggle"
-      class="md:hidden flex items-center gap-2 p-2 border rounded"
+      class="md:hidden flex items-center text-amber-50 gap-2 p-2 rounded bg-[#99a88c]"
       aria-label="Toggle Menu"
     >
       <span class="text-xl">☰</span>
       <span class="text-sm font-medium">Menu</span>
     </button>
   </div>
-  <MobileMenu />
+  <MobileMenu currentPath={currentPath} />
   <script>
     const toggle = document.getElementById("menuToggle");
     const menu = document.getElementById("mobileMenu");

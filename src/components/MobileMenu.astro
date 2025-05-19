@@ -1,10 +1,30 @@
 ---
-// No props needed
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
 ---
 
 <div id="mobileMenu" class="md:hidden hidden px-4 pb-4">
-  <a href="/" class="block py-2">Home</a>
-  <a href="/about" class="block py-2">About Us</a>
-  <a href="/shop" class="block py-2">Wellness Shop</a>
-  <a href="/blog" class="block py-2">Health Tips</a>
+  <a
+    href="/"
+    class={`block py-2 hover:text-amber-700 font-medium ${currentPath === "/" ? "text-amber-700 [font-weight:600]" : ""}`}
+    >Home</a
+  >
+  <a
+    href="/about"
+    class={`block py-2 hover:text-amber-700 font-medium ${currentPath === "/about" ? "text-amber-700 [font-weight:600]" : ""}`}
+    >About Us</a
+  >
+  <a
+    href="/shop"
+    class={`block py-2 hover:text-amber-700 font-medium ${currentPath === "/shop" ? "text-amber-700 [font-weight:600]" : ""}`}
+    >Wellness Shop</a
+  >
+  <a
+    href="/blog"
+    class={`block py-2 hover:text-amber-700 font-medium ${currentPath === "/blog" ? "text-amber-700 [font-weight:600]" : ""}`}
+    >Health Tips</a
+  >
 </div>
