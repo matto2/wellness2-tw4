@@ -1,4 +1,6 @@
 ---
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
+
 interface Props {
   currentPath: string;
 }
@@ -6,7 +8,7 @@ interface Props {
 const { currentPath } = Astro.props;
 ---
 
-<div id="mobileMenu" class="md:hidden hidden px-4 pb-4">
+<div id="mobileMenu" class="lg:hidden hidden px-4 pb-4 shadow-md">
   <a
     href="/"
     class={`block py-2 hover:text-amber-700 font-medium ${currentPath === "/" ? "text-amber-700 [font-weight:600]" : ""}`}

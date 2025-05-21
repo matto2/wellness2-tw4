@@ -4,57 +4,103 @@ import MobileMenu from "./MobileMenu.astro";
 const currentPath = Astro.url.pathname;
 ---
 
-<header>
-  <div class="flex items-center justify-between pt-2 pb-8">
-    <a href="/" class="flex items-center space-x-2">
-      <img
-        src="/logo2.svg"
-        alt="logo"
-        class="w-10 h-10 md:w-14 md:h-14 text-brand-primary"
-      />
-      <h1 class="text-lg sm:text-xl md:text-2xl font-semibold text-amber-700">
-        Wellness Medical Center
-      </h1>
-    </a>
-
-    <nav class="hidden md:flex gap-6">
-      <a
-        href="/"
-        class={`hover:text-amber-700 font-medium ${currentPath === "/" ? "text-amber-700 [font-weight:600]" : ""}`}
-        >Home</a
-      >
-      <a
-        href="/about"
-        class={`hover:text-amber-700 font-medium ${currentPath === "/about" ? "text-amber-700 [font-weight:600]" : ""}`}
-        >About Us</a
-      >
-      <a
-        href="/shop"
-        class={`hover:text-amber-700 font-medium ${currentPath === "/shop" ? "text-amber-700 [font-weight:600]" : ""}`}
-        >Wellness Shop</a
-      >
-      <a
-        href="/blog"
-        class={`hover:text-amber-700 font-medium ${currentPath === "/blog" ? "text-amber-700 [font-weight:600]" : ""}`}
-        >Health Tips</a
-      >
-    </nav>
-    <button
-      id="menuToggle"
-      class="md:hidden flex items-center text-amber-50 gap-2 p-2 rounded bg-[#99a88c]"
-      aria-label="Toggle Menu"
+<header
+  class="fixed top-0 left-0 w-full bg-white z-50 transition-shadow duration-200"
+  id="mainHeader"
+>
+  <div class="w-full max-w-screen-xl mx-auto">
+    <div
+      class="flex items-center justify-between pt-2 pb-[12px] px-4 md:px-8 xl:px-0"
     >
-      <span class="text-xl">☰</span>
-      <span class="text-sm font-medium">Menu</span>
-    </button>
-  </div>
-  <MobileMenu currentPath={currentPath} />
-  <script>
-    const toggle = document.getElementById("menuToggle");
-    const menu = document.getElementById("mobileMenu");
+      <a href="/" class="flex items-center space-x-2">
+        <img
+          src="/logo2.svg"
+          alt="logo"
+          class="w-10 h-10 md:w-14 md:h-14 text-brand-primary"
+        />
+        <h1 class="text-lg sm:text-xl md:text-2xl font-semibold text-amber-700">
+          Wellness Medical Center
+        </h1>
+      </a>
 
-    toggle?.addEventListener("click", () => {
-      menu?.classList.toggle("hidden");
-    });
-  </script>
+      <nav class="hidden lg:flex items-center gap-6">
+        <a
+          href="/"
+          class={`hover:text-amber-700 font-medium ${currentPath === "/" ? "text-amber-700 [font-weight:600]" : ""}`}
+          >Home</a
+        >
+        <a
+          href="/about"
+          class={`hover:text-amber-700 font-medium ${currentPath === "/about" ? "text-amber-700 [font-weight:600]" : ""}`}
+          >About Us</a
+        >
+        <a
+          href="/shop"
+          class={`hover:text-amber-700 font-medium ${currentPath === "/shop" ? "text-amber-700 [font-weight:600]" : ""}`}
+          >Wellness Shop</a
+        >
+        <a
+          href="/blog"
+          class={`hover:text-amber-700 font-medium ${currentPath === "/blog" ? "text-amber-700 [font-weight:600]" : ""}`}
+          >Health Tips</a
+        >
+        <button
+          class="flex items-center text-amber-50 gap-2 px-4 py-2 rounded-full bg-[#cf5500] hover:bg-amber-700 transition-colors"
+          aria-label="Visit the Shop"
+        >
+          <span class="text-sm font-medium">Visit the Shop</span>
+        </button>
+      </nav>
+      <button
+        id="menuToggle"
+        class="group lg:hidden flex items-center text-amber-50 gap-2 px-4 py-2 rounded-full bg-[#cf5500] hover:bg-amber-700 transition-colors"
+        aria-label="Toggle Menu"
+      >
+        <div id="menuContent" class="-mt-1">
+          <span class="text-xl">☰</span>
+          <span class="text-sm font-medium">Menu</span>
+        </div>
+        <div id="closeContent" class="hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="#cf5500"
+            class="size-6 group-hover:stroke-amber-700"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"></path>
+          </svg>
+        </div>
+      </button>
+    </div>
+    <MobileMenu currentPath={currentPath} />
+    <script>
+      const toggle = document.getElementById("menuToggle");
+      const menu = document.getElementById("mobileMenu");
+      const header = document.getElementById("mainHeader");
+      const menuContent = document.getElementById("menuContent");
+      const closeContent = document.getElementById("closeContent");
+
+      toggle?.addEventListener("click", () => {
+        menu?.classList.toggle("hidden");
+        menuContent?.classList.toggle("hidden");
+        closeContent?.classList.toggle("hidden");
+        toggle.classList.toggle("bg-[#cf5500]");
+        toggle.classList.toggle("hover:bg-amber-700");
+        toggle.classList.toggle("bg-transparent");
+      });
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 10) {
+          header?.classList.add("shadow-md");
+        } else {
+          header?.classList.remove("shadow-md");
+        }
+      });
+    </script>
+  </div>
 </header>
