@@ -53,11 +53,11 @@ const currentPath = Astro.url.pathname;
       </nav>
       <button
         id="menuToggle"
-        class="group lg:hidden flex items-center text-amber-50 gap-2 px-4 py-2 rounded-full bg-[#cf5500] hover:bg-amber-700 transition-colors"
+        class="group lg:hidden flex items-center text-amber-50 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#cf5500] hover:bg-amber-700 transition-colors"
         aria-label="Toggle Menu"
       >
-        <div id="menuContent" class="-mt-1">
-          <span class="text-xl">☰</span>
+        <div id="menuContent" class="sm:-mt-1">
+          <span class="hidden sm:inline text-xl">☰</span>
           <span class="text-sm font-medium">Menu</span>
         </div>
         <div id="closeContent" class="hidden">

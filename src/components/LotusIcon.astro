@@ -1,0 +1,10 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<img src="/src/assets/lotus.svg" alt="Lotus" class={className} />
+
