@@ -1,7 +1,129 @@
 ---
-
+import BrandLogoWt from "./BrandLogo-wt.astro";
 ---
 
-<footer class="py-4 mt-auto text-amber-50">
-  <div class="text-sm">Footer content here</div>
+<footer class="py-4 mt-auto text-stone-200">
+  <div class="md:flex md:justify-between md:gap-8">
+    <!-- Left Column -->
+    <div class="md:w-1/2 text-center md:text-left">
+      <div class="text-sm footer-logo flex justify-center md:justify-start">
+        <BrandLogoWt />
+      </div>
+      <nav class="mt-4">
+        <ul class="flex justify-center md:justify-start space-x-6">
+          <li><a href="/" class="hover:text-white">Home</a></li>
+          <li><a href="/about" class="hover:text-white">About Us</a></li>
+          <li><a href="/shop" class="hover:text-white">Wellness Shop</a></li>
+          <li>
+            <a href="/health-tips" class="hover:text-white">Health Tips</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="text-text-dark py-6 md:max-w-3xl">
+        <div class="mt-4 mb-2 flex justify-center md:justify-start">
+          <iframe
+            src="https://www.google.com/maps?q=200+7th+Ave+%23135,+Santa+Cruz,+CA+95062&output=embed"
+            width="60%"
+            height="120"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="rounded-md shadow-md"></iframe>
+        </div>
+        <p class="mb-0 gap-1">200 7th Ave #135, Santa Cruz, CA 95062</p>
+        <p class="flex justify-center md:justify-start gap-1 text-sm mt-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="w-4 h-4 text-amber-50 hover:text-white text-sm"
+          >
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          Open in:
+          <a
+            href="https://www.google.com/maps?q=200+7th+Ave+%23135,+Santa+Cruz,+CA+95062"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-amber-50 hover:text-white text-sm"
+          >
+            Google Maps
+          </a>
+          |
+          <a
+            href="https://maps.apple.com/?address=200+7th+Ave,+Santa+Cruz,+CA+95062"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-amber-50 hover:text-white text-sm"
+          >
+            Apple Maps
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="md:w-1/2">
+      <section class="py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto text-center">
+          <h2 class="text-2xl font-semibold text-stone-200">
+            Stay balanced and informed.
+          </h2>
+          <p class="mt-2 text-stone-200">
+            Sign up for wellness tips and updates.
+          </p>
+
+          <form class="mt-6">
+            <label for="email" class="sr-only">Email address</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              autocomplete="email"
+              required
+              class="w-full mb-3 px-4 py-2 border border-stone-300 bg-white text-gray-900 rounded-md shadow-sm focus:ring-emerald-400 focus:border-emerald-400"
+              placeholder="Enter your email"
+            />
+            <button
+              type="submit"
+              class="w-full px-6 py-2 bg-[#cf5500] text-amber-50 font-medium rounded-full hover:bg-amber-700 transition-colors"
+            >
+              Subscribe
+            </button>
+          </form>
+
+          <p class="mt-4 text-sm text-stone-200">
+            We respect your privacy. <a
+              href="/privacy"
+              class="underline hover:text-white">Read our privacy policy</a
+            >.
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="mt-4 text-xs text-center">
+    <p class="flex flex-col md:flex-row justify-center items-center gap-1">
+      <span
+        >&copy; {new Date().getFullYear()} Wellness Medical Center. All rights reserved.</span
+      >
+      <span class="hidden md:inline">•</span>
+      <span>
+        Crafted with care by <a
+          href="https://mattoleary.design"
+          class="hover:text-white">Matt O'Leary</a
+        >.
+      </span>
+    </p>
+  </div>
 </footer>
