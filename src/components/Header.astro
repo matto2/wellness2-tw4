@@ -53,8 +53,9 @@ const currentPath = Astro.url.pathname;
       </nav>
       <button
         id="menuToggle"
-        class="group lg:hidden flex items-center text-amber-50 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#cf5500] hover:bg-amber-700 transition-colors"
+        class="group lg:hidden flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border-2 border-[#cf5500] text-[#cf5500] hover:border-amber-700 hover:text-amber-700 transition-colors"
         aria-label="Toggle Menu"
+        data-state="closed"
       >
         <div id="menuContent" class="sm:-mt-1">
           <span class="hidden sm:inline text-xl">☰</span>
@@ -65,9 +66,9 @@ const currentPath = Astro.url.pathname;
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="2.5"
             stroke="#cf5500"
-            class="size-6 group-hover:stroke-amber-700"
+            stroke-width="2.5"
+            class="size-6"
           >
             <path
               stroke-linecap="round"
@@ -89,9 +90,23 @@ const currentPath = Astro.url.pathname;
         menu?.classList.toggle("hidden");
         menuContent?.classList.toggle("hidden");
         closeContent?.classList.toggle("hidden");
-        toggle.classList.toggle("bg-[#cf5500]");
-        toggle.classList.toggle("hover:bg-amber-700");
-        toggle.classList.toggle("bg-transparent");
+        if (closeContent && !closeContent.classList.contains("hidden")) {
+          toggle.classList.add("bg-transparent", "border-none");
+          toggle.classList.remove(
+            "border-2",
+            "border-[#cf5500]",
+            "hover:border-amber-700",
+            "hover:text-amber-700"
+          );
+        } else {
+          toggle.classList.remove("bg-transparent", "border-none");
+          toggle.classList.add(
+            "border-2",
+            "border-[#cf5500]",
+            "hover:border-amber-700",
+            "hover:text-amber-700"
+          );
+        }
       });
 
       window.addEventListener("scroll", () => {
