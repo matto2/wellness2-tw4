@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "@fontsource-variable/montserrat";
+import Image from "astro/components/Image.astro";
+import samaya from "../assets/samaya.jpg";
 
 const headline = "About Us";
 ---
@@ -10,8 +12,60 @@ const headline = "About Us";
     <div class="md:flex md:items-center md:gap-8">
       <div class="md:w-3/5">
         <h2 class="text-4xl text-amber-700 font-bold mb-4 mt-8">{headline}</h2>
-        <p class="text-2xl">
-          Learn more about our practice and our approach to wellness.
+        <p class="text-2xl mb-16">
+          Compassionate care from experienced, women-centered healers dedicated
+          to supporting your health, and well-being
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="space-y-24">
+    <!-- Maria Mitchell Bio -->
+    <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+      <!-- Avatar -->
+      <div class="w-48 h-48 aspect-square rounded-full bg-gray-300 mr-8"></div>
+
+      <!-- Bio Text -->
+      <div>
+        <h3 class="text-xl font-semibold text-gray-900">
+          Maria Mitchell, DTCM, L.Ac.
+        </h3>
+        <p class="mt-2 text-gray-700">
+          Maria Mitchell is a second-generation acupuncturist with a lifelong
+          immersion in Traditional Chinese Medicine. Holding a Doctorate and
+          Master's from Five Branches University and a B.S. in Kinesiology, she
+          blends Eastern and Western medical knowledge in her practice. Maria
+          specializes in women’s gynecological health and sports injuries, and
+          teaches at Five Branches University, continuing her family’s healing
+          legacy in Santa Cruz.
+        </p>
+      </div>
+    </div>
+
+    <!-- Samaya Cullerton Bio -->
+    <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+      <!-- Avatar -->
+      <Image
+        src={samaya}
+        loading="lazy"
+        width={200}
+        height={200}
+        alt="Samaya Cullerton"
+        class="rounded-full object-cover mr-8"
+      />
+
+      <!-- Bio Text -->
+      <div>
+        <h3 class="text-xl font-semibold text-gray-900">
+          Samaya Cullerton, L.Ac., MTCM
+        </h3>
+        <p class="mt-2 text-gray-700">
+          Samaya Cullerton is a licensed acupuncturist and herbalist based in
+          Santa Cruz with over a decade of experience. She specializes in
+          women's health—including prenatal, postpartum, and pediatric care—and
+          teaches herbal medicine, dietetics, and clinical acupuncture at Five
+          Branches University. She also practices at Wellness Medical Center, a
+          women-owned clinic with deep roots in the community.
         </p>
       </div>
     </div>
