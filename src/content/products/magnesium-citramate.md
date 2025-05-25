@@ -1,10 +1,10 @@
 ---
 title: "Magnesium Citramate"
-brand: "Thorne"
+brand: "XYZ"
 quantity: "90 capsules"
 price: 28.00
 salePrice: 25.20
-image: "/assets/thorne.png"
+image: "/assets/mag.png"
 description: "A highly absorbable form of magnesium that supports muscle function, energy production, and nervous system health."
 category: "Minerals"
 inStock: true

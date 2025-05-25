@@ -2,9 +2,19 @@
 import Layout from "../layouts/Layout.astro";
 import ProductCard from "../components/ProductCard.astro";
 import { getCollection } from "astro:content";
+import type { ImageMetadata } from "astro";
+
+import thorneImage from "../assets/thorne.png";
+import mag from "../assets/mag.png";
+import fallbackImage from "../assets/fallback.png";
 
 const headline = "Wellness Shop";
 const products = await getCollection("products");
+
+const imageMap: Record<string, ImageMetadata> = {
+  "/assets/thorne.png": thorneImage,
+  "/assets/mag.png": mag,
+};
 ---
 
 <Layout title="Wellness Shop | Wellness Medical Center">
@@ -18,7 +28,7 @@ const products = await getCollection("products");
       </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
       {
         products.map((product) => (
           <ProductCard
@@ -27,6 +37,7 @@ const products = await getCollection("products");
             quantity={product.data.quantity}
             price={product.data.price}
             salePrice={product.data.salePrice}
+            image={imageMap[product.data.image] || fallbackImage}
           />
         ))
       }
