@@ -14,10 +14,11 @@ const { title, brand, quantity, price, salePrice } = Astro.props;
 ---
 
 <div
-  class="bg-stone-100 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full sm:max-w-xs flex flex-col"
+  class="bg-stone-100 rounded-lg w-full sm:max-w-xs flex flex-col transition-shadow duration-300"
+  style="box-shadow: 0 6px 24px -4px rgba(0,0,0,0.18), 0 -4px 16px -4px rgba(0,0,0,0.10);"
 >
   <!-- Product Image -->
-  <div class="bg-stone-100 pt-4">
+  <div class="bg-white pt-4">
     <Image src={productImage} alt={title} class="h-[120px] w-auto mx-auto" />
   </div>
 
