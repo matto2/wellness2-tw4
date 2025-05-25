@@ -14,11 +14,11 @@ const { title, brand, quantity, price, salePrice } = Astro.props;
 ---
 
 <div
-  class="bg-stone-100 rounded-lg w-full sm:max-w-xs flex flex-col transition-shadow duration-300"
+  class="bg-stone-100 rounded-3xl w-full sm:max-w-xs flex flex-col transition-shadow duration-300"
   style="box-shadow: 0 6px 24px -4px rgba(0,0,0,0.18), 0 -4px 16px -4px rgba(0,0,0,0.10);"
 >
   <!-- Product Image -->
-  <div class="bg-white pt-4">
+  <div class="bg-white pt-4 rounded-t-3xl">
     <Image src={productImage} alt={title} class="h-[120px] w-auto mx-auto" />
   </div>
 
@@ -48,7 +48,7 @@ const { title, brand, quantity, price, salePrice } = Astro.props;
     <!-- Button pushed to bottom -->
     <div class="mt-auto">
       <button
-        class="w-full bg-[#cf5500] text-white py-2 px-4 rounded-md hover:bg-amber-700 transition-colors duration-300"
+        class="w-full bg-[#cf5500] text-white py-2 px-4 rounded-full hover:bg-amber-700 transition-colors duration-300"
       >
         Buy in Our Shop
       </button>
