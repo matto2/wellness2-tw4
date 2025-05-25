@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import "@fontsource-variable/montserrat";
 import Image from "astro/components/Image.astro";
 import samaya from "../assets/samaya.jpg";
+import maria from "../assets/maria.jpg";
 
 const headline = "About Us";
 ---
@@ -24,7 +25,14 @@ const headline = "About Us";
     <!-- Maria Mitchell Bio -->
     <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
       <!-- Avatar -->
-      <div class="w-48 h-48 aspect-square rounded-full bg-gray-300 mr-8"></div>
+      <Image
+        src={maria}
+        loading="lazy"
+        width={200}
+        height={200}
+        alt="Maria Mitchell"
+        class="rounded-full object-cover mr-8"
+      />
 
       <!-- Bio Text -->
       <div>
