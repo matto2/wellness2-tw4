@@ -1,0 +1,87 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import LotusIcon from "../../components/LotusIcon.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+if (!post) throw new Error("Post not found");
+const { Content } = await post.render();
+---
+
+<Layout title={`${post.data.title} | Wellness Medical Center`}>
+  <article class="max-w-screen-xl mx-auto px-4 mt-20 xl:px-0">
+    <div class="flex justify-center mb-8">
+      <LotusIcon class="w-24 h-24" />
+    </div>
+
+    <header class="max-w-3xl mx-auto mb-12">
+      <h1 class="text-4xl text-amber-700 font-bold mb-4 text-center">
+        {post.data.title}
+      </h1>
+      <div class="flex items-center justify-center gap-4 text-gray-600 mb-8">
+        <span>{post.data.author}</span>
+        <span>•</span>
+        <time datetime={post.data.pubDate.toISOString()}>
+          {
+            post.data.pubDate.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          }
+        </time>
+        <span>•</span>
+        <span>{post.data.readTime}</span>
+      </div>
+      {
+        post.data.image && (
+          <div class="aspect-[16/9] rounded-[24px] overflow-hidden mb-8">
+            <Image
+              src={post.data.image}
+              alt={post.data.title}
+              class="w-full h-full object-cover"
+              width={800}
+              height={450}
+            />
+          </div>
+        )
+      }
+    </header>
+
+    <div class="max-w-3xl mx-auto prose prose-lg prose-amber text-gray-700">
+      <Content />
+    </div>
+
+    <!-- Back to Blog Link -->
+    <div class="max-w-3xl mx-auto mt-12 mb-20">
+      <a
+        href="/blog"
+        class="inline-flex items-center text-amber-700 hover:text-amber-800 font-medium"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4 mr-2"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to Blog
+      </a>
+    </div>
+  </article>
+</Layout>

@@ -9,7 +9,7 @@ const headline = "About Us";
 ---
 
 <Layout title="About Us | Wellness Medical Center">
-  <section>
+  <section class="max-w-screen-xl mx-auto px-4 mt-24 xl:px-0">
     <div class="md:flex md:items-center md:gap-8">
       <div class="md:w-3/5">
         <h2 class="text-4xl text-amber-700 font-bold mb-4 mt-8">{headline}</h2>
@@ -21,9 +21,9 @@ const headline = "About Us";
     </div>
   </section>
 
-  <section class="space-y-24">
+  <section class="max-w-screen-xl mx-auto px-4 mt-4 xl:px-0 space-y-24">
     <!-- Maria Mitchell Bio -->
-    <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+    <div class="flex flex-col md:flex-row items-center md:items-center gap-6">
       <!-- Avatar -->
       <Image
         src={maria}
@@ -31,11 +31,11 @@ const headline = "About Us";
         width={200}
         height={200}
         alt="Maria Mitchell"
-        class="rounded-full object-cover mr-8"
+        class="rounded-full object-cover mb-4 md:mb-0 md:mr-8"
       />
 
       <!-- Bio Text -->
-      <div>
+      <div class="text-left w-full">
         <h3 class="text-xl font-semibold text-gray-900">
           Maria Mitchell, DTCM, L.Ac.
         </h3>
@@ -59,19 +59,22 @@ const headline = "About Us";
             personal site
           </a>.
         </p>
-        <a
-          href="https://www.mariamitchelllac.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block mt-2 px-6 py-2 rounded-full bg-[#cf5500] text-white font-semibold shadow hover:bg-amber-700 transition-colors duration-200"
-        >
-          Visit Maria's site
-        </a>
+        <!-- Button container -->
+        <div class="flex flex-col gap-2 items-center md:items-start mt-2">
+          <a
+            href="https://www.mariamitchelllac.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full md:w-auto inline-block mt-4 px-6 py-2 rounded-full bg-[#cf5500] text-white font-semibold shadow hover:bg-amber-700 transition-colors duration-200 text-center"
+          >
+            Visit Maria's site
+          </a>
+        </div>
       </div>
     </div>
 
     <!-- Samaya Cullerton Bio -->
-    <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+    <div class="flex flex-col md:flex-row items-center md:items-center gap-6">
       <!-- Avatar -->
       <Image
         src={samaya}
@@ -79,11 +82,11 @@ const headline = "About Us";
         width={200}
         height={200}
         alt="Samaya Cullerton"
-        class="rounded-full object-cover mr-8"
+        class="rounded-full object-cover mb-4 md:mb-0 md:mr-8"
       />
 
       <!-- Bio Text -->
-      <div>
+      <div class="text-left w-full">
         <h3 class="text-xl font-semibold text-gray-900">
           Samaya Cullerton, L.Ac., MTCM
         </h3>
@@ -106,14 +109,17 @@ const headline = "About Us";
             personal site
           </a>.
         </p>
-        <a
-          href="https://www.samayacullerton.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block mt-2 px-6 py-2 rounded-full bg-[#cf5500] text-white font-semibold shadow hover:bg-amber-700 transition-colors duration-200"
-        >
-          Visit Samaya's site
-        </a>
+        <!-- Button container -->
+        <div class="flex flex-col gap-2 items-center md:items-start mt-2">
+          <a
+            href="https://www.samayacullerton.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full md:w-auto inline-block mt-4 px-6 py-2 rounded-full bg-[#cf5500] text-white font-semibold shadow hover:bg-amber-700 transition-colors duration-200 text-center"
+          >
+            Visit Samaya's site
+          </a>
+        </div>
       </div>
     </div>
   </section>

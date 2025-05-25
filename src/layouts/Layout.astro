@@ -43,16 +43,12 @@ const { title, description } = Astro.props;
       />
     </div>
 
-    <div class="w-full px-4 md:px-8 flex-1 flex flex-col pt-[80px]">
-      <div class="max-w-screen-xl mx-auto flex-1 flex flex-col w-full">
-        <Header />
-        <main class="flex-1 w-full pb-8">
-          <slot />
-        </main>
-      </div>
-    </div>
+    <Header />
+    <main class="flex-1 w-full pb-8">
+      <slot />
+    </main>
     <div class="w-full bg-[#8c9d7d] mt-8">
-      <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+      <div class="max-w-screen-xl mx-auto px-4 xl:px-0">
         <Footer />
       </div>
     </div>
