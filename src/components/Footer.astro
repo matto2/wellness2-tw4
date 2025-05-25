@@ -10,15 +10,40 @@ import BrandLogoWt from "./BrandLogo-wt.astro";
         <BrandLogoWt />
       </div>
       <nav class="mt-2">
-        <ul class="flex justify-center md:justify-start space-x-6">
-          <li><a href="/" class="hover:text-white">Home</a></li>
-          <li><a href="/about" class="hover:text-white">About Us</a></li>
-          <li><a href="/shop" class="hover:text-white">Wellness Shop</a></li>
+        <ul
+          class="flex flex-col md:flex-row justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-6"
+        >
           <li>
-            <a href="/blog" class="hover:text-white">Health Tips</a>
+            <a href="/" class="hover:text-white text-lg md:text-base">Home</a>
+          </li>
+          <li>
+            <a href="/about" class="hover:text-white text-lg md:text-base"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a href="/shop" class="hover:text-white text-lg md:text-base"
+              >Wellness Shop</a
+            >
+          </li>
+          <li>
+            <a href="/blog" class="hover:text-white text-lg md:text-base"
+              >Health Tips</a
+            >
           </li>
         </ul>
       </nav>
+
+      <div class="mt-8 text-center md:text-left">
+        <p>Dr. Maria Mitchell DTCM, L.Ac</p>
+        <p>
+          <a href="tel:8314779355" class="hover:text-white">831-477-9355</a>
+        </p>
+        <p class="mt-2">Samaya Cullerton, L.Ac</p>
+        <p>
+          <a href="tel:8315889581" class="hover:text-white">831-588-9581</a>
+        </p>
+      </div>
 
       <div class="text-text-dark py-6 md:max-w-3xl">
         <div class="mt-4 mb-2 flex justify-center md:justify-start">
