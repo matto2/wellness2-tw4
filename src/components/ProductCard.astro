@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+import productImage from "../assets/thorne.png";
+
+interface Props {
+  title: string;
+  brand: string;
+  quantity: string;
+  price: number;
+  salePrice: number;
+}
+
+const { title, brand, quantity, price, salePrice } = Astro.props;
+---
+
+<div
+  class="bg-stone-100 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full sm:max-w-xs flex flex-col"
+>
+  <!-- Product Image -->
+  <div class="bg-stone-100 pt-4">
+    <Image src={productImage} alt={title} class="h-[120px] w-auto mx-auto" />
+  </div>
+
+  <!-- Product Info (flex-grow container) -->
+  <div class="flex flex-col p-4 flex-1">
+    <!-- Title -->
+    <h3 class="text-lg font-semibold text-gray-900 mb-3 min-h-[3.5rem]">
+      {title}
+    </h3>
+
+    <!-- Brand and Quantity -->
+    <div class="flex justify-between items-center mb-3 text-sm text-gray-700">
+      <span class="font-medium">{brand}</span>
+      <span class="text-gray-600">{quantity}</span>
+    </div>
+
+    <!-- Price -->
+    <div class="flex items-center gap-2 mb-4">
+      <span class="text-sm text-gray-500 line-through">
+        ${price.toFixed(2)}
+      </span>
+      <span class="text-lg font-bold text-[#cf5500]">
+        ${salePrice.toFixed(2)}
+      </span>
+    </div>
+
+    <!-- Button pushed to bottom -->
+    <div class="mt-auto">
+      <button
+        class="w-full bg-[#cf5500] text-white py-2 px-4 rounded-md hover:bg-amber-700 transition-colors duration-300"
+      >
+        Buy in Our Shop
+      </button>
+    </div>
+  </div>
+</div>
