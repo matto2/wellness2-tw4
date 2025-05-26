@@ -1,0 +1,129 @@
+---
+import Layout from "./Layout.astro";
+import { Image } from "astro:assets";
+import LotusIcon from "../components/LotusIcon.astro";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  title: string;
+  pubDate: Date;
+  author: string;
+  readTime: string;
+  image?: string;
+}
+
+const { title, pubDate, author, readTime, image } = Astro.props;
+---
+
+<Layout title={`${title} | Wellness Medical Center`}>
+  <article class="max-w-screen-xl mx-auto px-4 mt-20 xl:px-0">
+    <div class="flex justify-center mb-8">
+      <LotusIcon class="w-24 h-24" />
+    </div>
+
+    <header class="max-w-3xl mx-auto mb-12">
+      <h1 class="text-4xl text-amber-700 font-bold mb-4 text-center">
+        {title}
+      </h1>
+      <div
+        class="flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4 text-gray-600 mb-8"
+      >
+        <span>{author}</span>
+        <span class="hidden md:inline">•</span>
+        <time datetime={pubDate.toISOString()}>
+          {
+            pubDate.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          }
+        </time>
+        <span class="hidden md:inline">•</span>
+        <span>{readTime}</span>
+      </div>
+      {
+        image && (
+          <div class="aspect-[16/9] rounded-[24px] overflow-hidden mb-8">
+            <Image
+              src={image}
+              alt={title}
+              class="w-full h-full object-cover"
+              width={800}
+              height={450}
+            />
+          </div>
+        )
+      }
+    </header>
+
+    <div class="max-w-3xl mx-auto blog-content">
+      <slot />
+    </div>
+
+    <!-- Back to Blog Link -->
+    <div class="max-w-3xl mx-auto mt-12 mb-20">
+      <a
+        href="/blog"
+        class="inline-flex items-center text-amber-700 hover:text-amber-800 font-medium"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4 mr-2"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to Blog
+      </a>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .blog-content {
+    color: #374151; /* text-gray-700 */
+  }
+  .blog-content h2 {
+    color: #b45309; /* text-amber-700 */
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .blog-content p {
+    margin: 1rem 0 !important;
+  }
+  .blog-content ul {
+    list-style-type: disc !important;
+    padding-left: 2rem !important;
+    margin: 1rem 0 !important;
+  }
+  .blog-content ol {
+    list-style-type: decimal !important;
+    padding-left: 2rem !important;
+    margin: 1rem 0 !important;
+  }
+  .blog-content li {
+    margin: 0.5rem 0 !important;
+  }
+  .blog-content blockquote {
+    border-left: 4px solid #b45309;
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+  }
+  .blog-content a {
+    color: #b45309;
+    text-decoration: underline;
+  }
+  .blog-content strong {
+    font-weight: 600;
+  }
+</style>
