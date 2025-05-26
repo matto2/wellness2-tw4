@@ -1,18 +1,19 @@
 ---
 title: "5 Reasons Acupuncture Helps with Digestive Functions"
-author: "Maria Mitchell"
-pubDate: 2022-01-01
-readTime: "4 min read"
+pubDate: 2024-03-20
+author: "Maria Mitchell, DTCM, L.Ac."
+readTime: "5 min read"
+image: "abdomen-8762847_1280.jpg"
 description: "Discover how acupuncture can help improve your digestive health and address common gastrointestinal issues through holistic treatment approaches."
 ---
 
-Healthy digestive function is essential for maintaining one’s health and having the ongoing energy to participate in daily life in a steady and grounded way. When digestion is working properly, the food that we intake is broken down and nutrients are provided to all our cells for healing, sustenance, and energy production. The digestive system is also critical for detoxifying the body by providing an exit route for unwanted waste material.
+Healthy digestive function is essential for maintaining one's health and having the ongoing energy to participate in daily life in a steady and grounded way. When digestion is working properly, the food that we intake is broken down and nutrients are provided to all our cells for healing, sustenance, and energy production. The digestive system is also critical for detoxifying the body by providing an exit route for unwanted waste material.
 
-Digestive disorders are rampant in the United States. Surveys estimate nearly 70 million people in the United States are affected by some sort of digestive disorder. This could be anything from gallstones to acid reflux to pancreatitis. For many, these disorders are extremely debilitating. But for every person dealing with a debilitating digestive disorder, there are thousands more that just assume everything they are experiencing is “normal.”
+Digestive disorders are rampant in the United States. Surveys estimate nearly 70 million people in the United States are affected by some sort of digestive disorder. This could be anything from gallstones to acid reflux to pancreatitis. For many, these disorders are extremely debilitating. But for every person dealing with a debilitating digestive disorder, there are thousands more that just assume everything they are experiencing is "normal."
 
 ## Acupuncture and the Gut-Brain Axis
 
-Acupuncture helps by balancing the gut-brain axis and the nervous system to reduce stress, which in turn improves digestive function. One of the side effects of an overactive sympathetic nervous system is decreased digestive function. The vagus nerve, which is responsible for the “rest and digest” function and heart rhythm, can be affected—leading to stress in the gut. Without the parasympathetic influence that the vagus nerve brings to our body, digestive and emotional imbalances are created.
+Acupuncture helps by balancing the gut-brain axis and the nervous system to reduce stress, which in turn improves digestive function. One of the side effects of an overactive sympathetic nervous system is decreased digestive function. The vagus nerve, which is responsible for the "rest and digest" function and heart rhythm, can be affected—leading to stress in the gut. Without the parasympathetic influence that the vagus nerve brings to our body, digestive and emotional imbalances are created.
 
 Acupuncture also helps reduce pain and inflammation, which helps regulate stomach acid and promote peristalsis.
 
@@ -28,7 +29,7 @@ Chinese herbs are often used for digestive issues, either alone or in conjunctio
 - Nausea and vomiting
 - Abdominal pain
 - IBS
-- Crohn’s disease
+- Crohn's disease
 - Acid reflux
 - Ulcerative colitis
 - Malabsorption / Leaky Gut
@@ -58,7 +59,7 @@ These four organs and their functional ability also operate as a foundation for 
    Acupuncture and even acupressure are excellent tools for calming upset stomachs. One specific acupressure point on the underside of the forearm has been studied extensively for reducing nausea. Most people see noticeable improvement.
 
 4. **Reduces Bloating**  
-   Bloating is a common issue often caused by overeating or improper digestion. Acupuncture supports the body’s ability to break down food without producing excess gas.
+   Bloating is a common issue often caused by overeating or improper digestion. Acupuncture supports the body's ability to break down food without producing excess gas.
 
 5. **Relieves Diarrhea**  
    Diarrhea can result from excess heat or dampness in the digestive tract. Acupuncture can help resolve it by clearing those imbalances and strengthening the digestive system.
@@ -70,6 +71,6 @@ These four organs and their functional ability also operate as a foundation for 
 
 ## Addressing the Root, Not Just the Symptoms
 
-If you’re suffering from **any digestive issue**, acupuncture and herbal medicine are powerful tools for resolving it by addressing both the symptoms and the root cause. TCM food therapy is often included in the treatment plan. By reviewing your current diet, we can suggest simple changes that support healing and match your unique constitution.
+If you're suffering from **any digestive issue**, acupuncture and herbal medicine are powerful tools for resolving it by addressing both the symptoms and the root cause. TCM food therapy is often included in the treatment plan. By reviewing your current diet, we can suggest simple changes that support healing and match your unique constitution.
 
 👉 [Click here](https://www.wellnessmedicalcenter.com) for information about supplements and herbs for your digestive health.

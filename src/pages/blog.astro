@@ -1,87 +1,94 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import type { ImageMetadata } from "astro";
+import abdomenImage from "../assets/abdomen-8762847_1280.jpg";
 import LotusIcon from "../components/LotusIcon.astro";
 
-// Get all blog posts
-const posts = await getCollection("blog");
+// Create an image map
+const imageMap = {
+  "abdomen-8762847_1280.jpg": abdomenImage,
+} as const;
 
-// Sort posts by date
-const sortedPosts = posts.sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const posts = await getCollection("blog");
 ---
 
-<Layout title="Blog | Wellness Medical Center">
-  <section class="max-w-screen-xl mx-auto px-4 mt-20 xl:px-0">
-    <!-- <div class="flex justify-center mb-8">
+<Layout title="Health Tips | Wellness Medical Center">
+  <div class="max-w-screen-xl mx-auto px-4 mt-20 xl:px-0">
+    <div class="flex justify-center mb-4">
       <LotusIcon class="w-24 h-24" />
-    </div> -->
-    <h1 class="text-4xl text-amber-700 font-bold mb-4">Health Tips</h1>
-    <p class="text-xl mb-12 max-w-3xl">
-      Insights and wisdom from our practitioners on Traditional Chinese
-      Medicine, acupuncture, and holistic wellness.
-    </p>
+    </div>
+    <h1 class="text-4xl text-amber-700 font-bold mb-12 text-center">
+      Health Tips
+    </h1>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
-        sortedPosts.map((post) => (
-          <article class="bg-white rounded-[24px] shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <a href={`/blog/${post.slug}`} class="block">
-              <div class="aspect-[16/9] bg-gray-200">
-                {post.data.image ? (
+        posts.map((post) => (
+          <article class="bg-white rounded-[24px] shadow-md overflow-hidden">
+            {post.data.image && (
+              <a href={`/blog/${post.slug}`} class="block">
+                <div class="aspect-[16/9] overflow-hidden">
                   <Image
-                    src={post.data.image}
+                    src={imageMap[post.data.image as keyof typeof imageMap]}
                     alt={post.data.title}
                     class="w-full h-full object-cover"
-                    width={400}
-                    height={225}
+                    width={600}
+                    height={338}
                   />
-                ) : (
-                  <div class="w-full h-full flex items-center justify-center bg-amber-50">
-                    <LotusIcon class="w-16 h-16 text-amber-700 opacity-50" />
-                  </div>
-                )}
-              </div>
-              <div class="p-6">
-                <h2 class="text-xl font-semibold mb-2 text-gray-900 hover:text-amber-700 transition-colors">
+                </div>
+              </a>
+            )}
+            <div class="p-4">
+              <h2 class="text-xl font-bold text-amber-700 mb-2">
+                <a href={`/blog/${post.slug}`} class="hover:text-amber-800">
                   {post.data.title}
-                </h2>
-                <div class="flex items-center gap-4 text-sm text-gray-600 mb-4">
-                  <span>{post.data.author}</span>
-                  <span>•</span>
-                  <time datetime={post.data.pubDate.toISOString()}>
-                    {post.data.pubDate.toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </time>
-                </div>
-                <p class="text-gray-700 mb-4">{post.data.description}</p>
-                <div class="flex items-center text-amber-700 font-medium">
-                  Read more
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 ml-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </div>
+                </a>
+              </h2>
+              <div class="flex items-center gap-2 text-gray-600 mb-3 text-sm">
+                <span>{post.data.author}</span>
+                <span>•</span>
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {post.data.pubDate.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+                <span>•</span>
+                <span>{post.data.readTime}</span>
               </div>
-            </a>
+              {post.data.description && (
+                <p class="text-gray-700 mb-3 text-sm">
+                  {post.data.description}
+                </p>
+              )}
+              <a
+                href={`/blog/${post.slug}`}
+                class="inline-flex items-center text-amber-700 hover:text-amber-800 font-medium text-sm"
+              >
+                Read more
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 ml-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
           </article>
         ))
       }
     </div>
-  </section>
+  </div>
 </Layout>
