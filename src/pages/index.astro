@@ -12,12 +12,36 @@ import welcomeImage from "../assets/3779934899.jpg";
 import lobbyImage from "../assets/3779151781.jpg";
 import samaya2 from "../assets/3779977271.jpg";
 import samaya3 from "../assets/3779977272.jpg";
+import ImageSlideshow from "../components/ImageSlideshow.astro";
+import clinic1 from "../assets/clinic/3780071716.jpg";
+import clinic2 from "../assets/clinic/3779151766.jpg";
+import clinic3 from "../assets/clinic/3779151751.jpg";
+import clinic4 from "../assets/clinic/3779151669.jpg";
+import clinic5 from "../assets/clinic/3779151852.jpg";
+import clinic6 from "../assets/clinic/3779151811.jpg";
+import clinic7 from "../assets/clinic/3779151781.jpg";
+import clinic8 from "../assets/clinic/3779151591.jpg";
+import clinic9 from "../assets/clinic/3779942412.jpg";
+import clinic10 from "../assets/clinic/3779011254.jpg";
+
+const images = [
+  { src: clinic1, alt: "Wellness Medical Center interior" },
+  { src: clinic2, alt: "Wellness Medical Center treatment room" },
+  { src: clinic3, alt: "Wellness Medical Center waiting area" },
+  { src: clinic4, alt: "Wellness Medical Center herbs" },
+  { src: clinic5, alt: "Wellness Medical Center treatment space" },
+  { src: clinic6, alt: "Wellness Medical Center consultation room" },
+  { src: clinic7, alt: "Wellness Medical Center lobby" },
+  { src: clinic8, alt: "Wellness Medical Center entrance" },
+  { src: clinic9, alt: "Wellness Medical Center herbs display" },
+  { src: clinic10, alt: "Wellness Medical Center herbs collection" },
+];
 // Supports weights 100-900
 import "@fontsource-variable/montserrat";
 ---
 
 <Layout title="Home | Wellness Medical Center">
-  <!-- HERO SECTION (Existing content) -->
+  <!-- HERO SECTION -->
   <section>
     <div class="max-w-screen-xl mx-auto px-4 mt-28 xl:px-0">
       <div class="md:flex md:items-center md:gap-8 mb-4">
@@ -63,7 +87,7 @@ import "@fontsource-variable/montserrat";
     </div>
   </section>
 
-  <!-- WELCOME SECTION (bg-[#8c9d7d]) -->
+  <!-- WELCOME SECTION -->
   <section class="bg-[#8c9d7d] text-amber-50 py-8 mt-12 w-full">
     <div class="max-w-screen-xl mx-auto px-4 xl:px-0">
       <div class="md:flex md:items-center md:gap-12">
@@ -125,28 +149,7 @@ import "@fontsource-variable/montserrat";
     </div>
   </section>
 
-  <!-- Existing content -->
-
-  <!-- Temporarily removed section
-  <section class="mt-12 mb-8 px-4">
-    <div
-      class="max-w-[960px] mx-auto grid grid-cols-1 md:grid-cols-8 gap-8 items-center"
-    >
-      <div class="flex justify-center mx-auto col-span-1 md:col-span-2">
-        <LotusIcon class="w-32 h-32 md:w-48 md:h-48" />
-      </div>
-      <div class="col-span-1 md:col-span-6">
-        <p class="text-lg md:text-xl">
-          At Wellness Medical Center, we combine the wisdom of Traditional
-          Chinese Medicine with a deeply personal, wellness-centered approach. From
-          acupuncture to herbal remedies and lifestyle guidance, we help you
-          restore balance and well-being—naturally.
-        </p>
-      </div>
-    </div>
-  </section>
-  -->
-
+  <!-- THREE CARDS SECTION -->
   <section class="max-w-screen-xl mx-auto px-4 xl:px-0 mt-8 mb-16">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Card 1 -->
@@ -191,8 +194,34 @@ import "@fontsource-variable/montserrat";
     </div>
   </section>
 
+  <!-- CLINIC SPACE SECTION -->
+  <section class="bg-[#8c9d7d] py-16">
+    <div class="max-w-screen-xl mx-auto px-4 xl:px-0">
+      <div class="grid md:grid-cols-8 gap-12 items-center">
+        <!-- Text Content (5/8) -->
+        <div class="md:col-span-5">
+          <h1 class="text-2xl md:text-3xl text-amber-50 font-medium mb-6">
+            A Healing Space for You
+          </h1>
+          <p class="text-lg text-amber-50">
+            Located in the heart of Santa Cruz, our clinic has been a trusted
+            center for Traditional Chinese Medicine for over 40 years. We've
+            carefully designed each space to promote relaxation and healing,
+            from our welcoming reception area to our private treatment rooms.
+          </p>
+        </div>
+
+        <!-- Slideshow (3/8) -->
+        <div class="md:col-span-3">
+          <ImageSlideshow images={images} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
   <section class="px-4 xl:px-0 xl:px-0 mb-16">
-    <div class="flex justify-center mb-4">
+    <div class="flex justify-center mb-2 mt-8">
       <LotusIcon class="w-24 h-24" />
     </div>
     <h2 class="text-3xl text-amber-700 font-medium mb-8 text-center">
