@@ -57,8 +57,6 @@ const posts = await getCollection("blog");
                     day: "numeric",
                   })}
                 </time>
-                <span>•</span>
-                <span>{post.data.readTime}</span>
               </div>
               {post.data.description && (
                 <p class="text-gray-700 mb-3 text-sm">
