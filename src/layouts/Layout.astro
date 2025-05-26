@@ -3,8 +3,6 @@ import "../styles/global.css";
 import "@fontsource-variable/montserrat";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { Image } from "astro:assets";
-import circles from "../assets/circles.svg";
 
 interface Props {
   title: string;
@@ -30,19 +28,8 @@ const { title, description } = Astro.props;
     {description && <meta name="description" content={description} />}
   </head>
   <body
-    class="relative text-gray-800 min-h-screen flex flex-col overflow-x-hidden"
+    class="relative text-gray-800 min-h-screen flex flex-col overflow-x-hidden bg-[#fffbf5]"
   >
-    <!-- Hero Background (layout-only) -->
-    <div
-      class="absolute top-[80px] left-0 w-full h-[633px] -z-10 overflow-hidden pointer-events-none"
-    >
-      <Image
-        src={circles}
-        alt=""
-        class="w-full h-full object-cover opacity-20"
-      />
-    </div>
-
     <Header />
     <main class="flex-1 w-full pb-8">
       <slot />
