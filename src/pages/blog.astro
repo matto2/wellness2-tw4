@@ -20,7 +20,7 @@ const posts = await getCollection("blog");
     <div class="flex justify-center mb-4">
       <LotusIcon class="w-24 h-24" />
     </div>
-    <h1 class="text-4xl text-amber-700 font-bold mb-12 text-center">
+    <h1 class="text-4xl text-amber-700 font-medium mb-12 text-center">
       Health Tips
     </h1>
 
@@ -42,7 +42,7 @@ const posts = await getCollection("blog");
               </a>
             )}
             <div class="p-4">
-              <h2 class="text-xl font-bold text-amber-700 mb-2">
+              <h2 class="text-xl font-medium text-amber-700 mb-2">
                 <a href={`/blog/${post.slug}`} class="hover:text-amber-800">
                   {post.data.title}
                 </a>
