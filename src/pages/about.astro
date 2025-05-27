@@ -1,9 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "@fontsource-variable/montserrat";
-import Image from "astro/components/Image.astro";
-import samaya from "../assets/samaya.jpg";
-import maria from "../assets/maria.jpg";
 
 const headline = "About Us";
 ---
@@ -36,13 +33,11 @@ const headline = "About Us";
     <!-- Maria Mitchell Bio -->
     <div class="flex flex-col md:flex-row items-center md:items-center gap-6">
       <!-- Avatar -->
-      <Image
-        src={maria}
-        loading="lazy"
-        width={200}
-        height={200}
+      <img
+        src="/maria.jpg"
         alt="Maria Mitchell"
-        class="rounded-full object-cover mb-4 md:mb-0 md:mr-8"
+        class="rounded-full object-cover mb-4 md:mb-0 md:mr-8 w-[200px] h-[200px]"
+        loading="lazy"
       />
 
       <!-- Bio Text -->
@@ -87,13 +82,11 @@ const headline = "About Us";
     <!-- Samaya Cullerton Bio -->
     <div class="flex flex-col md:flex-row items-center md:items-center gap-6">
       <!-- Avatar -->
-      <Image
-        src={samaya}
-        loading="lazy"
-        width={200}
-        height={200}
+      <img
+        src="/samaya.jpg"
         alt="Samaya Cullerton"
-        class="rounded-full object-cover mb-4 md:mb-0 md:mr-8"
+        class="rounded-full object-cover mb-4 md:mb-0 md:mr-8 w-[200px] h-[200px]"
+        loading="lazy"
       />
 
       <!-- Bio Text -->

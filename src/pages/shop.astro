@@ -2,18 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import ProductCard from "../components/ProductCard.astro";
 import { getCollection } from "astro:content";
-import type { ImageMetadata } from "astro";
-
-import thorneImage from "../assets/thorne.png";
-import mag from "../assets/mag.png";
-import fallbackImage from "../assets/fallback.png";
 
 const headline = "Wellness Shop";
 const products = await getCollection("products");
 
-const imageMap: Record<string, ImageMetadata> = {
-  "/assets/thorne.png": thorneImage,
-  "/assets/mag.png": mag,
+const imageMap: Record<string, string> = {
+  "/assets/thorne.png": "/thorne.png",
+  "/assets/mag.png": "/mag.png",
 };
 ---
 
@@ -39,7 +34,7 @@ const imageMap: Record<string, ImageMetadata> = {
             quantity={product.data.quantity}
             price={product.data.price}
             salePrice={product.data.salePrice}
-            image={imageMap[product.data.image] || fallbackImage}
+            image={imageMap[product.data.image] || "/fallback.png"}
           />
         ))
       }

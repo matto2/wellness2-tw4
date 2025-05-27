@@ -2,14 +2,10 @@
 import { getCollection } from "astro:content";
 import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
 import type { CollectionEntry } from "astro:content";
-import { Image } from "astro:assets";
-
-import type { ImageMetadata } from "astro";
-import abdomenImage from "../../assets/abdomen-8762847_1280.jpg";
 
 // Create an image map
-const imageMap: Record<string, ImageMetadata> = {
-  "abdomen-8762847_1280.jpg": abdomenImage,
+const imageMap: Record<string, string> = {
+  "abdomen-8762847_1280.jpg": "/abdomen-8762847_1280.jpg",
 };
 
 export async function getStaticPaths() {
@@ -30,7 +26,7 @@ const { Content } = await post.render();
   pubDate={post.data.pubDate}
   author={post.data.author}
   readTime={post.data.readTime}
-  image={imageMap[post.data.image]}
+  image={imageMap[post.data.image] || "/fallback.jpg"}
 >
   <div class="prose mx-auto">
     <Content />

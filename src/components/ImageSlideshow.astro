@@ -1,24 +1,22 @@
 ---
-import { Image } from "astro:assets";
-
 interface Props {
   images: {
-    src: any;
+    src: string;
     alt: string;
   }[];
   maxWidth?: string;
 }
 
-const { images, maxWidth = "420px" } = Astro.props;
+const { images, maxWidth = "352px" } = Astro.props;
 ---
 
 <div
   class="mx-auto px-4 xl:px-0 mb-12"
-  style="max-width: 384px; max-height: 504px;"
+  style={`max-width: ${maxWidth}; max-height: 462px;`}
 >
   <div
     class="relative w-full aspect-[3/4] rounded-[24px] overflow-hidden"
-    style="max-height: 504px;"
+    style="max-height: 462px;"
   >
     {
       images.map((image, index) => (
@@ -27,11 +25,12 @@ const { images, maxWidth = "420px" } = Astro.props;
           style={`opacity: ${index === 0 ? 1 : 0};`}
           data-slide={index}
         >
-          <Image
+          <img
             src={image.src}
             alt={image.alt}
             class="w-full h-full object-cover"
-            style="max-height: 504px;"
+            loading="eager"
+            style="max-height: 462px;"
           />
         </div>
       ))
@@ -43,6 +42,7 @@ const { images, maxWidth = "420px" } = Astro.props;
       id="prevButton"
       aria-label="Previous slide"
     >
+      <!-- left arrow SVG -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6"
@@ -62,6 +62,7 @@ const { images, maxWidth = "420px" } = Astro.props;
       id="playPauseButton"
       aria-label="Play/Pause slideshow"
     >
+      <!-- play/pause SVG -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6"
@@ -81,6 +82,7 @@ const { images, maxWidth = "420px" } = Astro.props;
       id="nextButton"
       aria-label="Next slide"
     >
+      <!-- right arrow SVG -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6"

@@ -1,14 +1,11 @@
 ---
-import { Image } from "astro:assets";
-import type { ImageMetadata } from "astro";
-
 interface Props {
   title: string;
   brand: string;
   quantity: string;
   price: number;
   salePrice: number;
-  image: ImageMetadata;
+  image: string;
 }
 
 const { title, brand, quantity, price, salePrice, image } = Astro.props;
@@ -20,7 +17,7 @@ const { title, brand, quantity, price, salePrice, image } = Astro.props;
 >
   <!-- Product Image -->
   <div class="bg-white pt-4 rounded-t-3xl">
-    <Image src={image} alt={title} class="h-[120px] w-auto mx-auto" />
+    <img src={image} alt={title} class="h-[120px] w-auto mx-auto" />
   </div>
 
   <!-- Product Info (flex-grow container) -->
