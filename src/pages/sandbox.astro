@@ -1,0 +1,121 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LotusIcon from "../components/LotusIcon.astro";
+import VideoHero from "../components/VideoHero.astro";
+---
+
+<Layout title="Sandbox | Wellness Medical Center">
+  <!-- Pasted original homepage hero section -->
+  <section>
+    <div class="max-w-screen-xl mx-auto px-4 mt-28 xl:px-0">
+      <div class="md:flex md:items-center md:gap-8 mb-4">
+        <div class="md:w-2/5 mb-8 md:mb-8 md:order-2">
+          <div
+            class="relative w-full max-w-xl aspect-[4/5] rounded-[24px] overflow-hidden"
+          >
+            <img
+              src="/maria1.jpg"
+              alt="Maria providing acupuncture treatment"
+              class="w-full object-cover"
+            />
+          </div>
+        </div>
+        <div class="md:w-3/5 md:order-1">
+          <h2 class="text-4xl text-amber-700 font-medium mb-4">
+            Acupuncture & Traditional Chinese Medicine
+          </h2>
+          <p class="text-xl">
+            Experience lasting relief and renewed balance through personalized
+            acupuncture and holistic care. Our wellness-centered approach
+            supports your body's natural healing with the wisdom of Traditional
+            Chinese Medicine.
+          </p>
+          <div class="mt-6 flex flex-col sm:flex-row gap-4">
+            <button
+              class="flex items-center justify-center text-amber-50 gap-2 px-4 py-2 rounded-full bg-[#cf5500] hover:bg-amber-700 transition-colors"
+              aria-label="Meet Our Practitioners"
+              onclick="window.location.href='/about'"
+            >
+              <span class="text-sm font-medium">Meet Our Practitioners</span>
+            </button>
+            <button
+              class="flex items-center justify-center gap-2 px-4 py-2 rounded-full border-2 border-[#cf5500] text-[#cf5500] hover:border-amber-700 hover:text-amber-700 transition-colors"
+              aria-label="Visit the Shop"
+              onclick="window.location.href='/shop'"
+            >
+              <span class="text-sm font-medium">Visit the Shop</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <VideoHero videoSrc="/wellness5b.mp4" overlayOpacity={50}>
+    <div class="max-w-3xl">
+      <div class="flex justify-center mb-4">
+        <LotusIcon class="w-24 h-24 text-white" />
+      </div>
+      <h1 class="text-4xl md:text-5xl text-white font-medium mb-6">
+        Acupuncture & Traditional Chinese Medicine
+      </h1>
+      <p class="text-xl text-white mb-8">
+        Experience lasting relief and renewed balance through personalized
+        acupuncture and holistic care. Our wellness-centered approach supports
+        your body's natural healing with the wisdom of Traditional Chinese
+        Medicine.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button
+          class="flex items-center justify-center text-amber-50 gap-2 px-6 py-3 rounded-full bg-[#cf5500] hover:bg-amber-700 transition-colors"
+          aria-label="Meet Our Practitioners"
+          onclick="window.location.href='/about'"
+        >
+          <span class="text-sm font-medium">Meet Our Practitioners</span>
+        </button>
+        <button
+          class="flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 border-white text-white hover:border-amber-200 hover:text-amber-200 transition-colors"
+          aria-label="Visit the Shop"
+          onclick="window.location.href='/shop'"
+        >
+          <span class="text-sm font-medium">Visit the Shop</span>
+        </button>
+      </div>
+    </div>
+  </VideoHero>
+
+  <!-- Rest of the content -->
+  <section class="max-w-screen-xl mx-auto px-4 py-24 xl:px-0">
+    <div class="bg-white rounded-[24px] shadow-md p-8">
+      <h2 class="text-2xl text-amber-700 font-medium mb-4">
+        Welcome to the Sandbox
+      </h2>
+      <p class="text-gray-700 mb-6">
+        This is a sandbox page where you can experiment with different
+        components and layouts. Feel free to modify this page to test new
+        features or designs.
+      </p>
+
+      <!-- Example Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <!-- Example Card 1 -->
+        <div class="bg-stone-100 rounded-[24px] p-6">
+          <h3 class="text-xl font-medium text-amber-700 mb-2">Card 1</h3>
+          <p class="text-gray-700">Example content for card 1</p>
+        </div>
+
+        <!-- Example Card 2 -->
+        <div class="bg-stone-100 rounded-[24px] p-6">
+          <h3 class="text-xl font-medium text-amber-700 mb-2">Card 2</h3>
+          <p class="text-gray-700">Example content for card 2</p>
+        </div>
+
+        <!-- Example Card 3 -->
+        <div class="bg-stone-100 rounded-[24px] p-6">
+          <h3 class="text-xl font-medium text-amber-700 mb-2">Card 3</h3>
+          <p class="text-gray-700">Example content for card 3</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

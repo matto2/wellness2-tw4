@@ -1,0 +1,35 @@
+---
+interface Props {
+  videoSrc: string;
+  overlayOpacity?: number; // 0-100, default 50
+}
+const { videoSrc, overlayOpacity = 50 } = Astro.props;
+---
+
+<section class="relative w-full h-screen">
+  <!-- Video Background -->
+  <div class="absolute inset-0 w-full h-full overflow-hidden">
+    <video
+      class="absolute min-w-full min-h-full object-cover"
+      autoplay
+      loop
+      muted
+      playsinline
+    >
+      <source src={videoSrc} type="video/mp4" />
+    </video>
+    <!-- Overlay -->
+    <div
+      class={`absolute inset-0`}
+      style={`background: rgba(0,0,0,${overlayOpacity / 100});`}
+    >
+    </div>
+  </div>
+  <!-- Content -->
+  <div
+    class="relative h-full flex flex-col items-center justify-center text-center px-4"
+  >
+    <slot />
+  </div>
+</section>
+
