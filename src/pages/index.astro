@@ -47,8 +47,8 @@ import "@fontsource-variable/montserrat";
 
 <Layout title="Home | Wellness Medical Center">
   <!-- VIDEO HERO SECTION -->
-  <VideoHero videoSrc="/wellness5b.mp4" overlayOpacity={50}>
-    <div class="max-w-3xl">
+  <VideoHero videoSrc="/5289468-sd_960_540_24fps.mp4" overlayOpacity={20}>
+    <div class="max-w-3xl -mt-8">
       <div class="flex justify-center mb-4">
         <LotusIcon class="w-24 h-24 text-white" />
       </div>
@@ -63,7 +63,7 @@ import "@fontsource-variable/montserrat";
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <button
-          class="flex items-center justify-center text-amber-50 gap-2 px-6 py-3 rounded-full bg-[#cf5500] hover:bg-amber-700 transition-colors"
+          class="flex items-center justify-center text-amber-50 gap-2 px-6 py-3 rounded-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-colors"
           aria-label="Meet Our Practitioners"
           onclick="window.location.href='/about'"
         >
@@ -81,7 +81,7 @@ import "@fontsource-variable/montserrat";
   </VideoHero>
 
   <!-- WELCOME SECTION -->
-  <section class="bg-[#8c9d7d] text-amber-50 py-8 w-full">
+  <section class="bg-[var(--color-secondary)] text-amber-50 py-8 w-full">
     <div class="max-w-screen-xl mx-auto px-4 xl:px-0">
       <div class="md:flex md:items-center md:gap-12">
         <div class="md:w-1/2 mb-8 md:mb-0">
@@ -133,7 +133,7 @@ import "@fontsource-variable/montserrat";
           </p>
           <a
             href="/about"
-            class="inline-block text-amber-700 hover:text-amber-800 font-medium"
+            class="inline-block text-[var(--color-primary)] hover:text-[--color-primary-dark] font-medium"
           >
             Visit our About page to learn more about Maria and Samaya →
           </a>
@@ -188,7 +188,7 @@ import "@fontsource-variable/montserrat";
   </section>
 
   <!-- CLINIC SPACE SECTION -->
-  <section class="bg-[#8c9d7d] py-16">
+  <section class="bg-[var(--color-secondary)] py-16">
     <div class="max-w-screen-xl mx-auto px-4 xl:px-0">
       <div class="grid md:grid-cols-8 gap-12 items-center">
         <!-- Text Content (5/8) -->
@@ -217,7 +217,9 @@ import "@fontsource-variable/montserrat";
     <div class="flex justify-center mb-2 mt-8">
       <LotusIcon class="w-24 h-24" />
     </div>
-    <h2 class="text-3xl text-amber-700 font-medium mb-8 text-center">
+    <h2
+      class="text-3xl text-[var(--color-primary)] font-medium mb-8 text-center"
+    >
       What People are Saying
     </h2>
     <div class="max-w-[1024px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -228,7 +230,7 @@ import "@fontsource-variable/montserrat";
           precise, takes her time, and always helps my back feel better. Thanks
           to her, I can keep playing beach volleyball—even after injuries.
         </p>
-        <p class="text-amber-700 font-medium">– Shasta T.</p>
+        <p class="text-[var(--color-primary)] font-medium">– Shasta T.</p>
       </div>
 
       <!-- Testimonial 2 -->
@@ -238,7 +240,7 @@ import "@fontsource-variable/montserrat";
           affordable, and creates a relaxing atmosphere. I LOVE her and highly
           recommend her—5++++ stars!
         </p>
-        <p class="text-amber-700 font-medium">– Sean Tucker</p>
+        <p class="text-[var(--color-primary)] font-medium">– Sean Tucker</p>
       </div>
 
       <!-- Testimonial 3 -->
@@ -248,7 +250,7 @@ import "@fontsource-variable/montserrat";
           multiple injuries. Her holistic care, including nutrition and herbs,
           supports my long-term health.
         </p>
-        <p class="text-amber-700 font-medium">– Sara R.</p>
+        <p class="text-[var(--color-primary)] font-medium">– Sara R.</p>
       </div>
 
       <!-- Testimonial 4 -->
@@ -258,7 +260,7 @@ import "@fontsource-variable/montserrat";
           pregnancy, recovery, and motherhood with gentle care, herbal remedies,
           and laughter. She's a gift!
         </p>
-        <p class="text-amber-700 font-medium">– E.S.</p>
+        <p class="text-[var(--color-primary)] font-medium">– E.S.</p>
       </div>
     </div>
   </section>

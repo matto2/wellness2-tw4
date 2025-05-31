@@ -6,7 +6,7 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header
-  class="fixed top-0 left-0 right-0 z-50 bg-[#e7eae3] transition-shadow duration-200 pt-[2px]"
+  class="fixed top-0 left-0 right-0 z-50 bg-[#f8f0e4] transition-shadow duration-200 pt-[2px]"
   id="mainHeader"
 >
   <div class="w-full max-w-screen-xl mx-auto">
@@ -18,34 +18,34 @@ const currentPath = Astro.url.pathname;
       <nav class="hidden lg:flex items-center gap-6">
         <a
           href="/"
-          class={`hover:text-amber-700 font-medium ${currentPath === "/" ? "text-amber-700 [font-weight:600]" : ""}`}
+          class={`hover:text-[var(--color-primary-dark)] font-medium ${currentPath === "/" ? "text-[var(--color-primary)] [font-weight:600]" : ""}`}
           >Home</a
         >
         <a
           href="/about"
-          class={`hover:text-amber-700 font-medium ${currentPath === "/about" ? "text-amber-700 [font-weight:600]" : ""}`}
+          class={`hover:text-[var(--color-primary-dark)] font-medium ${currentPath === "/about" ? "text-[var(--color-primary)] [font-weight:600]" : ""}`}
           >About Us</a
         >
         <a
           href="/shop"
-          class={`hover:text-amber-700 font-medium ${currentPath === "/shop" ? "text-amber-700 [font-weight:600]" : ""}`}
+          class={`hover:text-[var(--color-primary-dark)] font-medium ${currentPath === "/shop" ? "text-[var(--color-primary)] [font-weight:600]" : ""}`}
           >Wellness Shop</a
         >
         <a
           href="/blog"
-          class={`hover:text-amber-700 font-medium ${currentPath === "/blog" ? "text-amber-700 [font-weight:600]" : ""}`}
+          class={`hover:text-[var(--color-primary-dark)] font-medium ${currentPath === "/blog" ? "text-[var(--color-primary)] [font-weight:600]" : ""}`}
           >Health Tips</a
         >
         <a
           href="/shop"
-          class="flex items-center justify-center text-amber-50 gap-2 px-4 py-2 rounded-full bg-[#cf5500] hover:bg-amber-700 transition-colors ml-4"
+          class="flex items-center justify-center text-amber-50 gap-2 px-4 py-2 rounded-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-colors ml-4"
         >
           <span class="text-sm font-medium">Visit the Shop</span>
         </a>
       </nav>
       <button
         id="menuToggle"
-        class="group lg:hidden flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border-2 border-[#cf5500] text-[#cf5500] hover:border-amber-700 hover:text-amber-700 transition-colors"
+        class="group lg:hidden flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:border-[var(--color-primary-dark)] hover:text-[var(--color-primary-dark)] transition-colors"
         aria-label="Toggle Menu"
         data-state="closed"
       >
@@ -58,7 +58,7 @@ const currentPath = Astro.url.pathname;
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke="#cf5500"
+            stroke="var(--color-primary)"
             stroke-width="2.5"
             class="size-6"
           >
@@ -87,16 +87,16 @@ const currentPath = Astro.url.pathname;
           toggle.classList.remove(
             "border-2",
             "border-[#cf5500]",
-            "hover:border-amber-700",
-            "hover:text-amber-700"
+            "hover:border-[var(--color-primary)]",
+            "hover:text-[var(--color-primary)]"
           );
         } else {
           toggle.classList.remove("bg-transparent", "border-none");
           toggle.classList.add(
             "border-2",
             "border-[#cf5500]",
-            "hover:border-amber-700",
-            "hover:text-amber-700"
+            "hover:border-[var(--color-primary)]",
+            "hover:text-[var(--color-primary)]"
           );
         }
       });

@@ -19,7 +19,9 @@ const { title, pubDate, author, readTime, image } = Astro.props;
       <div class="flex justify-center mb-4">
         <LotusIcon class="w-24 h-24" />
       </div>
-      <h1 class="text-4xl text-amber-700 font-medium mb-4 text-center">
+      <h1
+        class="text-4xl text-[var(--color-primary)] font-medium mb-4 text-center"
+      >
         {title}
       </h1>
       <div class="flex items-center justify-center gap-2 text-gray-600 mb-8">
@@ -57,7 +59,7 @@ const { title, pubDate, author, readTime, image } = Astro.props;
     <div class="max-w-3xl mx-auto mt-12 mb-20">
       <a
         href="/blog"
-        class="inline-flex items-center text-amber-700 hover:text-amber-800 font-medium"
+        class="inline-flex items-center text-[var(--color-primary)] hover:text-amber-800 font-medium"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +82,7 @@ const { title, pubDate, author, readTime, image } = Astro.props;
 
 <style>
   .blog-content {
-    color: #374151; /* text-gray-700 */
+    color: var(--color-primary); /* text-amber-700 */
   }
   .blog-content h2 {
     color: #b45309; /* text-amber-700 */

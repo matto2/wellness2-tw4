@@ -28,13 +28,13 @@ const { title, description } = Astro.props;
     {description && <meta name="description" content={description} />}
   </head>
   <body
-    class="relative text-gray-800 min-h-screen flex flex-col overflow-x-hidden bg-[#fffbf5]"
+    class="relative text-gray-800 min-h-screen flex flex-col overflow-x-hidden bg-[var(--color-background)]"
   >
     <Header />
     <main class="flex-1 w-full pb-8">
       <slot />
     </main>
-    <div class="w-full bg-[#8c9d7d] mt-8">
+    <div class="w-full bg-[var(--color-secondary)] mt-8">
       <div class="max-w-screen-xl mx-auto px-4 xl:px-0">
         <Footer />
       </div>

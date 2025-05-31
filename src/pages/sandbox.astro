@@ -21,7 +21,7 @@ import VideoHero from "../components/VideoHero.astro";
           </div>
         </div>
         <div class="md:w-3/5 md:order-1">
-          <h2 class="text-4xl text-amber-700 font-medium mb-4">
+          <h2 class="text-4xl text-[var(--color-primary)] font-medium mb-4">
             Acupuncture & Traditional Chinese Medicine
           </h2>
           <p class="text-xl">
@@ -32,14 +32,14 @@ import VideoHero from "../components/VideoHero.astro";
           </p>
           <div class="mt-6 flex flex-col sm:flex-row gap-4">
             <button
-              class="flex items-center justify-center text-amber-50 gap-2 px-4 py-2 rounded-full bg-[#cf5500] hover:bg-amber-700 transition-colors"
+              class="flex items-center justify-center text-amber-50 gap-2 px-4 py-2 rounded-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-colors"
               aria-label="Meet Our Practitioners"
               onclick="window.location.href='/about'"
             >
               <span class="text-sm font-medium">Meet Our Practitioners</span>
             </button>
             <button
-              class="flex items-center justify-center gap-2 px-4 py-2 rounded-full border-2 border-[#cf5500] text-[#cf5500] hover:border-amber-700 hover:text-amber-700 transition-colors"
+              class="flex items-center justify-center gap-2 px-4 py-2 rounded-full border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:border-[var(--color-primary-dark)] hover:text-[var(--color-primary-dark)] transition-colors"
               aria-label="Visit the Shop"
               onclick="window.location.href='/shop'"
             >
@@ -67,7 +67,7 @@ import VideoHero from "../components/VideoHero.astro";
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <button
-          class="flex items-center justify-center text-amber-50 gap-2 px-6 py-3 rounded-full bg-[#cf5500] hover:bg-amber-700 transition-colors"
+          class="flex items-center justify-center text-amber-50 gap-2 px-6 py-3 rounded-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-colors"
           aria-label="Meet Our Practitioners"
           onclick="window.location.href='/about'"
         >
@@ -87,7 +87,7 @@ import VideoHero from "../components/VideoHero.astro";
   <!-- Rest of the content -->
   <section class="max-w-screen-xl mx-auto px-4 py-24 xl:px-0">
     <div class="bg-white rounded-[24px] shadow-md p-8">
-      <h2 class="text-2xl text-amber-700 font-medium mb-4">
+      <h2 class="text-2xl text-[var(--color-primary)] font-medium mb-4">
         Welcome to the Sandbox
       </h2>
       <p class="text-gray-700 mb-6">
@@ -100,19 +100,25 @@ import VideoHero from "../components/VideoHero.astro";
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         <!-- Example Card 1 -->
         <div class="bg-stone-100 rounded-[24px] p-6">
-          <h3 class="text-xl font-medium text-amber-700 mb-2">Card 1</h3>
+          <h3 class="text-xl font-medium text-[var(--color-primary)] mb-2">
+            Card 1
+          </h3>
           <p class="text-gray-700">Example content for card 1</p>
         </div>
 
         <!-- Example Card 2 -->
         <div class="bg-stone-100 rounded-[24px] p-6">
-          <h3 class="text-xl font-medium text-amber-700 mb-2">Card 2</h3>
+          <h3 class="text-xl font-medium text-[var(--color-primary)] mb-2">
+            Card 2
+          </h3>
           <p class="text-gray-700">Example content for card 2</p>
         </div>
 
         <!-- Example Card 3 -->
         <div class="bg-stone-100 rounded-[24px] p-6">
-          <h3 class="text-xl font-medium text-amber-700 mb-2">Card 3</h3>
+          <h3 class="text-xl font-medium text-[var(--color-primary)] mb-2">
+            Card 3
+          </h3>
           <p class="text-gray-700">Example content for card 3</p>
         </div>
       </div>
