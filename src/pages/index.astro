@@ -48,14 +48,16 @@ import "@fontsource-variable/montserrat";
 <Layout title="Home | Wellness Medical Center">
   <!-- VIDEO HERO SECTION -->
   <VideoHero videoSrc="/5289468-sd_960_540_24fps.mp4" overlayOpacity={20}>
-    <div class="max-w-3xl -mt-8">
-      <div class="flex justify-center mb-4">
-        <LotusIcon class="w-24 h-24 text-white" />
+    <div class="max-w-3xl -mt-8 sm:-mt-8 mt-20">
+      <div class="flex justify-center mb-2 sm:mb-4">
+        <LotusIcon class="w-20 h-20 sm:w-24 sm:h-24 text-white" />
       </div>
-      <h1 class="text-4xl md:text-5xl text-white font-medium mb-6">
+      <h1
+        class="text-3xl sm:text-4xl md:text-5xl text-white font-medium mb-4 sm:mb-6"
+      >
         Acupuncture & Traditional Chinese Medicine
       </h1>
-      <p class="text-xl text-white mb-8">
+      <p class="text-lg sm:text-xl text-white mb-6 sm:mb-8">
         Experience lasting relief and renewed balance through personalized
         acupuncture and holistic care. Our wellness-centered approach supports
         your body's natural healing with the wisdom of Traditional Chinese
@@ -70,7 +72,7 @@ import "@fontsource-variable/montserrat";
           <span class="text-sm font-medium">Meet Our Practitioners</span>
         </button>
         <button
-          class="flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 border-white text-white hover:border-amber-200 hover:text-amber-200 transition-colors"
+          class="flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 border-white text-white hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
           aria-label="Visit the Shop"
           onclick="window.location.href='/shop'"
         >
