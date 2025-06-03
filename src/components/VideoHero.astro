@@ -1,9 +1,9 @@
 ---
 interface Props {
   videoSrc: string;
-  overlayOpacity?: number; // 0-100, default 50
+  overlayOpacity?: number; // 0-100, default 20
 }
-const { videoSrc, overlayOpacity = 50 } = Astro.props;
+const { videoSrc, overlayOpacity = 20 } = Astro.props;
 ---
 
 <section class="relative w-full h-screen">
@@ -21,7 +21,7 @@ const { videoSrc, overlayOpacity = 50 } = Astro.props;
     <!-- Overlay -->
     <div
       class={`absolute inset-0`}
-      style={`background: rgba(0,0,0,${overlayOpacity / 100});`}
+      style={`background: rgba(0,64,128,${overlayOpacity / 100});`}
     >
     </div>
   </div>

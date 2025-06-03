@@ -1,33 +1,45 @@
 ---
-import BrandLogoWt from "./BrandLogo-wt.astro";
+import BrandLogo from "./BrandLogo.astro";
 ---
 
-<footer class="py-4 mt-auto text-white">
+<footer class="py-4 mt-auto text-gray-900">
   <div class="md:flex md:justify-between md:gap-8">
     <!-- Left Column -->
     <div class="md:w-1/2 text-center md:text-left mt-2">
-      <div class="text-sm footer-logo flex justify-center md:justify-start">
-        <BrandLogoWt />
+      <div
+        class="text-sm footer-logo flex justify-center md:justify-start w-[60%] md:w-[60%]"
+      >
+        <BrandLogo size="small" />
       </div>
       <nav class="mt-2">
         <ul
           class="flex flex-col md:flex-row justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-6"
         >
           <li>
-            <a href="/" class="hover:text-white text-lg md:text-base">Home</a>
+            <a
+              href="/"
+              class="hover:text-[var(--color-primary)] text-lg md:text-base"
+              >Home</a
+            >
           </li>
           <li>
-            <a href="/about" class="hover:text-white text-lg md:text-base"
+            <a
+              href="/about"
+              class="hover:text-[var(--color-primary)] text-lg md:text-base"
               >About Us</a
             >
           </li>
           <li>
-            <a href="/shop" class="hover:text-white text-lg md:text-base"
+            <a
+              href="/shop"
+              class="hover:text-[var(--color-primary)] text-lg md:text-base"
               >Wellness Shop</a
             >
           </li>
           <li>
-            <a href="/blog" class="hover:text-white text-lg md:text-base"
+            <a
+              href="/blog"
+              class="hover:text-[var(--color-primary)] text-lg md:text-base"
               >Health Tips</a
             >
           </li>
@@ -37,11 +49,15 @@ import BrandLogoWt from "./BrandLogo-wt.astro";
       <div class="mt-8 text-center md:text-left">
         <p>Dr. Maria Mitchell DTCM, L.Ac</p>
         <p>
-          <a href="tel:8314779355" class="hover:text-white">831-477-9355</a>
+          <a href="tel:8314779355" class="hover:text-[var(--color-primary)]"
+            >831-477-9355</a
+          >
         </p>
         <p class="mt-2">Samaya Cullerton, L.Ac</p>
         <p>
-          <a href="tel:8315889581" class="hover:text-white">831-588-9581</a>
+          <a href="tel:8315889581" class="hover:text-[var(--color-primary)]"
+            >831-588-9581</a
+          >
         </p>
       </div>
 
@@ -100,10 +116,12 @@ import BrandLogoWt from "./BrandLogo-wt.astro";
     <div class="md:w-1/2">
       <section class="py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl mx-auto text-center">
-          <h2 class="text-2xl font-semibold text-white">
+          <h2 class="text-2xl font-semibold text-[var(--color-primary)]">
             Stay balanced and informed.
           </h2>
-          <p class="mt-2 text-white">Sign up for wellness tips and updates.</p>
+          <p class="mt-2 text-gray-900">
+            Sign up for wellness tips and updates.
+          </p>
 
           <form class="mt-6">
             <label for="email" class="sr-only">Email address</label>
@@ -124,10 +142,11 @@ import BrandLogoWt from "./BrandLogo-wt.astro";
             </button>
           </form>
 
-          <p class="mt-4 text-sm text-white">
+          <p class="mt-4 text-sm text-gray-900">
             We respect your privacy. <a
               href="/privacy"
-              class="underline hover:text-white">Read our privacy policy</a
+              class="underline hover:text-[var(--color-primary)]"
+              >Read our privacy policy</a
             >.
           </p>
         </div>
@@ -144,7 +163,7 @@ import BrandLogoWt from "./BrandLogo-wt.astro";
       <span>
         Crafted with care by <a
           href="https://mattoleary.design"
-          class="hover:text-white">Matt O'Leary</a
+          class="hover:text-[var(--color-primary)]">Matt O'Leary</a
         >.
       </span>
     </p>

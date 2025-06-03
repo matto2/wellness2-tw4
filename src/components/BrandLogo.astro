@@ -1,18 +1,27 @@
 ---
 import wellnessSage from "../assets/wellness-sage.svg";
-// No props needed for now
+
+interface Props {
+  size?: "default" | "small";
+}
+
+const { size = "default" } = Astro.props;
+const iconSize =
+  size === "small" ? "w-6 h-6 md:w-8 md:h-8" : "w-10 h-10 md:w-14 md:h-14";
+const textSize =
+  size === "small"
+    ? "text-base sm:text-lg md:text-xl"
+    : "text-lg sm:text-xl md:text-2xl";
 ---
 
 <a href="/" class="flex items-center space-x-2">
   <img
     src={wellnessSage.src}
     alt="Wellness Medical Center Logo"
-    class="w-10 h-10 md:w-14 md:h-14"
+    class={iconSize}
     aria-hidden="true"
   />
-  <h1
-    class="text-lg sm:text-xl md:text-2xl font-medium text-[var(--color-primary)]"
-  >
+  <h1 class={`${textSize} font-medium text-[var(--color-primary)]`}>
     Wellness Medical Center
   </h1>
 </a>

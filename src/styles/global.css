@@ -63,12 +63,12 @@ h1, h2 {
 
 /* Add CSS variables at the root level */
 :root {
-  --color-primary: #e6713b; /* amber-700 */
-  --color-primary-dark: #cf4711 ; /* darker orange */
-  --color-secondary: #5aa397; /* aqua */
+  --color-primary: #d66d4c; /* amber-700 */
+  --color-primary-dark: #b26342 ; /* darker orange */
+  --color-secondary: #a2dbdb; /* aqua */
   --color-secondary-light: #faf8f0; /* light aqua */
   --color-accent: #cf5500; /* orange */
-  --color-background: #faf8f0; /* off-white */
+  --color-background: #f4f4ee; /* off-white */
 }
 
 
