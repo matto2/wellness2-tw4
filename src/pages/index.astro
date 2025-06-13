@@ -6,40 +6,35 @@ import HerbsIcon from "../components/HerbsIcon.astro";
 import WellnessIcon from "../components/WellnessIcon.astro";
 import ImageSlideshow from "../components/ImageSlideshow.astro";
 import VideoHero from "../components/VideoHero.astro";
+import { Image } from "astro:assets";
+import welcomeImage from "../assets/3779245098.jpg";
+import maria1Image from "../assets/maria1.jpg";
+
+// Import all slideshow images
+import clinic1 from "../assets/clinic/3780071716.jpg";
+import clinic2 from "../assets/clinic/3779151766.jpg";
+import clinic3 from "../assets/clinic/3779151751.jpg";
+import clinic4 from "../assets/clinic/3779151669.jpg";
+import clinic5 from "../assets/clinic/3779151852.jpg";
+import clinic6 from "../assets/clinic/3779151811.jpg";
+import clinic7 from "../assets/clinic/3779151781.jpg";
+import clinic8 from "../assets/clinic/3779151591.jpg";
+import clinic9 from "../assets/clinic/3779942412.jpg";
+import clinic10 from "../assets/clinic/3779011254.jpg";
+import clinic11 from "../assets/clinic/3779977271.jpg";
 
 const slideshowImages = [
-  { src: "/clinic/3780071716.jpg", alt: "Wellness Medical Center interior" },
-  {
-    src: "/clinic/3779151766.jpg",
-    alt: "Wellness Medical Center treatment room",
-  },
-  {
-    src: "/clinic/3779151751.jpg",
-    alt: "Wellness Medical Center waiting area",
-  },
-  { src: "/clinic/3779151669.jpg", alt: "Wellness Medical Center herbs" },
-  {
-    src: "/clinic/3779151852.jpg",
-    alt: "Wellness Medical Center treatment space",
-  },
-  {
-    src: "/clinic/3779151811.jpg",
-    alt: "Wellness Medical Center consultation room",
-  },
-  { src: "/clinic/3779151781.jpg", alt: "Wellness Medical Center lobby" },
-  { src: "/clinic/3779151591.jpg", alt: "Wellness Medical Center entrance" },
-  {
-    src: "/clinic/3779942412.jpg",
-    alt: "Wellness Medical Center herbs display",
-  },
-  {
-    src: "/clinic/3779011254.jpg",
-    alt: "Wellness Medical Center herbs collection",
-  },
-  {
-    src: "/clinic/3779977271.jpg",
-    alt: "Acupuncture treatment at Wellness Medical Center",
-  },
+  { src: clinic1, alt: "Wellness Medical Center interior" },
+  { src: clinic2, alt: "Wellness Medical Center treatment room" },
+  { src: clinic3, alt: "Wellness Medical Center waiting area" },
+  { src: clinic4, alt: "Wellness Medical Center herbs" },
+  { src: clinic5, alt: "Wellness Medical Center treatment space" },
+  { src: clinic6, alt: "Wellness Medical Center consultation room" },
+  { src: clinic7, alt: "Wellness Medical Center lobby" },
+  { src: clinic8, alt: "Wellness Medical Center entrance" },
+  { src: clinic9, alt: "Wellness Medical Center herbs display" },
+  { src: clinic10, alt: "Wellness Medical Center herbs collection" },
+  { src: clinic11, alt: "Acupuncture treatment at Wellness Medical Center" },
 ];
 // Supports weights 100-900
 import "@fontsource-variable/montserrat";
@@ -90,10 +85,13 @@ import "@fontsource-variable/montserrat";
     <div class="max-w-screen-xl mx-auto px-4 xl:px-0">
       <div class="md:flex md:items-center md:gap-12">
         <div class="md:w-1/2 mb-8 md:mb-0">
-          <img
-            src="../src/assets/3779245098.jpg"
+          <Image
+            src={welcomeImage}
             alt="Maria and Samaya at Wellness Medical Center"
             class="w-full rounded-[24px] shadow-lg"
+            width={1000}
+            height={800}
+            quality={80}
           />
         </div>
         <div class="md:w-1/2">
@@ -120,10 +118,11 @@ import "@fontsource-variable/montserrat";
     <div class="max-w-screen-xl mx-auto px-4 xl:px-0">
       <div class="md:flex md:items-center md:gap-12 md:flex-row-reverse">
         <div class="md:w-1/2 mb-8 md:mb-0">
-          <img
-            src="/maria1.jpg"
+          <Image
+            src={maria1Image}
             alt="Maria providing acupuncture treatment"
             class="w-full rounded-[24px] shadow-lg"
+            quality={80}
           />
         </div>
         <div class="md:w-1/2">

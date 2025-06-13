@@ -1,6 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "@fontsource-variable/montserrat";
+import { Image } from "astro:assets";
+import mariaImage from "../assets/maria.jpg";
+import samayaImage from "../assets/samaya.jpg";
 
 const headline = "About Us";
 ---
@@ -39,11 +42,13 @@ const headline = "About Us";
         rel="noopener noreferrer"
         class="block transition-transform duration-300 hover:scale-105"
       >
-        <img
-          src="/maria.jpg"
+        <Image
+          src={mariaImage}
           alt="Maria Mitchell"
           class="rounded-full object-cover mb-4 md:mb-0 md:mr-16 w-[200px] h-[200px] aspect-square"
-          loading="lazy"
+          width={200}
+          height={200}
+          quality={80}
         />
       </a>
 
@@ -98,11 +103,13 @@ const headline = "About Us";
         rel="noopener noreferrer"
         class="block transition-transform duration-300 hover:scale-105"
       >
-        <img
-          src="/samaya.jpg"
+        <Image
+          src={samayaImage}
           alt="Samaya Cullerton"
           class="rounded-full object-cover mb-4 md:mb-0 md:mr-16 w-[200px] h-[200px] aspect-square"
-          loading="lazy"
+          width={200}
+          height={200}
+          quality={80}
         />
       </a>
 

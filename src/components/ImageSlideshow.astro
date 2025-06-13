@@ -1,7 +1,10 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
 interface Props {
   images: {
-    src: string;
+    src: ImageMetadata;
     alt: string;
   }[];
   maxWidth?: string;
@@ -25,11 +28,13 @@ const { images, maxWidth = "352px" } = Astro.props;
           style={`opacity: ${index === 0 ? 1 : 0};`}
           data-slide={index}
         >
-          <img
+          <Image
             src={image.src}
             alt={image.alt}
             class="w-full h-full object-cover"
-            loading="eager"
+            width={352}
+            height={462}
+            quality={80}
             style="max-height: 462px;"
           />
         </div>
