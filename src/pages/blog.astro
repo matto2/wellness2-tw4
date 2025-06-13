@@ -32,7 +32,7 @@ const posts = await getCollection("blog");
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
         posts.map((post) => (
-          <article class="bg-white rounded-[24px] shadow-md overflow-hidden">
+          <article class="bg-[var(--color-card-bg)] rounded-[24px] shadow-md overflow-hidden">
             {post.data.image && (
               <a href={`/blog/${post.slug}`} class="block">
                 <div class="aspect-[16/9] overflow-hidden">

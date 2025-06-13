@@ -70,6 +70,7 @@ h1, h2 {
   --color-secondary-light: #faf8f0; /* light aqua */
   --color-accent: #cf5500; /* orange */
   --color-background: #f4f4ee; /* off-white */
+  --color-card-bg: #ecece2; /* card background */
 }
 
 
