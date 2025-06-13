@@ -34,14 +34,8 @@ const currentPath = Astro.url.pathname;
         <a
           href="/blog"
           class={`hover:text-[var(--color-primary-dark)] font-medium ${currentPath === "/blog" ? "text-[var(--color-primary)] [font-weight:600]" : ""}`}
-          >Health Tips</a
+          >Newsletter</a
         >
-        <a
-          href="/shop"
-          class="flex items-center justify-center text-amber-50 gap-2 px-4 py-2 rounded-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-colors ml-4"
-        >
-          <span class="text-sm font-medium">Visit the Shop</span>
-        </a>
       </nav>
       <button
         id="menuToggle"

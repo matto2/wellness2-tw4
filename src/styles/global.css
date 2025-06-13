@@ -65,7 +65,8 @@ h1, h2 {
 :root {
   --color-primary: #ce7154        ; /* amber-700 */
   --color-primary-dark: #c86140 ; /* darker orange */
-  --color-secondary: #a2dbdb; /* aqua */
+  --color-primary-lighter: #da927c; /* lighter amber */
+  --color-secondary: #c5e8e8; /* lighter aqua */
   --color-secondary-light: #faf8f0; /* light aqua */
   --color-accent: #cf5500; /* orange */
   --color-background: #f4f4ee; /* off-white */

@@ -8,14 +8,14 @@ const { videoSrc } = Astro.props;
 <section class="relative w-full h-[132vh] md:h-screen">
   <!-- Video Background -->
   <div class="absolute inset-0 w-full h-full overflow-hidden">
-    <div class="absolute inset-0 bg-black/5 z-10"></div>
+    <div class="absolute inset-0 bg-teal-900/30 z-10"></div>
     <video
       class="absolute min-w-full min-h-full object-cover"
       autoplay
       loop
       muted
       playsinline
-      style="filter: hue-rotate(-10deg) saturate(0.8) brightness(1.5); transform: scale(1.2);"
+      style="filter: saturate(1.15);"
     >
       <source src={videoSrc} type="video/mp4" />
     </video>

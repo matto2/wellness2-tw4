@@ -47,7 +47,7 @@ import "@fontsource-variable/montserrat";
 
 <Layout title="Home | Wellness Medical Center">
   <!-- VIDEO HERO SECTION -->
-  <VideoHero videoSrc="/wellness7-smaller.mp4" overlayOpacity={40}>
+  <VideoHero videoSrc="/calm-waters.mp4" overlayOpacity={40}>
     <div class="max-w-5xl -mt-8 sm:-mt-8 mt-20">
       <div class="flex justify-center mb-2 sm:mb-4">
         <LotusIcon class="w-20 h-20 sm:w-24 sm:h-24 text-white" />
@@ -58,14 +58,13 @@ import "@fontsource-variable/montserrat";
         Welcome to The Wellness Medical Center
       </h1>
       <p class="text-lg sm:text-xl text-white mb-6 sm:mb-8 md:leading-[1.56]">
-        Wellness Medical Center's mission is to improve the health of our
-        patients and our community. We provide high quality healthcare through a
-        team of compassionate, caring, dedicated and skilled practitioners. Our
-        patients are at the center of what we do and we approach each patient
-        with personalized care centered in education, advocacy, respect and
-        value. Wellness Medical Center's pharmacy offers the highest quality
-        controlled herbs, supplements and nutraceuticals. We love working with
-        people on their healing journey.
+        Our mission is to improve the health of our patients and our community.
+        Wellness Medical Center's pharmacy offers quality controlled herbs,
+        supplements and nutraceuticals. We provide quality healthcare through a
+        team of compassionate, dedicated, skilled practitioners. We approach
+        each patient with personalized care centered in education, advocacy,
+        respect and value. We are passionate about working with people on their
+        healing journey.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <button
@@ -76,7 +75,7 @@ import "@fontsource-variable/montserrat";
           <span class="text-sm font-medium">Meet Our Practitioners</span>
         </button>
         <button
-          class="flex items-center justify-center gap-2 px-6 py-3 rounded-full border-2 border-white text-white hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
+          class="flex items-center justify-center text-amber-50 gap-2 px-6 py-3 rounded-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-colors"
           aria-label="Visit the Shop"
           onclick="window.location.href='/shop'"
         >
@@ -87,12 +86,12 @@ import "@fontsource-variable/montserrat";
   </VideoHero>
 
   <!-- WELCOME SECTION -->
-  <section class="bg-[var(--color-secondary)] py-16 md:py-24 w-full">
+  <section class="py-16 md:py-24 w-full">
     <div class="max-w-screen-xl mx-auto px-4 xl:px-0">
       <div class="md:flex md:items-center md:gap-12">
         <div class="md:w-1/2 mb-8 md:mb-0">
           <img
-            src="/3779934899.jpg"
+            src="../src/assets/3779245098.jpg"
             alt="Maria and Samaya at Wellness Medical Center"
             class="w-full rounded-[24px] shadow-lg"
           />
@@ -128,23 +127,47 @@ import "@fontsource-variable/montserrat";
           />
         </div>
         <div class="md:w-1/2">
-          <h2 class="text-2xl md:text-3xl font-medium mb-6 text-gray-900">
+          <h2
+            class="text-2xl md:text-3xl font-medium mb-6 text-[var(--color-primary)]"
+          >
             A Legacy of Healing
           </h2>
           <p class="text-lg text-gray-700 mb-6">
-            For over 40 years, the Wellness Medical Center has served the Santa
-            Cruz community with compassionate, integrative healthcare. Today,
-            that legacy continues through the work of Maria Mitchell, DTCM,
-            L.Ac. and Samaya Cullerton, L.Ac., MTCM, two experienced healers who
-            bring deep clinical knowledge and a personal touch to every patient
-            relationship.
+            The Wellness Medical Center has been a cornerstone in the Santa Cruz
+            acupuncture healthcare community, founded by Dr. Donna Leight, LAc,
+            OMD and Dr. Holly Guzman, LAc, OMD, dedicated providers,
+            consistently treating patients in Santa Cruz since 1983.
           </p>
-          <a
+          <p class="text-lg text-gray-700 mb-6">
+            Dr. Guzman is a beloved and dedicated educator, teaching apprentices
+            in our community and speaking at conferences around the country,
+            ushering in the future generation of traditional Asian medical
+            providers. Dr. Holly Guzman continues to share her wealth of
+            knowledge, offering advanced acupuncture trainings and CEUs at
+            <a
+              href="https://hollyguzmanseminars.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)]"
+              >hollyguzmanseminars.com</a
+            >.
+          </p>
+          <p class="text-lg text-gray-700 mb-6">
+            Dr. Leight passing in 2018, left behind a legacy of healing. Dr.
+            Leight dedicated herself to the health and wellbeing of her
+            patients, community and family. She will be remembered as a
+            compassionate healer and pioneer in the field of traditional Chinese
+            medicine. Her heartfelt presence left a lasting impact on the Santa
+            Cruz community. She passed on her lineage of healing to her
+            daughter, Dr. Maria Mitchell, LAc, DTCM who continues to see
+            patients and serve the community at the Wellness Medical Center.
+          </p>
+          <!-- <a
             href="/about"
             class="inline-block text-[var(--color-primary)] hover:text-[--color-primary-dark] font-medium"
           >
             Learn more about Maria and Samaya →
-          </a>
+          </a> -->
         </div>
       </div>
     </div>
@@ -155,10 +178,10 @@ import "@fontsource-variable/montserrat";
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Card 1 -->
       <div
-        class="rounded-[24px] shadow-md p-8 flex flex-col text-center bg-white"
+        class="rounded-[24px] shadow-md p-8 flex flex-col text-center bg-[#ecece2]"
       >
         <div class="flex justify-center rounded-xl mb-6">
-          <AcuIcon class="w-20 h-20" />
+          <AcuIcon class="w-20 h-20 text-[var(--color-primary)]" />
         </div>
         <h3 class="text-xl font-semibold mb-2">Acupuncture</h3>
         <p class="text-left text-gray-700">
@@ -168,10 +191,10 @@ import "@fontsource-variable/montserrat";
       </div>
       <!-- Card 2 -->
       <div
-        class="rounded-[24px] shadow-md p-8 flex flex-col text-center bg-white"
+        class="rounded-[24px] shadow-md p-8 flex flex-col text-center bg-[#ecece2]"
       >
         <div class="flex justify-center rounded-xl mb-6">
-          <HerbsIcon class="w-20 h-20" />
+          <HerbsIcon class="w-20 h-20 text-[var(--color-primary)]" />
         </div>
         <h3 class="text-xl font-semibold mb-2">Herbal Medicine</h3>
         <p class="text-left text-gray-700">
@@ -181,10 +204,10 @@ import "@fontsource-variable/montserrat";
       </div>
       <!-- Card 3 -->
       <div
-        class="rounded-[24px] shadow-md p-8 flex flex-col text-center bg-white"
+        class="rounded-[24px] shadow-md p-8 flex flex-col text-center bg-[#ecece2]"
       >
         <div class="flex justify-center rounded-xl mb-6">
-          <WellnessIcon class="w-20 h-20" />
+          <WellnessIcon class="w-20 h-20 text-[var(--color-primary)]" />
         </div>
         <h3 class="text-xl font-semibold mb-2">Wellness Consultations</h3>
         <p class="text-left text-gray-700">
@@ -196,7 +219,7 @@ import "@fontsource-variable/montserrat";
   </section>
 
   <!-- CLINIC SPACE SECTION -->
-  <section class="bg-[var(--color-secondary)] py-16">
+  <section class="py-16">
     <div class="max-w-screen-xl mx-auto px-4 xl:px-0">
       <div class="grid md:grid-cols-8 gap-12 items-center">
         <!-- Text Content (5/8) -->
@@ -234,7 +257,7 @@ import "@fontsource-variable/montserrat";
     </h2>
     <div class="max-w-[1024px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- Testimonial 1 -->
-      <div class="bg-white p-8 rounded-[24px] shadow-md">
+      <div class="bg-[#ecece2] p-8 rounded-[24px] shadow-md">
         <p class="text-gray-700 mb-4 text-lg">
           Maria is a gifted healer with deep knowledge of physiology. She's
           precise, takes her time, and always helps my back feel better. Thanks
@@ -244,7 +267,7 @@ import "@fontsource-variable/montserrat";
       </div>
 
       <!-- Testimonial 2 -->
-      <div class="bg-white p-8 rounded-[24px] shadow-md">
+      <div class="bg-[#ecece2] p-8 rounded-[24px] shadow-md">
         <p class="text-gray-700 mb-4 text-lg">
           Maria has almost cured my back and neck issues. She's thorough,
           affordable, and creates a relaxing atmosphere. I LOVE her and highly
@@ -254,7 +277,7 @@ import "@fontsource-variable/montserrat";
       </div>
 
       <!-- Testimonial 3 -->
-      <div class="bg-white p-8 rounded-[24px] shadow-md">
+      <div class="bg-[#ecece2] p-8 rounded-[24px] shadow-md">
         <p class="text-gray-700 mb-4 text-lg">
           Samaya is an incredible healer who guided me through recovery from
           multiple injuries. Her holistic care, including nutrition and herbs,
@@ -264,7 +287,7 @@ import "@fontsource-variable/montserrat";
       </div>
 
       <!-- Testimonial 4 -->
-      <div class="bg-white p-8 rounded-[24px] shadow-md">
+      <div class="bg-[#ecece2] p-8 rounded-[24px] shadow-md">
         <p class="text-gray-700 mb-4 text-lg">
           Samaya is truly phenomenal. She's supported me through fertility,
           pregnancy, recovery, and motherhood with gentle care, herbal remedies,
