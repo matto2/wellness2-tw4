@@ -1,0 +1,11 @@
+---
+import Layout from "./Layout.astro";
+
+const { title } = Astro.props;
+---
+
+<div class="bg-[var(--color-secondary)] min-h-screen flex flex-col">
+  <Layout title={title}>
+    <slot />
+  </Layout>
+</div>
