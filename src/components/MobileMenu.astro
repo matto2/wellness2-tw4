@@ -13,11 +13,6 @@ const { currentPath } = Astro.props;
     >Home</a
   >
   <a
-    href="/about"
-    class={`block py-3 text-center text-lg hover:text-[var(--color-primary-dark)] font-medium ${currentPath === "/about" ? "text-[var(--color-primary)] [font-weight:600]" : ""}`}
-    >About Us</a
-  >
-  <a
     href="/shop"
     class={`block py-3 text-center text-lg hover:text-[var(--color-primary-dark)] font-medium ${currentPath === "/shop" ? "text-[var(--color-primary)] [font-weight:600]" : ""}`}
     >Wellness Shop</a
@@ -25,6 +20,6 @@ const { currentPath } = Astro.props;
   <a
     href="/blog"
     class={`block py-3 text-center text-lg hover:text-[var(--color-primary-dark)] font-medium ${currentPath === "/blog" ? "text-[var(--color-primary)] [font-weight:600]" : ""}`}
-    >Newsletter</a
+    >Health Education</a
   >
 </div>

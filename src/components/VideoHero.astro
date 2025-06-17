@@ -1,14 +1,20 @@
 ---
 interface Props {
   videoSrc: string;
+  overlayOpacity?: number;
 }
-const { videoSrc } = Astro.props;
+const { videoSrc, overlayOpacity = 30 } = Astro.props;
 ---
 
 <section class="relative w-full h-[132vh] md:h-screen">
   <!-- Video Background -->
   <div class="absolute inset-0 w-full h-full overflow-hidden">
-    <div class="absolute inset-0 bg-teal-900/30 z-10"></div>
+    <div class={`absolute inset-0 bg-teal-900/${overlayOpacity} z-10`}></div>
+    <!-- Add gradient overlay at the bottom -->
+    <div
+      class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--color-background)] to-transparent z-20"
+    >
+    </div>
     <video
       class="absolute min-w-full min-h-full object-cover"
       autoplay

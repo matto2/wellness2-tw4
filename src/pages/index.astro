@@ -9,6 +9,8 @@ import VideoHero from "../components/VideoHero.astro";
 import { Image } from "astro:assets";
 import welcomeImage from "../assets/3779245098.jpg";
 import maria1Image from "../assets/maria1.jpg";
+import mariaImage from "../assets/maria.jpg";
+import samayaImage from "../assets/samaya.jpg";
 
 // Import all slideshow images
 import clinic1 from "../assets/clinic/3780071716.jpg";
@@ -34,6 +36,21 @@ const slideshowImages = [
   { src: clinic8, alt: "Wellness Medical Center entrance" },
   { src: clinic9, alt: "Wellness Medical Center herbs display" },
   { src: clinic10, alt: "Wellness Medical Center herbs collection" },
+  { src: clinic11, alt: "Acupuncture treatment at Wellness Medical Center" },
+];
+
+// Reordered slideshow images with better distribution
+const reorderedSlideshowImages = [
+  { src: clinic1, alt: "Wellness Medical Center interior" },
+  { src: clinic4, alt: "Wellness Medical Center herbs" },
+  { src: clinic7, alt: "Wellness Medical Center lobby" },
+  { src: clinic2, alt: "Wellness Medical Center treatment room" },
+  { src: clinic9, alt: "Wellness Medical Center herbs display" },
+  { src: clinic3, alt: "Wellness Medical Center waiting area" },
+  { src: clinic10, alt: "Wellness Medical Center herbs collection" },
+  { src: clinic5, alt: "Wellness Medical Center treatment space" },
+  { src: clinic8, alt: "Wellness Medical Center entrance" },
+  { src: clinic6, alt: "Wellness Medical Center consultation room" },
   { src: clinic11, alt: "Acupuncture treatment at Wellness Medical Center" },
 ];
 // Supports weights 100-900
@@ -82,52 +99,20 @@ import "@fontsource-variable/montserrat";
     </div>
   </VideoHero>
 
-  <!-- WELCOME SECTION -->
-  <section class="py-16 md:py-24 w-full">
-    <div class="max-w-screen-xl mx-auto px-4 xl:px-0">
-      <div class="md:flex md:items-center md:gap-12">
-        <div class="md:w-1/2 mb-8 md:mb-0">
-          <Image
-            src={welcomeImage}
-            alt="Maria and Samaya at Wellness Medical Center"
-            class="w-full rounded-[24px] shadow-lg"
-            width={1000}
-            height={800}
-            quality={80}
-          />
-        </div>
-        <div class="md:w-1/2">
-          <h1
-            class="text-2xl text-[var(--color-primary)] md:text-3xl font-medium mb-6"
-          >
-            Welcome to the Wellness Medical Center
-          </h1>
-          <p class="text-lg md:text-xl mb-6 text-gray-900">
-            Santa Cruz's trusted home for holistic, health-centered care. We
-            offer personalized acupuncture, herbal medicine, and lifestyle
-            guidance rooted in the wisdom of Traditional Chinese Medicine. Our
-            mission is to support your body's natural healing and help you find
-            balance, whether you're navigating fertility, recovery, or everyday
-            wellness.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- LEGACY SECTION -->
   <section class="py-16">
     <div class="max-w-screen-xl mx-auto px-4 xl:px-0">
       <div class="md:flex md:items-center md:gap-12 md:flex-row-reverse">
         <div class="md:w-[40%] mb-8 md:mb-0 flex justify-end">
           <div class="w-full">
-            <Image
-              src={maria1Image}
-              alt="Maria providing acupuncture treatment"
-              class="w-full rounded-[24px] shadow-lg"
-              width={800}
-              height={600}
-              quality={80}
+            <ImageSlideshow
+              images={[
+                {
+                  src: maria1Image,
+                  alt: "Maria providing acupuncture treatment",
+                },
+                ...reorderedSlideshowImages,
+              ]}
             />
           </div>
         </div>
@@ -167,12 +152,6 @@ import "@fontsource-variable/montserrat";
             daughter, Dr. Maria Mitchell, LAc, DTCM who continues to see
             patients and serve the community at the Wellness Medical Center.
           </p>
-          <!-- <a
-            href="/about"
-            class="inline-block text-[var(--color-primary)] hover:text-[--color-primary-dark] font-medium"
-          >
-            Learn more about Maria and Samaya →
-          </a> -->
         </div>
       </div>
     </div>
@@ -203,8 +182,8 @@ import "@fontsource-variable/montserrat";
         </div>
         <h3 class="text-xl font-semibold mb-2">Herbal Medicine</h3>
         <p class="text-left text-gray-700">
-          Customized herbal formulas to support digestion, immunity, hormone
-          balance, and more.
+          Natural remedies that work with your body's wisdom to promote healing
+          and balance.
         </p>
       </div>
       <!-- Card 3 -->
@@ -214,41 +193,199 @@ import "@fontsource-variable/montserrat";
         <div class="flex justify-center rounded-xl mb-6">
           <WellnessIcon class="w-20 h-20 text-[var(--color-primary)]" />
         </div>
-        <h3 class="text-xl font-semibold mb-2">Wellness Consultations</h3>
+        <h3 class="text-xl font-semibold mb-2">Holistic Wellness</h3>
         <p class="text-left text-gray-700">
-          Personalized guidance that may include nutrition, lifestyle changes,
-          and Eastern medicine insights.
+          Comprehensive care that addresses your physical, emotional, and
+          spiritual wellbeing.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- CLINIC SPACE SECTION -->
-  <section class="py-16">
-    <div class="max-w-screen-xl mx-auto px-4 xl:px-0">
-      <div class="grid md:grid-cols-8 gap-12 items-center">
-        <!-- Text Content (5/8) -->
-        <div class="md:col-span-5">
-          <h1
-            class="text-2xl md:text-3xl text-[var(--color-primary)] font-medium mb-6"
-          >
-            A Healing Space for You
-          </h1>
-          <p class="text-lg text-gray-900">
-            Located in the heart of Santa Cruz, our clinic has been a trusted
-            center for Traditional Chinese Medicine for over 40 years. We've
-            carefully designed each space to promote relaxation and healing,
-            from our welcoming reception area to our private treatment rooms.
+  <!-- ABOUT US SECTION -->
+  <section class="max-w-screen-xl mx-auto px-4 xl:px-0 py-16">
+    <h2
+      class="text-2xl md:text-3xl text-center text-[var(--color-primary)] font-medium mb-8"
+    >
+      Meet the Practitioners
+    </h2>
+    <div class="align-items-center mb-16 max-w-4xl mx-auto">
+      <Image
+        src={welcomeImage}
+        alt="Maria and Samaya at Wellness Medical Center"
+        class="w-full rounded-[24px] shadow-lg"
+        width={1000}
+        height={800}
+        quality={80}
+      />
+    </div>
+    <div class="space-y-12">
+      <!-- Maria Mitchell Bio -->
+      <div
+        class="flex flex-col md:flex-row items-center md:items-start gap-6 max-w-4xl mx-auto"
+      >
+        <!-- Avatar -->
+        <a
+          href="https://www.mariamitchelllac.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block transition-transform duration-300 hover:scale-105"
+        >
+          <Image
+            src={mariaImage}
+            alt="Maria Mitchell"
+            class="rounded-full object-cover mb-4 md:mb-0 md:mr-16 w-[200px] h-[200px] aspect-square"
+            width={200}
+            height={200}
+            quality={80}
+          />
+        </a>
+
+        <!-- Bio Text -->
+        <div class="text-left w-full">
+          <h3 class="text-xl font-semibold text-gray-900">
+            Maria Mitchell, DTCM, L.Ac.
+          </h3>
+          <p class="mt-2 text-gray-700">
+            Maria Mitchell specializes in Women's Gynecological Health. She
+            completed a seven-year clinical internship in advanced acupuncture
+            with renowned practitioner and speaker Holly Guzman, L.Ac., O.M.D.,
+            a specialist in Women's Health and Infertility. She also studied for
+            17 years with Kiiko Matsumoto, a Japanese acupuncturist known for
+            her innovation, precision, and dramatically effective use of
+            acupuncture.
+          </p>
+          <p class="mt-4 text-gray-700">
+            Maria has a comprehensive background in Integrative Sports Medicine
+            and Trauma. She received a B.S. in Kinesiology and Exercise
+            Physiology from San Jose State University and served as a
+            Firefighter for seven years, trained in emergency protocols. She
+            worked for five years in a physical therapy setting and later
+            received certification in Integrative Sports Medicine with Frank He,
+            L.Ac. She specializes in the treatment of athletic injuries,
+            musculoskeletal conditions, and pain-related issues.
+          </p>
+          <p class="mt-4 text-gray-700">
+            She recently completed her Doctorate (DTCM) at Five Branches
+            University.
+          </p>
+          <p class="mt-4 text-gray-700">
+            Maria is also on faculty at Five Branches University, where she
+            teaches TCM theory, Japanese KMS (Kiiko Matsumoto Style
+            Acupuncture), and serves as a clinical supervisor in various
+            teaching settings. She also maintains a private practice in Santa
+            Cruz.
+          </p>
+          <p class="mt-4 text-gray-700">
+            <a
+              href="https://www.mariamitchelllac.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-semibold"
+            >
+              To learn more about Maria and book an appointment, visit her
+              personal site.
+            </a>
           </p>
         </div>
+      </div>
 
-        <!-- Slideshow (3/8) -->
-        <div class="md:col-span-3">
-          <ImageSlideshow images={slideshowImages} />
+      <!-- Horizontal Rule -->
+      <hr class="border-gray-300" />
+
+      <!-- Samaya Cullerton Bio -->
+      <div
+        class="flex flex-col md:flex-row items-center md:items-start gap-6 max-w-4xl mx-auto"
+      >
+        <!-- Avatar -->
+        <a
+          href="https://www.samayacullerton.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block transition-transform duration-300 hover:scale-105"
+        >
+          <Image
+            src={samayaImage}
+            alt="Samaya Cullerton"
+            class="rounded-full object-cover mb-4 md:mb-0 md:mr-16 w-[200px] h-[200px] aspect-square"
+            width={200}
+            height={200}
+            quality={80}
+          />
+        </a>
+
+        <!-- Bio Text -->
+        <div class="text-left w-full">
+          <h3 class="text-xl font-semibold text-gray-900">
+            Samaya Cullerton, L.Ac.
+          </h3>
+          <p class="mt-2 text-gray-700">
+            Samaya is a California board-licensed acupuncturist and herbalist
+            dedicated to providing compassionate, patient-centered care through
+            traditional Chinese medicine. She offers acupuncture, herbal
+            treatments, and holistic nutritional support, with a focus on
+            personalized, evidence-based care.
+          </p>
+          <p class="mt-4 text-gray-700">
+            She holds a Master's Degree in Traditional Chinese Medicine and has
+            over a decade of experience, specializing in women's health, as well
+            as prenatal, postpartum, and pediatric traditional medicine. In
+            addition to her clinical work, Samaya is a professor of herbal
+            medicine, dietetics, and clinical acupuncture in the doctoral
+            program at Five Branches University in Santa Cruz.
+          </p>
+          <p class="mt-4 text-gray-700">
+            She is part of the Central California Alliance for Health Insurance
+            provider network and is currently accepting new patients.
+          </p>
+          <p class="mt-4 text-gray-700">
+            <a
+              href="https://www.samayacullerton.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-semibold"
+            >
+              To learn more about Samaya and book an appointment, visit her
+              personal site.
+            </a>
+          </p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- WELCOME SECTION -->
+  <!-- <section class="py-16 md:py-24 w-full">
+    <div class="max-w-screen-xl mx-auto px-4 xl:px-0">
+      <div class="md:flex md:items-center md:gap-12">
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <Image
+            src={welcomeImage}
+            alt="Maria and Samaya at Wellness Medical Center"
+            class="w-full rounded-[24px] shadow-lg"
+            width={1000}
+            height={800}
+            quality={80}
+          />
+        </div>
+        <div class="md:w-1/2">
+          <h1
+            class="text-2xl md:text-3xl text-[var(--color-primary)] font-medium mb-6"
+          >
+            Meet the Practitioners
+          </h1>
+          <p class="text-lg md:text-xl mb-6 text-gray-900">
+            Santa Cruz's trusted home for holistic, health-centered care. We
+            offer personalized acupuncture, herbal medicine, and lifestyle
+            guidance rooted in the wisdom of Traditional Chinese Medicine. Our
+            mission is to support your body's natural healing and help you find
+            balance, whether you're navigating fertility, recovery, or everyday
+            wellness.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section> -->
 
   <!-- TESTIMONIALS SECTION -->
   <section class="px-4 xl:px-0 xl:px-0 mb-16">

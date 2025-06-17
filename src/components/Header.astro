@@ -22,11 +22,6 @@ const currentPath = Astro.url.pathname;
           >Home</a
         >
         <a
-          href="/about"
-          class={`hover:text-[var(--color-primary-dark)] font-medium ${currentPath === "/about" ? "text-[var(--color-primary)] [font-weight:600]" : ""}`}
-          >About Us</a
-        >
-        <a
           href="/shop"
           class={`hover:text-[var(--color-primary-dark)] font-medium ${currentPath === "/shop" ? "text-[var(--color-primary)] [font-weight:600]" : ""}`}
           >Wellness Shop</a
@@ -34,7 +29,7 @@ const currentPath = Astro.url.pathname;
         <a
           href="/blog"
           class={`hover:text-[var(--color-primary-dark)] font-medium ${currentPath === "/blog" ? "text-[var(--color-primary)] [font-weight:600]" : ""}`}
-          >Newsletter</a
+          >Health Education</a
         >
       </nav>
       <button

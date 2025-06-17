@@ -10,181 +10,88 @@ interface Props {
   maxWidth?: string;
 }
 
-const { images, maxWidth = "352px" } = Astro.props;
+const { images, maxWidth = "100%" } = Astro.props;
 ---
 
-<div
-  class="mx-auto px-4 xl:px-0 mb-12"
-  style={`max-width: ${maxWidth}; max-height: 462px;`}
->
-  <div
-    class="relative w-full aspect-[3/4] rounded-[24px] overflow-hidden"
-    style="max-height: 462px;"
-  >
-    {
-      images.map((image, index) => (
-        <div
-          class="absolute inset-0 transition-opacity duration-1000"
-          style={`opacity: ${index === 0 ? 1 : 0};`}
-          data-slide={index}
-        >
-          <Image
-            src={image.src}
-            alt={image.alt}
-            class="w-full h-full object-cover"
-            width={352}
-            height={462}
-            quality={80}
-            style="max-height: 462px;"
-          />
-        </div>
-      ))
-    }
-  </div>
-  <div class="flex justify-center gap-4 mt-4">
-    <button
-      class="p-2 rounded-full bg-[#e7eae3] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
-      id="prevButton"
-      aria-label="Previous slide"
-    >
-      <!-- left arrow SVG -->
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M15 19l-7-7 7-7"></path>
-      </svg>
-    </button>
-    <button
-      class="p-2 rounded-full bg-[#e7eae3] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
-      id="playPauseButton"
-      aria-label="Play/Pause slideshow"
-    >
-      <!-- play/pause SVG -->
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-      </svg>
-    </button>
-    <button
-      class="p-2 rounded-full bg-[#e7eae3] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
-      id="nextButton"
-      aria-label="Next slide"
-    >
-      <!-- right arrow SVG -->
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M9 5l7 7-7 7"></path>
-      </svg>
-    </button>
+<div class="relative w-full" style={`max-width: ${maxWidth}`}>
+  <div class="swiper aspect-[3/4] rounded-[24px] overflow-hidden">
+    <div class="swiper-wrapper">
+      {
+        images.map((image) => (
+          <div class="swiper-slide">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              class="w-full h-full object-cover"
+              width={800}
+              height={1067}
+              quality={80}
+            />
+          </div>
+        ))
+      }
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-pagination"></div>
   </div>
 </div>
 
-<script is:inline>
+<script>
+  import Swiper from "swiper";
+  import { Navigation, Pagination, Autoplay } from "swiper/modules";
+  import "swiper/css";
+  import "swiper/css/navigation";
+  import "swiper/css/pagination";
+
   document.addEventListener("DOMContentLoaded", () => {
-    let currentSlide = 0;
-    const slides = document.querySelectorAll("[data-slide]");
-    const totalSlides = slides.length;
-    let intervalId = null;
-
-    function showSlide(index) {
-      slides.forEach((slide) => {
-        slide.style.opacity = "0";
-      });
-      slides[index].style.opacity = "1";
-    }
-
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      showSlide(currentSlide);
-    }
-
-    function prevSlide() {
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      showSlide(currentSlide);
-    }
-
-    function startSlideshow() {
-      if (!intervalId) {
-        intervalId = setInterval(nextSlide, 5000);
-      }
-    }
-
-    function stopSlideshow() {
-      if (intervalId) {
-        clearInterval(intervalId);
-        intervalId = null;
-      }
-    }
-
-    function togglePlayPause() {
-      const playPauseButton = document.getElementById("playPauseButton");
-      if (!playPauseButton) return;
-
-      if (intervalId) {
-        stopSlideshow();
-        playPauseButton.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        `;
-      } else {
-        startSlideshow();
-        playPauseButton.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        `;
-      }
-    }
-
-    // Get button elements
-    const prevButton = document.getElementById("prevButton");
-    const nextButton = document.getElementById("nextButton");
-    const playPauseButton = document.getElementById("playPauseButton");
-
-    // Add event listeners
-    prevButton?.addEventListener("click", () => {
-      prevSlide();
-      stopSlideshow();
-      startSlideshow();
+    new Swiper(".swiper", {
+      modules: [Navigation, Pagination, Autoplay],
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
     });
-
-    nextButton?.addEventListener("click", () => {
-      nextSlide();
-      stopSlideshow();
-      startSlideshow();
-    });
-
-    playPauseButton?.addEventListener("click", togglePlayPause);
-
-    // Start the slideshow
-    startSlideshow();
   });
 </script>
+
+<style>
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: var(--color-primary);
+  }
+
+  :global(.swiper-pagination-bullet) {
+    background: var(--color-primary) !important;
+    opacity: 0.5 !important;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    background: var(--color-primary) !important;
+    opacity: 1 !important;
+  }
+
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 24px;
+  }
+</style>
