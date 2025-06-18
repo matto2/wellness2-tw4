@@ -76,6 +76,6 @@ html {
   --color-accent: #cf5500; /* orange */
   --color-background: #f4f4ee; /* off-white */
   --color-card-bg: #ecece2; /* card background */
-}
+--header-bg: rgba(244, 244, 238, 0.5);}
 
 
