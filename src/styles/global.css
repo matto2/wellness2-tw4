@@ -36,6 +36,11 @@ h1, h2 {
   font-weight: 500; /* Semi-bold */
 }
 
+html {
+  scroll-padding-top: 100px; /* adjust to match your fixed/sticky header height */
+  scroll-behavior: smooth; /* optional: enables smooth scrolling */
+}
+
 /* Base markdown styles */
 .markdown-content {
   line-height: 1.75;
