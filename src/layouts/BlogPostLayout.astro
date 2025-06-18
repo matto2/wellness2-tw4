@@ -9,9 +9,10 @@ interface Props {
   author: string;
   readTime: string;
   image?: ImageMetadata;
+  video?: string;
 }
 
-const { title, pubDate, author, readTime, image } = Astro.props;
+const { title, pubDate, author, readTime, image, video } = Astro.props;
 ---
 
 <BlogLayout title={`${title} | Wellness Medical Center`}>
@@ -37,17 +38,28 @@ const { title, pubDate, author, readTime, image } = Astro.props;
           </time>
         </div>
         {
-          image && (
+          video ? (
             <div class="aspect-[16/9] rounded-[24px] overflow-hidden mb-8">
-              <Image
-                src={image}
-                alt={title}
+              <video
+                src={video}
+                controls
                 class="w-full h-full object-cover"
-                width={1200}
-                height={675}
-                quality={80}
+                preload="metadata"
               />
             </div>
+          ) : (
+            image && (
+              <div class="aspect-[16/9] rounded-[24px] overflow-hidden mb-8">
+                <Image
+                  src={image}
+                  alt={title}
+                  class="w-full h-full object-cover"
+                  width={1200}
+                  height={675}
+                  quality={80}
+                />
+              </div>
+            )
           )
         }
       </header>

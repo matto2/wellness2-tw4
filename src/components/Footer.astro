@@ -22,6 +22,7 @@ import BrandLogo from "./BrandLogo.astro";
               >Home</a
             >
           </li>
+          <li class="hidden md:inline text-[var(--color-primary)]">|</li>
           <!-- <li>
             <a
               href="/about"
@@ -36,6 +37,7 @@ import BrandLogo from "./BrandLogo.astro";
               >Wellness Shop</a
             >
           </li>
+          <li class="hidden md:inline text-[var(--color-primary)]">|</li>
           <li>
             <a
               href="/blog"
@@ -46,22 +48,42 @@ import BrandLogo from "./BrandLogo.astro";
         </ul>
       </nav>
 
-      <div class="my-8">
+      <div class="my-4">
         <hr class="border-gray-200" />
       </div>
 
       <div class="text-center md:text-left">
-        <p>Dr. Maria Mitchell DTCM, L.Ac</p>
-        <p>
+        <p class="leading-relaxed font-semibold">
+          Dr. Maria Mitchell DTCM, L.Ac
+        </p>
+        <p class="leading-relaxed">
           <a href="tel:8314779355" class="hover:text-[var(--color-primary)]"
             >831-477-9355</a
           >
+          <span class="text-[var(--color-primary)] mx-2">|</span>
+          <a
+            href="https://www.mariamitchelllac.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-[var(--color-primary)]"
+          >
+            Book an appointment
+          </a>
         </p>
-        <p class="mt-2">Samaya Cullerton, L.Ac</p>
-        <p>
+        <p class="mt-2 leading-relaxed font-semibold">Samaya Cullerton, L.Ac</p>
+        <p class="leading-relaxed">
           <a href="tel:8315889581" class="hover:text-[var(--color-primary)]"
             >831-588-9581</a
           >
+          <span class="text-[var(--color-primary)] mx-2">|</span>
+          <a
+            href="https://samayacullerton.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-[var(--color-primary)]"
+          >
+            Book an appointment
+          </a>
         </p>
       </div>
 
