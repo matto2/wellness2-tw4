@@ -6,7 +6,7 @@ interface Props {
 const { videoSrc, overlayOpacity = 30 } = Astro.props;
 ---
 
-<section class="relative w-full h-[132vh] md:h-screen">
+<section class="relative w-full h-screen">
   <!-- Video Background -->
   <div class="absolute inset-0 w-full h-full overflow-hidden">
     <div class={`absolute inset-0 bg-teal-900/${overlayOpacity} z-10`}></div>
@@ -28,7 +28,7 @@ const { videoSrc, overlayOpacity = 30 } = Astro.props;
   </div>
   <!-- Content -->
   <div
-    class="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 -translate-y-8 md:leading-[1.44] md:mt-12"
+    class="relative z-10 h-full flex flex-col items-center text-center px-4 pt-24 md:pt-32"
   >
     <slot />
   </div>
