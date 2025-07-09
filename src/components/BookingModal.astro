@@ -1,0 +1,129 @@
+---
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<!-- Popup Container -->
+<div
+  id={`${id}-popup`}
+  class="absolute z-50 hidden bottom-full left-1/2 transform -translate-x-1/2 mb-3"
+>
+  <!-- Popup Content -->
+  <div
+    class="bg-white rounded-[16px] shadow-lg border border-gray-200 min-w-[280px] max-w-[320px]"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby={`${id}-title`}
+  >
+    <!-- Popup Header -->
+    <div class="flex items-center justify-between p-4 border-b border-gray-100">
+      <h3 id={`${id}-title`} class="text-lg font-semibold text-gray-900">
+        Book an Appointment
+      </h3>
+      <button
+        id={`${id}-close`}
+        class="text-gray-400 hover:text-gray-600 transition-colors p-1"
+        aria-label="Close popup"
+      >
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Popup Body -->
+    <div class="p-4">
+      <div class="space-y-3">
+        <!-- Maria's Booking Link -->
+        <a
+          href="https://www.mariamitchelllac.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block w-full p-3 bg-[var(--color-primary)] text-white rounded-[12px] hover:bg-[var(--color-primary-dark)] transition-colors text-center font-medium text-sm"
+        >
+          Book with Maria
+        </a>
+
+        <!-- Samaya's Booking Link -->
+        <a
+          href="https://www.samayacullerton.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block w-full p-3 bg-[var(--color-primary)] text-white rounded-[12px] hover:bg-[var(--color-primary-dark)] transition-colors text-center font-medium text-sm"
+        >
+          Book with Samaya
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function createPopup(popupId: string) {
+    const popup = document.getElementById(`${popupId}-popup`);
+    const closeBtn = document.getElementById(`${popupId}-close`);
+    const triggerBtn = document.getElementById(`${popupId}-trigger`);
+
+    if (!popup || !closeBtn || !triggerBtn) return;
+
+    function openPopup() {
+      if (!triggerBtn || !popup || !closeBtn) return;
+
+      // Show popup (positioned by CSS)
+      popup.classList.remove("hidden");
+      popup.classList.add("block");
+
+      // Focus management
+      closeBtn.focus();
+    }
+
+    function closePopup() {
+      if (!popup || !triggerBtn) return;
+
+      popup.classList.add("hidden");
+      popup.classList.remove("block");
+
+      // Return focus to trigger button
+      triggerBtn.focus();
+    }
+
+    // Event listeners
+    triggerBtn?.addEventListener("click", openPopup);
+    closeBtn?.addEventListener("click", closePopup);
+
+    // Close on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !popup.classList.contains("hidden")) {
+        closePopup();
+      }
+    });
+
+    // Close when clicking outside the popup
+    document.addEventListener("click", (e) => {
+      if (
+        !popup.classList.contains("hidden") &&
+        !popup.contains(e.target as Node) &&
+        !triggerBtn.contains(e.target as Node)
+      ) {
+        closePopup();
+      }
+    });
+  }
+
+  // Initialize popup when DOM is loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    createPopup("booking-modal");
+  });
+</script>

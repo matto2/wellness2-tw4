@@ -6,6 +6,7 @@ import HerbsIcon from "../components/HerbsIcon.astro";
 import WellnessIcon from "../components/WellnessIcon.astro";
 import ImageSlideshow from "../components/ImageSlideshow.astro";
 import VideoHero from "../components/VideoHero.astro";
+import BookingModal from "../components/BookingModal.astro";
 import { Image } from "astro:assets";
 import welcomeImage from "../assets/3779245098.jpg";
 import maria1Image from "../assets/maria1.jpg";
@@ -16,33 +17,34 @@ import samayaImage from "../assets/samaya.jpg";
 import clinic1 from "../assets/clinic/3780071716.jpg";
 import clinic2 from "../assets/clinic/3779151766.jpg";
 import clinic3 from "../assets/clinic/3779151751.jpg";
-import clinic4 from "../assets/clinic/3779151669.jpg";
+// import clinic4 from "../assets/clinic/3779151669.jpg";
 import clinic5 from "../assets/clinic/3779151852.jpg";
-import clinic6 from "../assets/clinic/3779151811.jpg";
+// import clinic6 from "../assets/clinic/3779151811.jpg";
 import clinic7 from "../assets/clinic/3779151781.jpg";
 import clinic8 from "../assets/clinic/3779151591.jpg";
 import clinic9 from "../assets/clinic/3779942412.jpg";
 import clinic10 from "../assets/clinic/3779011254.jpg";
-import clinic11 from "../assets/clinic/3779977271.jpg";
+// import clinic11 from "../assets/clinic/3779977271.jpg";
+import backofficeImage from "../assets/clinic/backoffice.jpg";
 
 const slideshowImages = [
   { src: clinic1, alt: "Wellness Medical Center interior" },
   { src: clinic2, alt: "Wellness Medical Center treatment room" },
   { src: clinic3, alt: "Wellness Medical Center waiting area" },
-  { src: clinic4, alt: "Wellness Medical Center herbs" },
+  // { src: clinic4, alt: "Wellness Medical Center herbs" },
   { src: clinic5, alt: "Wellness Medical Center treatment space" },
-  { src: clinic6, alt: "Wellness Medical Center consultation room" },
+  // { src: clinic6, alt: "Wellness Medical Center consultation room" },
   { src: clinic7, alt: "Wellness Medical Center lobby" },
   { src: clinic8, alt: "Wellness Medical Center entrance" },
   { src: clinic9, alt: "Wellness Medical Center herbs display" },
   { src: clinic10, alt: "Wellness Medical Center herbs collection" },
-  { src: clinic11, alt: "Acupuncture treatment at Wellness Medical Center" },
+  // { src: clinic11, alt: "Acupuncture treatment at Wellness Medical Center" },
 ];
 
 // Reordered slideshow images with better distribution
 const reorderedSlideshowImages = [
   { src: clinic1, alt: "Wellness Medical Center interior" },
-  { src: clinic4, alt: "Wellness Medical Center herbs" },
+  // { src: clinic4, alt: "Wellness Medical Center herbs" },
   { src: clinic7, alt: "Wellness Medical Center lobby" },
   { src: clinic2, alt: "Wellness Medical Center treatment room" },
   { src: clinic9, alt: "Wellness Medical Center herbs display" },
@@ -50,8 +52,9 @@ const reorderedSlideshowImages = [
   { src: clinic10, alt: "Wellness Medical Center herbs collection" },
   { src: clinic5, alt: "Wellness Medical Center treatment space" },
   { src: clinic8, alt: "Wellness Medical Center entrance" },
-  { src: clinic6, alt: "Wellness Medical Center consultation room" },
-  { src: clinic11, alt: "Acupuncture treatment at Wellness Medical Center" },
+  // { src: clinic6, alt: "Wellness Medical Center consultation room" },
+  // { src: clinic11, alt: "Acupuncture treatment at Wellness Medical Center" },
+  { src: backofficeImage, alt: "Wellness Medical Center back office" }, // new image at end
 ];
 // Supports weights 100-900
 import "@fontsource-variable/montserrat";
@@ -155,57 +158,6 @@ import Motion from "../components/Motion.astro";
           </p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- THREE CARDS SECTION -->
-  <section class="max-w-screen-xl mx-auto px-4 xl:px-0 mt-8 mb-16">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Card 1 -->
-      <Motion>
-        <div
-          class="rounded-[24px] shadow-md p-8 flex flex-col text-center bg-[var(--color-card-bg)]"
-        >
-          <div class="flex justify-center rounded-xl mb-6">
-            <AcuIcon class="w-20 h-20 text-[var(--color-primary)]" />
-          </div>
-          <h3 class="text-xl font-semibold mb-2">Acupuncture</h3>
-          <p class="text-left text-gray-700">
-            A gentle, time-tested practice to relieve pain, reduce stress, and
-            restore balance in the body.
-          </p>
-        </div>
-      </Motion>
-      <!-- Card 2 -->
-      <Motion>
-        <div
-          class="rounded-[24px] shadow-md p-8 flex flex-col text-center bg-[var(--color-card-bg)]"
-        >
-          <div class="flex justify-center rounded-xl mb-6">
-            <HerbsIcon class="w-20 h-20 text-[var(--color-primary)]" />
-          </div>
-          <h3 class="text-xl font-semibold mb-2">Herbal Medicine</h3>
-          <p class="text-left text-gray-700">
-            Natural remedies that work with your body's wisdom to promote
-            healing and balance.
-          </p>
-        </div>
-      </Motion>
-      <!-- Card 3 -->
-      <Motion>
-        <div
-          class="rounded-[24px] shadow-md p-8 flex flex-col text-center bg-[var(--color-card-bg)]"
-        >
-          <div class="flex justify-center rounded-xl mb-6">
-            <WellnessIcon class="w-20 h-20 text-[var(--color-primary)]" />
-          </div>
-          <h3 class="text-xl font-semibold mb-2">Holistic Wellness</h3>
-          <p class="text-left text-gray-700">
-            Comprehensive care that addresses your physical, emotional, and
-            spiritual wellbeing.
-          </p>
-        </div>
-      </Motion>
     </div>
   </section>
 
@@ -361,7 +313,9 @@ import Motion from "../components/Motion.astro";
       </div>
     </div>
   </section>
-  <hr class="border-gray-300 max-w-4xl mx-auto" />
+  <div class="px-4 xl:px-0">
+    <hr class="border-gray-300 max-w-4xl mx-auto" />
+  </div>
 
   <!-- WELCOME SECTION -->
   <!-- <section class="py-16 md:py-24 w-full">
@@ -413,7 +367,7 @@ import Motion from "../components/Motion.astro";
     <div class="max-w-[1024px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- Testimonial 1 -->
       <Motion>
-        <div class="bg-[var(--color-card-bg)] p-8 rounded-[24px] shadow-md">
+        <div class="bg-[var(--color-secondary)] p-8 rounded-[24px] shadow-md">
           <p class="text-gray-700 mb-4 text-lg">
             Maria is a gifted healer with deep knowledge of physiology. She's
             precise, takes her time, and always helps my back feel better.
@@ -426,7 +380,7 @@ import Motion from "../components/Motion.astro";
 
       <!-- Testimonial 2 -->
       <Motion>
-        <div class="bg-[var(--color-card-bg)] p-8 rounded-[24px] shadow-md">
+        <div class="bg-[var(--color-secondary)] p-8 rounded-[24px] shadow-md">
           <p class="text-gray-700 mb-4 text-lg">
             Maria has almost cured my back and neck issues. She's thorough,
             affordable, and creates a relaxing atmosphere. I LOVE her and highly
@@ -438,7 +392,7 @@ import Motion from "../components/Motion.astro";
 
       <!-- Testimonial 3 -->
       <Motion>
-        <div class="bg-[var(--color-card-bg)] p-8 rounded-[24px] shadow-md">
+        <div class="bg-[var(--color-secondary)] p-8 rounded-[24px] shadow-md">
           <p class="text-gray-700 mb-4 text-lg">
             Samaya is an incredible healer who guided me through recovery from
             multiple injuries. Her holistic care, including nutrition and herbs,
@@ -450,7 +404,7 @@ import Motion from "../components/Motion.astro";
 
       <!-- Testimonial 4 -->
       <Motion>
-        <div class="bg-[var(--color-card-bg)] p-8 rounded-[24px] shadow-md">
+        <div class="bg-[var(--color-secondary)] p-8 rounded-[24px] shadow-md">
           <p class="text-gray-700 mb-4 text-lg">
             Samaya is truly phenomenal. She's supported me through fertility,
             pregnancy, recovery, and motherhood with gentle care, herbal
@@ -458,6 +412,57 @@ import Motion from "../components/Motion.astro";
           </p>
           <p class="text-[var(--color-primary)] font-medium">– E.S.</p>
         </div>
+      </Motion>
+    </div>
+  </section>
+  <div class="px-4 xl:px-0">
+    <hr class="border-gray-300 max-w-4xl mx-auto" />
+  </div>
+  <!-- THREE CARDS SECTION -->
+  <section class="max-w-screen-xl mx-auto px-4 xl:px-0 mt-8 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <Motion>
+        <div class="relative">
+          <button
+            id="booking-modal-trigger"
+            class="w-full rounded-[24px] shadow-md p-8 flex flex-col text-center bg-[var(--color-card-bg)] hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer border-0"
+            aria-label="Open booking appointment modal"
+          >
+            <div class="flex justify-center rounded-xl mb-6">
+              <AcuIcon class="w-20 h-20 text-[var(--color-primary)]" />
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Book an Appointment</h3>
+          </button>
+          <!-- Booking Modal -->
+          <BookingModal id="booking-modal" />
+        </div>
+      </Motion>
+      <!-- Card 2 -->
+      <Motion>
+        <a
+          href="/shop"
+          class="block rounded-[24px] shadow-md p-8 flex flex-col text-center bg-[var(--color-card-bg)] hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+          aria-label="Visit the Shop"
+        >
+          <div class="flex justify-center rounded-xl mb-6">
+            <HerbsIcon class="w-20 h-20 text-[var(--color-primary)]" />
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Shop Our Products</h3>
+        </a>
+      </Motion>
+      <!-- Card 3 -->
+      <Motion>
+        <a
+          href="/blog"
+          class="block rounded-[24px] shadow-md p-8 flex flex-col text-center bg-[var(--color-card-bg)] hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+          aria-label="Visit Health Education Blog"
+        >
+          <div class="flex justify-center rounded-xl mb-6">
+            <WellnessIcon class="w-20 h-20 text-[var(--color-primary)]" />
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Learn</h3>
+        </a>
       </Motion>
     </div>
   </section>
