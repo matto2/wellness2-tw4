@@ -6,15 +6,11 @@ interface Props {
 const { videoSrc, overlayOpacity = 30 } = Astro.props;
 ---
 
-<section class="relative w-full h-screen">
-  <!-- Video Background -->
+<section
+  class="relative w-full h-screen min-h-[600px] py-12 md:py-24 bg-[#004080]"
+>
+  <!-- Video Background and overlays here -->
   <div class="absolute inset-0 w-full h-full overflow-hidden">
-    <div class={`absolute inset-0 bg-teal-900/${overlayOpacity} z-10`}></div>
-    <!-- Add gradient overlay at the bottom -->
-    <!-- <div
-      class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--color-background)] to-transparent z-20"
-    >
-    </div> -->
     <video
       class="absolute min-w-full min-h-full object-cover"
       autoplay
@@ -25,10 +21,11 @@ const { videoSrc, overlayOpacity = 30 } = Astro.props;
     >
       <source src={videoSrc} type="video/mp4" />
     </video>
+    <!-- overlays/gradients if any -->
   </div>
   <!-- Content -->
   <div
-    class="relative z-10 h-full flex flex-col items-center text-center px-4 pt-24 md:pt-32"
+    class="relative z-10 h-full flex flex-col items-center justify-center text-center px-4"
   >
     <slot />
   </div>
