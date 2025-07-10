@@ -65,16 +65,18 @@ import Motion from "../components/Motion.astro";
   <!-- VIDEO HERO SECTION -->
   <VideoHero videoSrc="/wellness-calm6.mp4" overlayOpacity={40}>
     <div class="max-w-5xl">
-      <div class="flex justify-center mb-2 sm:mb-4">
-        <LotusIcon class="w-20 h-20 sm:w-24 sm:h-24 text-white" />
+      <div class="flex justify-center mb-2 sm:mb-4 mt-4 sm:mt-6">
+        <LotusIcon
+          class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 text-white"
+        />
       </div>
       <h1
-        class="text-3xl lg:text-4xl xl:text-5xl text-amber-50 text-shadow-md font-medium mb-4 sm:mb-12"
+        class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-amber-50 text-shadow-md font-medium mb-3 sm:mb-4 md:mb-12 px-4 sm:px-0"
       >
         Welcome to The Wellness Medical Center
       </h1>
       <p
-        class="text-lg lg:text-xl text-amber-50 text-shadow-md mb-6 sm:mb-12 md:leading-[1.8] max-w-4xl"
+        class="text-base sm:text-lg lg:text-xl text-amber-50 text-shadow-md mb-4 sm:mb-6 md:mb-12 md:leading-[1.8] max-w-4xl px-4 sm:px-0"
       >
         Our mission is to improve the health of our patients and our community.
         Wellness Medical Center's pharmacy offers quality controlled herbs,
@@ -84,17 +86,19 @@ import Motion from "../components/Motion.astro";
         respect and value. We are passionate about working with people on their
         healing journey.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <div
+        class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0"
+      >
         <a
           href="#practitioners"
-          class="flex items-center justify-center text-amber-50 gap-2 px-6 py-3 rounded-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-colors"
+          class="flex items-center justify-center text-amber-50 gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] transition-colors text-sm font-medium"
           aria-label="Meet Our Practitioners"
         >
           <span class="text-sm font-medium">Meet Our Practitioners</span>
         </a>
         <a
           href="/shop"
-          class="px-6 py-3 rounded-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-amber-50 text-sm font-medium flex items-center justify-center gap-2 transition-colors"
+          class="px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-amber-50 text-sm font-medium flex items-center justify-center gap-2 transition-colors"
           aria-label="Visit the Shop"
         >
           Visit the Shop
@@ -104,10 +108,10 @@ import Motion from "../components/Motion.astro";
   </VideoHero>
 
   <!-- LEGACY SECTION -->
-  <section class="py-16">
+  <section class="py-8 sm:py-12 md:py-16">
     <div class="max-w-screen-xl mx-auto px-4 xl:px-0">
       <div class="md:flex md:items-center md:gap-12 md:flex-row-reverse">
-        <div class="md:w-[40%] mb-8 md:mb-0 flex justify-end">
+        <div class="md:w-[40%] mb-6 sm:mb-8 md:mb-0 flex justify-end">
           <div class="w-full">
             <ImageSlideshow
               images={[
@@ -122,17 +126,21 @@ import Motion from "../components/Motion.astro";
         </div>
         <div class="md:w-[60%]">
           <h2
-            class="text-2xl md:text-3xl font-medium mb-6 text-[var(--color-primary)]"
+            class="text-xl sm:text-2xl md:text-3xl font-medium mb-4 sm:mb-6 text-[var(--color-primary)]"
           >
             A Legacy of Healing
           </h2>
-          <p class="text-lg text-gray-700 mb-6">
+          <p
+            class="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6 leading-relaxed"
+          >
             The Wellness Medical Center has been a cornerstone in the Santa Cruz
             acupuncture healthcare community, founded by Dr. Donna Leight, LAc,
             OMD and Dr. Holly Guzman, LAc, OMD, dedicated providers,
             consistently treating patients in Santa Cruz since 1983.
           </p>
-          <p class="text-lg text-gray-700 mb-6">
+          <p
+            class="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6 leading-relaxed"
+          >
             Dr. Guzman is a beloved and dedicated educator, teaching apprentices
             in our community and speaking at conferences around the country,
             ushering in the future generation of traditional Asian medical
@@ -146,7 +154,9 @@ import Motion from "../components/Motion.astro";
               >hollyguzmanseminars.com</a
             >.
           </p>
-          <p class="text-lg text-gray-700 mb-6">
+          <p
+            class="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6 leading-relaxed"
+          >
             Dr. Leight passing in 2018, left behind a legacy of healing. Dr.
             Leight dedicated herself to the health and wellbeing of her
             patients, community and family. She will be remembered as a
@@ -162,27 +172,27 @@ import Motion from "../components/Motion.astro";
   </section>
 
   <!-- ABOUT US SECTION -->
-  <section class="max-w-screen-xl mx-auto px-4 xl:px-0 py-16">
+  <section class="max-w-screen-xl mx-auto px-4 xl:px-0 py-4 sm:py-8 md:py-12">
     <h2
-      class="text-2xl md:text-3xl text-center text-[var(--color-primary)] font-medium mb-8"
+      class="text-xl sm:text-2xl md:text-3xl text-center text-[var(--color-primary)] font-medium mb-6 sm:mb-8"
       id="practitioners"
     >
       Meet Our Practitioners
     </h2>
-    <div class="align-items-center mb-16 max-w-4xl mx-auto">
+    <div class="align-items-center mb-8 sm:mb-12 md:mb-16 max-w-4xl mx-auto">
       <Image
         src={welcomeImage}
         alt="Maria and Samaya at Wellness Medical Center"
-        class="w-full rounded-[24px] shadow-lg"
+        class="w-full rounded-[16px] sm:rounded-[24px] shadow-lg"
         width={1000}
         height={800}
         quality={80}
       />
     </div>
-    <div class="space-y-12">
+    <div class="space-y-8 sm:space-y-12">
       <!-- Maria Mitchell Bio -->
       <div
-        class="flex flex-col md:flex-row items-center md:items-start gap-6 max-w-4xl mx-auto"
+        class="flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-6 max-w-4xl mx-auto"
       >
         <!-- Avatar -->
         <a
@@ -194,7 +204,7 @@ import Motion from "../components/Motion.astro";
           <Image
             src={mariaImage}
             alt="Maria Mitchell"
-            class="rounded-full object-cover mb-4 md:mb-0 md:mr-16 w-[200px] h-[200px] aspect-square"
+            class="rounded-full object-cover mb-4 md:mb-0 md:mr-16 w-[150px] h-[150px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px] aspect-square"
             width={200}
             height={200}
             quality={80}
@@ -203,10 +213,12 @@ import Motion from "../components/Motion.astro";
 
         <!-- Bio Text -->
         <div class="text-left w-full">
-          <h3 class="text-xl font-semibold text-gray-900">
+          <h3
+            class="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mt-2"
+          >
             Maria Mitchell, DTCM, L.Ac.
           </h3>
-          <p class="mt-2 text-gray-700">
+          <p class="text-sm sm:text-base text-gray-700 leading-relaxed">
             Maria Mitchell specializes in Women's Gynecological Health. She
             completed a seven-year clinical internship in advanced acupuncture
             with renowned practitioner and speaker Holly Guzman, L.Ac., O.M.D.,
@@ -215,7 +227,9 @@ import Motion from "../components/Motion.astro";
             her innovation, precision, and dramatically effective use of
             acupuncture.
           </p>
-          <p class="mt-4 text-gray-700">
+          <p
+            class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-700 leading-relaxed"
+          >
             Maria has a comprehensive background in Integrative Sports Medicine
             and Trauma. She received a B.S. in Kinesiology and Exercise
             Physiology from San Jose State University and served as a
@@ -225,18 +239,24 @@ import Motion from "../components/Motion.astro";
             L.Ac. She specializes in the treatment of athletic injuries,
             musculoskeletal conditions, and pain-related issues.
           </p>
-          <p class="mt-4 text-gray-700">
+          <p
+            class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-700 leading-relaxed"
+          >
             She recently completed her Doctorate (DTCM) at Five Branches
             University.
           </p>
-          <p class="mt-4 text-gray-700">
+          <p
+            class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-700 leading-relaxed"
+          >
             Maria is also on faculty at Five Branches University, where she
             teaches TCM theory, Japanese KMS (Kiiko Matsumoto Style
             Acupuncture), and serves as a clinical supervisor in various
             teaching settings. She also maintains a private practice in Santa
             Cruz.
           </p>
-          <p class="mt-4 text-gray-700">
+          <p
+            class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-700 leading-relaxed"
+          >
             <a
               href="https://www.mariamitchelllac.com/"
               target="_blank"
@@ -255,7 +275,7 @@ import Motion from "../components/Motion.astro";
 
       <!-- Samaya Cullerton Bio -->
       <div
-        class="flex flex-col md:flex-row items-center md:items-start gap-6 max-w-4xl mx-auto"
+        class="flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-6 max-w-4xl mx-auto"
       >
         <!-- Avatar -->
         <a
@@ -267,7 +287,7 @@ import Motion from "../components/Motion.astro";
           <Image
             src={samayaImage}
             alt="Samaya Cullerton"
-            class="rounded-full object-cover mb-4 md:mb-0 md:mr-16 w-[200px] h-[200px] aspect-square"
+            class="rounded-full object-cover mb-4 md:mb-0 md:mr-16 w-[150px] h-[150px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px] aspect-square"
             width={200}
             height={200}
             quality={80}
@@ -276,17 +296,21 @@ import Motion from "../components/Motion.astro";
 
         <!-- Bio Text -->
         <div class="text-left w-full">
-          <h3 class="text-xl font-semibold text-gray-900">
+          <h3
+            class="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mt-2"
+          >
             Samaya Cullerton, L.Ac.
           </h3>
-          <p class="mt-2 text-gray-700">
+          <p class="text-sm sm:text-base text-gray-700 leading-relaxed">
             Samaya is a California board-licensed acupuncturist and herbalist
             dedicated to providing compassionate, patient-centered care through
             traditional Chinese medicine. She offers acupuncture, herbal
             treatments, and holistic nutritional support, with a focus on
             personalized, evidence-based care.
           </p>
-          <p class="mt-4 text-gray-700">
+          <p
+            class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-700 leading-relaxed"
+          >
             She holds a Master's Degree in Traditional Chinese Medicine and has
             over a decade of experience, specializing in women's health, as well
             as prenatal, postpartum, and pediatric traditional medicine. In
@@ -294,11 +318,15 @@ import Motion from "../components/Motion.astro";
             medicine, dietetics, and clinical acupuncture in the doctoral
             program at Five Branches University in Santa Cruz.
           </p>
-          <p class="mt-4 text-gray-700">
+          <p
+            class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-700 leading-relaxed"
+          >
             She is part of the Central California Alliance for Health Insurance
             provider network and is currently accepting new patients.
           </p>
-          <p class="mt-4 text-gray-700">
+          <p
+            class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-700 leading-relaxed"
+          >
             <a
               href="https://www.samayacullerton.com/"
               target="_blank"
@@ -351,66 +379,100 @@ import Motion from "../components/Motion.astro";
   </section> -->
 
   <!-- TESTIMONIALS SECTION -->
-  <section class="px-4 xl:px-0 xl:px-0 mb-16">
+  <section class="px-4 xl:px-0 mb-8 sm:mb-12 md:mb-16">
     <Motion>
-      <div class="flex justify-center mb-2 mt-8">
-        <LotusIcon class="w-24 h-24" />
+      <div class="flex justify-center mb-2 mt-6 sm:mt-8">
+        <LotusIcon class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />
       </div>
     </Motion>
     <Motion>
       <h2
-        class="text-3xl text-[var(--color-primary)] font-medium mb-8 text-center"
+        class="text-2xl sm:text-3xl text-[var(--color-primary)] font-medium mb-6 sm:mb-8 text-center"
       >
         What People are Saying
       </h2>
     </Motion>
-    <div class="max-w-[1024px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div
+      class="max-w-[1024px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8"
+    >
       <!-- Testimonial 1 -->
       <Motion>
-        <div class="bg-[var(--color-secondary)] p-8 rounded-[24px] shadow-md">
-          <p class="text-gray-700 mb-4 text-lg">
+        <div
+          class="bg-[var(--color-secondary)] p-4 sm:p-6 md:p-8 rounded-[16px] sm:rounded-[24px] shadow-md"
+        >
+          <p
+            class="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed"
+          >
             Maria is a gifted healer with deep knowledge of physiology. She's
             precise, takes her time, and always helps my back feel better.
             Thanks to her, I can keep playing beach volleyball—even after
             injuries.
           </p>
-          <p class="text-[var(--color-primary)] font-medium">– Shasta T.</p>
+          <p
+            class="text-[var(--color-primary)] font-medium text-sm sm:text-base"
+          >
+            – Shasta T.
+          </p>
         </div>
       </Motion>
 
       <!-- Testimonial 2 -->
       <Motion>
-        <div class="bg-[var(--color-secondary)] p-8 rounded-[24px] shadow-md">
-          <p class="text-gray-700 mb-4 text-lg">
+        <div
+          class="bg-[var(--color-secondary)] p-4 sm:p-6 md:p-8 rounded-[16px] sm:rounded-[24px] shadow-md"
+        >
+          <p
+            class="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed"
+          >
             Maria has almost cured my back and neck issues. She's thorough,
             affordable, and creates a relaxing atmosphere. I LOVE her and highly
             recommend her—5++++ stars!
           </p>
-          <p class="text-[var(--color-primary)] font-medium">– Sean Tucker</p>
+          <p
+            class="text-[var(--color-primary)] font-medium text-sm sm:text-base"
+          >
+            – Sean Tucker
+          </p>
         </div>
       </Motion>
 
       <!-- Testimonial 3 -->
       <Motion>
-        <div class="bg-[var(--color-secondary)] p-8 rounded-[24px] shadow-md">
-          <p class="text-gray-700 mb-4 text-lg">
+        <div
+          class="bg-[var(--color-secondary)] p-4 sm:p-6 md:p-8 rounded-[16px] sm:rounded-[24px] shadow-md"
+        >
+          <p
+            class="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed"
+          >
             Samaya is an incredible healer who guided me through recovery from
             multiple injuries. Her holistic care, including nutrition and herbs,
             supports my long-term health.
           </p>
-          <p class="text-[var(--color-primary)] font-medium">– Sara R.</p>
+          <p
+            class="text-[var(--color-primary)] font-medium text-sm sm:text-base"
+          >
+            – Sara R.
+          </p>
         </div>
       </Motion>
 
       <!-- Testimonial 4 -->
       <Motion>
-        <div class="bg-[var(--color-secondary)] p-8 rounded-[24px] shadow-md">
-          <p class="text-gray-700 mb-4 text-lg">
+        <div
+          class="bg-[var(--color-secondary)] p-4 sm:p-6 md:p-8 rounded-[16px] sm:rounded-[24px] shadow-md"
+        >
+          <p
+            class="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base md:text-lg leading-relaxed"
+          >
             Samaya is truly phenomenal. She's supported me through fertility,
             pregnancy, recovery, and motherhood with gentle care, herbal
             remedies, and laughter. She's a gift!
           </p>
-          <p class="text-[var(--color-primary)] font-medium">– E.S.</p>
+          <p
+            class="text-[var(--color-primary)] font-medium text-sm sm:text-base"
+          >
+            – E.S.
+          </p>
         </div>
       </Motion>
     </div>
@@ -419,20 +481,26 @@ import Motion from "../components/Motion.astro";
     <hr class="border-gray-300 max-w-4xl mx-auto" />
   </div>
   <!-- THREE CARDS SECTION -->
-  <section class="max-w-screen-xl mx-auto px-4 xl:px-0 mt-8 mb-16">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <section
+    class="max-w-screen-xl mx-auto px-4 xl:px-0 mt-6 sm:mt-8 mb-12 sm:mb-16"
+  >
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
       <!-- Card 1 -->
       <Motion>
         <div class="relative">
           <button
             id="booking-modal-trigger"
-            class="w-full rounded-[24px] shadow-md p-8 flex flex-col text-center bg-[var(--color-card-bg)] hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer border-0"
+            class="w-full rounded-[16px] sm:rounded-[24px] shadow-md p-4 sm:p-6 md:p-8 flex flex-col text-center bg-[var(--color-card-bg)] hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer border-0"
             aria-label="Open booking appointment modal"
           >
-            <div class="flex justify-center rounded-xl mb-6">
-              <AcuIcon class="w-20 h-20 text-[var(--color-primary)]" />
+            <div class="flex justify-center rounded-xl mb-4 sm:mb-6">
+              <AcuIcon
+                class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-[var(--color-primary)]"
+              />
             </div>
-            <h3 class="text-xl font-semibold mb-2">Book an Appointment</h3>
+            <h3 class="text-lg sm:text-xl font-semibold mb-2">
+              Book an Appointment
+            </h3>
           </button>
           <!-- Booking Modal -->
           <BookingModal id="booking-modal" />
@@ -442,26 +510,32 @@ import Motion from "../components/Motion.astro";
       <Motion>
         <a
           href="/shop"
-          class="block rounded-[24px] shadow-md p-8 flex flex-col text-center bg-[var(--color-card-bg)] hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+          class="block rounded-[16px] sm:rounded-[24px] shadow-md p-4 sm:p-6 md:p-8 flex flex-col text-center bg-[var(--color-card-bg)] hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer"
           aria-label="Visit the Shop"
         >
-          <div class="flex justify-center rounded-xl mb-6">
-            <HerbsIcon class="w-20 h-20 text-[var(--color-primary)]" />
+          <div class="flex justify-center rounded-xl mb-4 sm:mb-6">
+            <HerbsIcon
+              class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-[var(--color-primary)]"
+            />
           </div>
-          <h3 class="text-xl font-semibold mb-2">Shop Our Products</h3>
+          <h3 class="text-lg sm:text-xl font-semibold mb-2">
+            Shop Our Products
+          </h3>
         </a>
       </Motion>
       <!-- Card 3 -->
       <Motion>
         <a
           href="/blog"
-          class="block rounded-[24px] shadow-md p-8 flex flex-col text-center bg-[var(--color-card-bg)] hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+          class="block rounded-[16px] sm:rounded-[24px] shadow-md p-4 sm:p-6 md:p-8 flex flex-col text-center bg-[var(--color-card-bg)] hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer"
           aria-label="Visit Health Education Blog"
         >
-          <div class="flex justify-center rounded-xl mb-6">
-            <WellnessIcon class="w-20 h-20 text-[var(--color-primary)]" />
+          <div class="flex justify-center rounded-xl mb-4 sm:mb-6">
+            <WellnessIcon
+              class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-[var(--color-primary)]"
+            />
           </div>
-          <h3 class="text-xl font-semibold mb-2">Learn</h3>
+          <h3 class="text-lg sm:text-xl font-semibold mb-2">Learn</h3>
         </a>
       </Motion>
     </div>
