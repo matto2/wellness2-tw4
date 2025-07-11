@@ -21,7 +21,12 @@ const { videoSrc, overlayOpacity = 30 } = Astro.props;
     >
       <source src={videoSrc} type="video/mp4" />
     </video>
-    <!-- overlays/gradients if any -->
+    <!-- Dark overlay -->
+    <div
+      class="absolute inset-0"
+      style={`background-color: #006192; opacity: ${overlayOpacity / 100};`}
+    >
+    </div>
   </div>
   <!-- Content -->
   <div

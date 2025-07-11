@@ -3,13 +3,43 @@ import Layout from "../layouts/Layout.astro";
 import ProductCard from "../components/ProductCard.astro";
 import { getCollection } from "astro:content";
 
+// Import product images
+import ocudyneImage from "../assets/shop/OcuDyne.png";
+import babyMeImage from "../assets/shop/baby-me.webp";
+import postnatalImage from "../assets/shop/postnatal.webp";
+import boneBuilderImage from "../assets/shop/BoneBuilder.png";
+import bloodSugarImage from "../assets/shop/bloodSugar.webp";
+import coQImage from "../assets/shop/coQ.png";
+import hawthornImage from "../assets/shop/hawthorn.png";
+import passionFlowerImage from "../assets/shop/passionFlower.png";
+import calmImage from "../assets/shop/calm.png";
+import corticoImage from "../assets/shop/cortico.png";
+import blendImage from "../assets/shop/blend.webp";
+
 const headline = "Wellness Shop";
 const products = await getCollection("products");
 
-const imageMap: Record<string, string> = {
-  "/assets/thorne.png": "/thorne.png",
-  "/assets/mag.png": "/mag.png",
+// Map product IDs to their imported images
+const imageMap: Record<string, any> = {
+  "ocudyne-ii-eye-vitamin.md": ocudyneImage,
+  "baby-me-prenatal.md": babyMeImage,
+  "baby-me-postnatal.md": postnatalImage,
+  "bone-builder-plus.md": boneBuilderImage,
+  "promega-blood-sugar.md": bloodSugarImage,
+  "promega-coq10.md": coQImage,
+  "hawthorn-solid-extract.md": hawthornImage,
+  "passionflower-glycerite.md": passionFlowerImage,
+  "calm-gummies.md": calmImage,
+  "cortico-b5b6.md": corticoImage,
+  "celestial-emperors-blend.md": blendImage,
 };
+
+// Debug: Log the products and their IDs
+console.log(
+  "Products:",
+  products.map((p) => ({ id: p.id, title: p.data.title }))
+);
+console.log("Image map keys:", Object.keys(imageMap));
 ---
 
 <Layout title="Wellness Shop | Wellness Medical Center">
@@ -27,16 +57,25 @@ const imageMap: Record<string, string> = {
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
       {
-        products.map((product) => (
-          <ProductCard
-            title={product.data.title}
-            brand={product.data.brand}
-            quantity={product.data.quantity}
-            price={product.data.price}
-            salePrice={product.data.salePrice}
-            image={imageMap[product.data.image] || "/fallback.png"}
-          />
-        ))
+        products.map((product) => {
+          const image = imageMap[product.id];
+          console.log(`Product ${product.id}:`, {
+            title: product.data.title,
+            hasImage: !!image,
+          });
+          return (
+            <ProductCard
+              title={product.data.title}
+              brand={product.data.brand}
+              quantity={product.data.quantity}
+              price={product.data.price}
+              salePrice={product.data.salePrice}
+              image={image || ocudyneImage}
+              shopUrl={product.data.shopUrl}
+              description={product.data.description}
+            />
+          );
+        })
       }
     </div>
   </section>
