@@ -6,17 +6,15 @@ interface Props {
 const { id } = Astro.props;
 ---
 
-<!-- Popup Container -->
-<div
-  id={`${id}-popup`}
-  class="absolute z-50 hidden bottom-full left-1/2 transform -translate-x-1/2 mb-3"
->
+<!-- IMPORTANT: The parent of this component should have 'relative' class for correct overlay positioning -->
+<div id={`${id}-popup`} class="absolute inset-0 z-50 hidden">
   <!-- Popup Content -->
   <div
-    class="bg-white rounded-[16px] shadow-lg border border-gray-200 min-w-[280px] max-w-[320px]"
+    class="bg-white rounded-[16px] shadow-lg border border-gray-200 min-w-[280px] max-w-[320px] mx-auto my-auto"
     role="dialog"
     aria-modal="true"
     aria-labelledby={`${id}-title`}
+    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
   >
     <!-- Popup Header -->
     <div class="flex items-center justify-between p-4 border-b border-gray-100">
