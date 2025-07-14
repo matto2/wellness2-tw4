@@ -24,36 +24,21 @@ import clinic7 from "../assets/clinic/3779151781.jpg";
 import clinic8 from "../assets/clinic/3779151591.jpg";
 import clinic9 from "../assets/clinic/3779942412.jpg";
 import clinic10 from "../assets/clinic/3779011254.jpg";
-// import clinic11 from "../assets/clinic/3779977271.jpg";
+import clinic11 from "../assets/clinic/3779977271.jpg";
 import backofficeImage from "../assets/clinic/backoffice.jpg";
 
+// Remove the original slideshowImages array and keep only the reorderedSlideshowImages array, renaming it to slideshowImages
 const slideshowImages = [
   { src: clinic1, alt: "Wellness Medical Center interior" },
-  { src: clinic2, alt: "Wellness Medical Center treatment room" },
-  { src: clinic3, alt: "Wellness Medical Center waiting area" },
-  // { src: clinic4, alt: "Wellness Medical Center herbs" },
-  { src: clinic5, alt: "Wellness Medical Center treatment space" },
-  // { src: clinic6, alt: "Wellness Medical Center consultation room" },
-  { src: clinic7, alt: "Wellness Medical Center lobby" },
-  { src: clinic8, alt: "Wellness Medical Center entrance" },
-  { src: clinic9, alt: "Wellness Medical Center herbs display" },
-  { src: clinic10, alt: "Wellness Medical Center herbs collection" },
-  // { src: clinic11, alt: "Acupuncture treatment at Wellness Medical Center" },
-];
-
-// Reordered slideshow images with better distribution
-const reorderedSlideshowImages = [
-  { src: clinic1, alt: "Wellness Medical Center interior" },
   // { src: clinic4, alt: "Wellness Medical Center herbs" },
   { src: clinic7, alt: "Wellness Medical Center lobby" },
   { src: clinic2, alt: "Wellness Medical Center treatment room" },
   { src: clinic9, alt: "Wellness Medical Center herbs display" },
   { src: clinic3, alt: "Wellness Medical Center waiting area" },
   { src: clinic10, alt: "Wellness Medical Center herbs collection" },
-  { src: clinic5, alt: "Wellness Medical Center treatment space" },
+  { src: clinic11, alt: "Wellness Medical Center additional view" },
   { src: clinic8, alt: "Wellness Medical Center entrance" },
   // { src: clinic6, alt: "Wellness Medical Center consultation room" },
-  // { src: clinic11, alt: "Acupuncture treatment at Wellness Medical Center" },
   { src: backofficeImage, alt: "Wellness Medical Center back office" }, // new image at end
 ];
 // Supports weights 100-900
@@ -119,7 +104,7 @@ import Motion from "../components/Motion.astro";
                   src: maria1Image,
                   alt: "Maria providing acupuncture treatment",
                 },
-                ...reorderedSlideshowImages,
+                ...slideshowImages,
               ]}
             />
           </div>
@@ -490,15 +475,17 @@ import Motion from "../components/Motion.astro";
         <div class="relative">
           <button
             id="booking-modal-trigger"
-            class="w-full rounded-[16px] sm:rounded-[24px] shadow-md p-4 sm:p-6 md:p-8 flex flex-col text-center bg-[var(--color-card-bg)] hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer border-0"
+            class="w-full rounded-[16px] sm:rounded-[24px] shadow-md p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center text-center bg-[var(--color-card-bg)] hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer border-0"
             aria-label="Open booking appointment modal"
           >
-            <div class="flex justify-center rounded-xl mb-4 sm:mb-6">
+            <div
+              class="flex justify-center items-center rounded-xl mb-4 sm:mb-6"
+            >
               <AcuIcon
                 class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-[var(--color-primary)]"
               />
             </div>
-            <h3 class="text-lg sm:text-xl font-semibold mb-2">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2 text-center">
               Book an Appointment
             </h3>
           </button>

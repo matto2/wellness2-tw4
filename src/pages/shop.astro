@@ -17,7 +17,30 @@ import corticoImage from "../assets/shop/cortico.png";
 import blendImage from "../assets/shop/blend.webp";
 
 const headline = "Wellness Shop";
-const products = await getCollection("products");
+const productsRaw = await getCollection("products");
+
+// Manually order products by group: vitamins/multis, bone, heart/blood sugar, stress/relaxation
+const productOrder = [
+  // Vitamin/Multi & Related
+  "ocudyne-ii-eye-vitamin.md",
+  "baby-me-prenatal.md",
+  "baby-me-postnatal.md",
+  "cortico-b5b6.md",
+  // Bone Health
+  "bone-builder-plus.md",
+  // Heart & Blood Sugar
+  "promega-coq10.md",
+  "hawthorn-solid-extract.md",
+  "promega-blood-sugar.md",
+  // Stress, Relaxation, Nervous System
+  "calm-gummies.md",
+  "passionflower-glycerite.md",
+  "celestial-emperors-blend.md",
+];
+
+const products = productOrder
+  .filter((id) => productsRaw.some((p) => p && p.id === id))
+  .map((id) => productsRaw.find((p) => p && p.id === id)!);
 
 // Map product IDs to their imported images
 const imageMap: Record<string, any> = {
@@ -43,7 +66,7 @@ console.log("Image map keys:", Object.keys(imageMap));
 ---
 
 <Layout title="Wellness Shop | Wellness Medical Center">
-  <section class="max-w-screen-xl mx-auto px-4 mt-24 xl:px-0">
+  <section class="max-w-6xl mx-auto px-4 mt-24 xl:px-0">
     <div class="md:flex md:items-center md:gap-8">
       <div class="md:w-3/5">
         <h2 class="text-4xl text-[var(--color-primary)] font-medium mb-4 mt-8">
@@ -55,14 +78,11 @@ console.log("Image map keys:", Object.keys(imageMap));
       </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+    <div class="flex flex-col gap-12 w-full">
       {
         products.map((product) => {
+          if (!product) return null;
           const image = imageMap[product.id];
-          console.log(`Product ${product.id}:`, {
-            title: product.data.title,
-            hasImage: !!image,
-          });
           return (
             <ProductCard
               title={product.data.title}

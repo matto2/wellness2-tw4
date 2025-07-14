@@ -6,10 +6,8 @@ interface Props {
 const { videoSrc, overlayOpacity = 30 } = Astro.props;
 ---
 
-<section
-  class="relative w-full h-screen min-h-[600px] py-12 md:py-24 bg-[#004080]"
->
-  <!-- Video Background and overlays here -->
+<section class="relative w-full h-screen min-h-[600px] py-12 md:py-24">
+  <!-- Video Background only -->
   <div class="absolute inset-0 w-full h-full overflow-hidden">
     <video
       class="absolute min-w-full min-h-full object-cover"
@@ -21,12 +19,6 @@ const { videoSrc, overlayOpacity = 30 } = Astro.props;
     >
       <source src={videoSrc} type="video/mp4" />
     </video>
-    <!-- Dark overlay -->
-    <div
-      class="absolute inset-0"
-      style={`background-color: #006192; opacity: ${overlayOpacity / 100};`}
-    >
-    </div>
   </div>
   <!-- Content -->
   <div

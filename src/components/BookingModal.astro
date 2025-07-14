@@ -45,26 +45,22 @@ const { id } = Astro.props;
 
     <!-- Popup Body -->
     <div class="p-4">
-      <div class="space-y-3">
-        <!-- Maria's Booking Link -->
-        <a
-          href="https://www.mariamitchelllac.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block w-full p-3 bg-[var(--color-primary)] text-white rounded-[12px] hover:bg-[var(--color-primary-dark)] transition-colors text-center font-medium text-sm"
-        >
-          Book with Maria
-        </a>
+      <div class="space-y-4">
+        <!-- Booking Headline -->
+        <h4 class="text-base font-medium text-gray-900 text-center">
+          Book with Maria or Samaya
+        </h4>
 
-        <!-- Samaya's Booking Link -->
-        <a
-          href="https://www.samayacullerton.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block w-full p-3 bg-[var(--color-primary)] text-white rounded-[12px] hover:bg-[var(--color-primary-dark)] transition-colors text-center font-medium text-sm"
-        >
-          Book with Samaya
-        </a>
+        <!-- Jane App Booking iframe -->
+        <div class="flex justify-center">
+          <iframe
+            frameborder="0"
+            height="28"
+            scrolling="no"
+            src="https://wmc.janeapp.com/embed/book_online"
+            width="177"
+            title="Book appointment with Maria or Samaya"></iframe>
+        </div>
       </div>
     </div>
   </div>
