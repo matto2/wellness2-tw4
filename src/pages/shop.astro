@@ -126,9 +126,6 @@ const getProductsByCategory = (categoryProductIds: string[]) => {
           </svg>
         </div>
       </div>
-
-      <!-- Pagefind Search Results -->
-      <div id="pagefind-results" class="mt-6 max-w-4xl"></div>
     </div>
 
     <div class="flex flex-col gap-16 w-full">
@@ -179,107 +176,51 @@ const getProductsByCategory = (categoryProductIds: string[]) => {
         "shop-search"
       ) as HTMLInputElement;
       const categorySections = document.querySelectorAll(".category-section");
-      const resultsContainer = document.getElementById("pagefind-results");
 
-      if (!searchInput || !resultsContainer) return;
+      if (!searchInput) return;
 
-      // Check if Pagefind is available (production build)
-      if (typeof (window as any).PagefindUI !== "undefined") {
-        // Initialize Pagefind for production
-        const pagefind = new (window as any).PagefindUI({
-          element: "#pagefind-results",
-          showImages: false,
-          translations: {
-            placeholder: "Search products, brands, or categories...",
-            clear_search: "Clear",
-            load_more: "Load more results",
-            search_result: "Search result",
-            search_results: "Search results",
-            search_results_for: "Search results for",
-            search_result_for: "Search result for",
-            search_result_count: "{{count}} result",
-            search_result_count_plural: "{{count}} results",
-            search_result_count_for: "{{count}} result for",
-            search_result_count_for_plural: "{{count}} results for",
-          },
-          processResult: (result: any) => {
-            return {
-              ...result,
-              meta: {
-                ...result.meta,
-                title: result.meta.title || "Product",
-              },
-            };
-          },
-        });
+      searchInput.addEventListener("input", function (e) {
+        const target = e.target as HTMLInputElement;
+        const searchTerm = target.value.toLowerCase().trim();
 
-        // Handle search input for production
-        searchInput.addEventListener("input", function (e) {
-          const target = e.target as HTMLInputElement;
-          const searchTerm = target.value.toLowerCase().trim();
+        categorySections.forEach((section) => {
+          const products = section.querySelectorAll(".product-card");
+          let hasVisibleProducts = false;
 
-          if (searchTerm === "") {
-            categorySections.forEach((section) => {
-              (section as HTMLElement).style.display = "block";
-              const products = section.querySelectorAll(".product-card");
-              products.forEach((product) => {
-                (product as HTMLElement).style.display = "block";
-              });
-            });
-            resultsContainer.style.display = "none";
-          } else {
-            categorySections.forEach((section) => {
-              (section as HTMLElement).style.display = "none";
-            });
-            resultsContainer.style.display = "block";
-          }
-        });
-      } else {
-        // Fallback search for development mode
-        searchInput.addEventListener("input", function (e) {
-          const target = e.target as HTMLInputElement;
-          const searchTerm = target.value.toLowerCase().trim();
+          products.forEach((product) => {
+            const title =
+              product.querySelector("h3")?.textContent?.toLowerCase() || "";
+            const brand =
+              product
+                .querySelector(".font-medium")
+                ?.textContent?.toLowerCase() || "";
+            const description =
+              product.querySelector("p")?.textContent?.toLowerCase() || "";
+            const categoryName =
+              section.querySelector("h3")?.textContent?.toLowerCase() || "";
 
-          categorySections.forEach((section) => {
-            const products = section.querySelectorAll(".product-card");
-            let hasVisibleProducts = false;
+            const isMatch =
+              title.includes(searchTerm) ||
+              brand.includes(searchTerm) ||
+              description.includes(searchTerm) ||
+              categoryName.includes(searchTerm);
 
-            products.forEach((product) => {
-              const title =
-                product.querySelector("h3")?.textContent?.toLowerCase() || "";
-              const brand =
-                product
-                  .querySelector(".font-medium")
-                  ?.textContent?.toLowerCase() || "";
-              const description =
-                product.querySelector("p")?.textContent?.toLowerCase() || "";
-              const categoryName =
-                section.querySelector("h3")?.textContent?.toLowerCase() || "";
-
-              const isMatch =
-                title.includes(searchTerm) ||
-                brand.includes(searchTerm) ||
-                description.includes(searchTerm) ||
-                categoryName.includes(searchTerm);
-
-              if (isMatch || searchTerm === "") {
-                (product as HTMLElement).style.display = "block";
-                hasVisibleProducts = true;
-              } else {
-                (product as HTMLElement).style.display = "none";
-              }
-            });
-
-            if (hasVisibleProducts || searchTerm === "") {
-              (section as HTMLElement).style.display = "block";
+            if (isMatch || searchTerm === "") {
+              (product as HTMLElement).style.display = "block";
+              hasVisibleProducts = true;
             } else {
-              (section as HTMLElement).style.display = "none";
+              (product as HTMLElement).style.display = "none";
             }
           });
 
-          resultsContainer.style.display = "none";
+          // Show/hide category section based on whether it has visible products
+          if (hasVisibleProducts || searchTerm === "") {
+            (section as HTMLElement).style.display = "block";
+          } else {
+            (section as HTMLElement).style.display = "none";
+          }
         });
-      }
+      });
 
       // Clear search functionality
       searchInput.addEventListener("keydown", function (e) {
