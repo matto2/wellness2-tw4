@@ -102,18 +102,39 @@ const getProductsByCategory = (categoryProductIds: string[]) => {
 
     <!-- Search Bar -->
     <div class="mb-8">
-      <div class="relative max-w-md">
-        <input
-          type="text"
-          id="shop-search"
-          placeholder="Search products, brands, or categories..."
-          class="w-full px-4 py-3 pl-10 pr-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-200"
-        />
-        <div
-          class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+      <div class="flex flex-col sm:flex-row sm:items-end gap-3">
+        <div class="relative max-w-md">
+          <input
+            type="text"
+            id="shop-search"
+            placeholder="Search products, brands, or categories..."
+            class="w-full px-4 py-3 pl-10 pr-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-200"
+          />
+          <div
+            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+          >
+            <svg
+              class="h-5 w-5 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Clear Button -->
+        <button
+          id="clear-search"
+          class="hidden flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-gray-800 transition-colors duration-200"
         >
           <svg
-            class="h-5 w-5 text-gray-400"
+            class="h-4 w-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -122,9 +143,10 @@ const getProductsByCategory = (categoryProductIds: string[]) => {
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              d="M6 18L18 6M6 6l12 12"></path>
           </svg>
-        </div>
+          Clear
+        </button>
       </div>
     </div>
 
@@ -175,13 +197,35 @@ const getProductsByCategory = (categoryProductIds: string[]) => {
       const searchInput = document.getElementById(
         "shop-search"
       ) as HTMLInputElement;
+      const clearButton = document.getElementById(
+        "clear-search"
+      ) as HTMLButtonElement;
       const categorySections = document.querySelectorAll(".category-section");
 
-      if (!searchInput) return;
+      if (!searchInput || !clearButton) return;
+
+      // Function to update clear button visibility
+      function updateClearButton() {
+        if (searchInput.value.trim() !== "") {
+          clearButton.classList.remove("hidden");
+        } else {
+          clearButton.classList.add("hidden");
+        }
+      }
+
+      // Function to clear search
+      function clearSearch() {
+        searchInput.value = "";
+        searchInput.dispatchEvent(new Event("input"));
+        updateClearButton();
+      }
 
       searchInput.addEventListener("input", function (e) {
         const target = e.target as HTMLInputElement;
         const searchTerm = target.value.toLowerCase().trim();
+
+        // Update clear button visibility
+        updateClearButton();
 
         categorySections.forEach((section) => {
           const products = section.querySelectorAll(".product-card");
@@ -222,11 +266,13 @@ const getProductsByCategory = (categoryProductIds: string[]) => {
         });
       });
 
-      // Clear search functionality
+      // Clear button click handler
+      clearButton.addEventListener("click", clearSearch);
+
+      // Clear search functionality with Escape key
       searchInput.addEventListener("keydown", function (e) {
         if (e.key === "Escape") {
-          searchInput.value = "";
-          searchInput.dispatchEvent(new Event("input"));
+          clearSearch();
         }
       });
     });
