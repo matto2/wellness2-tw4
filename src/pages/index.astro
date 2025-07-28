@@ -13,6 +13,7 @@ import welcomeImage from "../assets/3779245098.jpg";
 import maria1Image from "../assets/maria1.jpg";
 import mariaImage from "../assets/maria.jpg";
 import samayaImage from "../assets/samaya.jpg";
+import moxaStaticImage from "../assets/moxa-static.jpg";
 
 // Import all slideshow images
 import clinic1 from "../assets/clinic/3780071716.jpg";
@@ -244,14 +245,20 @@ import Motion from "../components/Motion.astro";
             class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-700 leading-relaxed"
           >
             <a
-              href="https://www.mariamitchelllac.com/"
+              href="https://mariamitchelllac.com/"
               target="_blank"
               rel="noopener noreferrer"
               class="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-semibold"
             >
-              To learn more about Maria and book an appointment, visit her
-              personal site.
-            </a>
+              Visit Maria's personal site
+            </a> |
+            <a
+              href="https://wmc.janeapp.com/#/staff_member/2"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-semibold"
+              >Book an appointment</a
+            >
           </p>
         </div>
       </div>
@@ -265,7 +272,7 @@ import Motion from "../components/Motion.astro";
       >
         <!-- Avatar -->
         <a
-          href="https://www.samayacullerton.com/"
+          href="https://samayacullerton.com/"
           target="_blank"
           rel="noopener noreferrer"
           class="block transition-transform duration-300 hover:scale-105"
@@ -314,14 +321,20 @@ import Motion from "../components/Motion.astro";
             class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-700 leading-relaxed"
           >
             <a
-              href="https://www.samayacullerton.com/"
+              href="https://samayacullerton.com/"
               target="_blank"
               rel="noopener noreferrer"
               class="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-semibold"
             >
-              To learn more about Samaya and book an appointment, visit her
-              personal site.
-            </a>
+              Visit Samaya's personal site
+            </a> |
+            <a
+              href="https://wmc.janeapp.com/#/staff_member/1"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-semibold"
+              >Book an appointment</a
+            >
           </p>
         </div>
       </div>
@@ -460,6 +473,109 @@ import Motion from "../components/Motion.astro";
           <h3 class="text-lg sm:text-xl font-semibold mb-2">Learn</h3>
         </a>
       </Motion>
+    </div>
+  </section>
+
+  <!-- FEATURED HEALTH ARTICLE SECTION -->
+  <section class="max-w-screen-xl mx-auto px-4 xl:px-0 py-8 sm:py-12 md:py-16">
+    <div class="text-center mb-8 sm:mb-12">
+      <h2
+        class="text-2xl sm:text-3xl md:text-4xl text-[var(--color-primary)] font-medium mb-4"
+      >
+        Featured Health Article
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Discover insights from our practitioners on traditional Chinese medicine
+        and holistic wellness
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+      <article
+        class="bg-white rounded-[16px] sm:rounded-[24px] shadow-lg overflow-hidden"
+      >
+        <div class="md:flex">
+          <div class="md:w-1/3">
+            <Image
+              src={moxaStaticImage}
+              alt="Moxa treatment"
+              class="w-full h-48 md:h-full object-cover"
+              width={400}
+              height={300}
+              quality={80}
+            />
+          </div>
+          <div class="md:w-2/3 p-6 sm:p-8">
+            <div class="flex items-center gap-4 mb-4">
+              <span class="text-sm text-gray-500">March 20, 2024</span>
+              <span class="text-sm text-gray-500">•</span>
+              <span class="text-sm text-gray-500">5 min read</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-3">
+              Moxa Boxes: Traditional Chinese Medicine for Digestive Health
+            </h3>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Learn about the traditional Chinese medicine practice of
+              moxibustion and how moxa boxes are used in treatment to support
+              digestive function and overall wellness.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-10 h-10 bg-[var(--color-primary)] rounded-full flex items-center justify-center"
+                >
+                  <span class="text-white font-semibold text-sm">MM</span>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-gray-900">
+                    Maria Mitchell, DTCM, L.Ac.
+                  </p>
+                  <p class="text-xs text-gray-500">Acupuncturist & Herbalist</p>
+                </div>
+              </div>
+              <a
+                href="/blog/acupuncture-digestive-function"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-primary)] text-white rounded-full hover:bg-[var(--color-primary-dark)] transition-colors text-sm font-medium"
+              >
+                Read Article
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div class="text-center mt-8">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-medium transition-colors"
+        >
+          See all articles
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 </Layout>
