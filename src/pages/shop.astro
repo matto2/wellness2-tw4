@@ -19,29 +19,6 @@ import blendImage from "../assets/shop/blend.webp";
 const headline = "Wellness Shop";
 const productsRaw = await getCollection("products");
 
-// Manually order products by group: vitamins/multis, bone, heart/blood sugar, stress/relaxation
-const productOrder = [
-  // Vitamin/Multi & Related
-  "ocudyne-ii-eye-vitamin.md",
-  "baby-me-prenatal.md",
-  "baby-me-postnatal.md",
-  "cortico-b5b6.md",
-  // Bone Health
-  "bone-builder-plus.md",
-  // Heart & Blood Sugar
-  "promega-coq10.md",
-  "hawthorn-solid-extract.md",
-  "promega-blood-sugar.md",
-  // Stress, Relaxation, Nervous System
-  "calm-gummies.md",
-  "passionflower-glycerite.md",
-  "celestial-emperors-blend.md",
-];
-
-const products = productOrder
-  .filter((id) => productsRaw.some((p) => p && p.id === id))
-  .map((id) => productsRaw.find((p) => p && p.id === id)!);
-
 // Map product IDs to their imported images
 const imageMap: Record<string, any> = {
   "ocudyne-ii-eye-vitamin.md": ocudyneImage,
@@ -57,12 +34,57 @@ const imageMap: Record<string, any> = {
   "celestial-emperors-blend.md": blendImage,
 };
 
-// Debug: Log the products and their IDs
-console.log(
-  "Products:",
-  products.map((p) => ({ id: p.id, title: p.data.title }))
-);
-console.log("Image map keys:", Object.keys(imageMap));
+// Define product categories
+const categories = [
+  {
+    name: "Pregnancy & Postpartum",
+    description: "Essential nutrition for moms and developing babies",
+    products: ["baby-me-prenatal.md", "baby-me-postnatal.md"],
+  },
+  {
+    name: "Heart & Blood Sugar Health",
+    description: "Support for cardiovascular health and blood sugar regulation",
+    products: [
+      "promega-coq10.md",
+      "hawthorn-solid-extract.md",
+      "promega-blood-sugar.md",
+    ],
+  },
+  {
+    name: "Stress, Sleep & Nervous System",
+    description:
+      "Natural support for relaxation, sleep, and nervous system balance",
+    products: [
+      "calm-gummies.md",
+      "passionflower-glycerite.md",
+      "celestial-emperors-blend.md",
+    ],
+  },
+  {
+    name: "Bone & Joint Health",
+    description: "Comprehensive support for bone strength and density",
+    products: ["bone-builder-plus.md"],
+  },
+  {
+    name: "Eye Health",
+    description: "Advanced nutritional support for optimal vision",
+    products: ["ocudyne-ii-eye-vitamin.md"],
+  },
+  {
+    name: "Adrenal & Energy Support",
+    description:
+      "Essential B vitamins for adrenal health and energy metabolism",
+    products: ["cortico-b5b6.md"],
+  },
+];
+
+// Get products organized by category
+const getProductsByCategory = (categoryProductIds: string[]) => {
+  return categoryProductIds
+    .filter((id) => productsRaw.some((p) => p && p.id === id))
+    .map((id) => productsRaw.find((p) => p && p.id === id)!)
+    .filter(Boolean);
+};
 ---
 
 <Layout title="Wellness Shop | Wellness Medical Center">
@@ -72,31 +94,200 @@ console.log("Image map keys:", Object.keys(imageMap));
         <h2 class="text-4xl text-[var(--color-primary)] font-medium mb-4 mt-8">
           {headline}
         </h2>
-        <p class="text-2xl mb-12">
+        <p class="text-2xl mb-8">
           Discover our curated selection of wellness products.
         </p>
       </div>
     </div>
 
-    <div class="flex flex-col gap-12 w-full">
+    <!-- Search Bar -->
+    <div class="mb-8">
+      <div class="relative max-w-md">
+        <input
+          type="text"
+          id="shop-search"
+          placeholder="Search products, brands, or categories..."
+          class="w-full px-4 py-3 pl-10 pr-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none transition-all duration-200"
+        />
+        <div
+          class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+        >
+          <svg
+            class="h-5 w-5 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Pagefind Search Results -->
+      <div id="pagefind-results" class="mt-6 max-w-4xl"></div>
+    </div>
+
+    <div class="flex flex-col gap-16 w-full">
       {
-        products.map((product) => {
-          if (!product) return null;
-          const image = imageMap[product.id];
+        categories.map((category) => {
+          const categoryProducts = getProductsByCategory(category.products);
+          if (categoryProducts.length === 0) return null;
+
           return (
-            <ProductCard
-              title={product.data.title}
-              brand={product.data.brand}
-              quantity={product.data.quantity}
-              price={product.data.price}
-              salePrice={product.data.salePrice}
-              image={image || ocudyneImage}
-              shopUrl={product.data.shopUrl}
-              description={product.data.description}
-            />
+            <div class="category-section">
+              <div class="mb-8">
+                <h3 class="text-2xl font-semibold text-[var(--color-primary)] mb-2">
+                  {category.name}
+                </h3>
+                <p class="text-gray-600 text-lg">{category.description}</p>
+              </div>
+
+              <div class="flex flex-col gap-8">
+                {categoryProducts.map((product) => {
+                  if (!product) return null;
+                  const image = imageMap[product.id];
+                  return (
+                    <ProductCard
+                      title={product.data.title}
+                      brand={product.data.brand}
+                      quantity={product.data.quantity}
+                      price={product.data.price || 0}
+                      salePrice={
+                        product.data.salePrice || product.data.price || 0
+                      }
+                      image={image || ocudyneImage}
+                      shopUrl={product.data.shopUrl}
+                      description={product.data.description}
+                    />
+                  );
+                })}
+              </div>
+            </div>
           );
         })
       }
     </div>
   </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const searchInput = document.getElementById(
+        "shop-search"
+      ) as HTMLInputElement;
+      const categorySections = document.querySelectorAll(".category-section");
+      const resultsContainer = document.getElementById("pagefind-results");
+
+      if (!searchInput || !resultsContainer) return;
+
+      // Check if Pagefind is available (production build)
+      if (typeof (window as any).PagefindUI !== "undefined") {
+        // Initialize Pagefind for production
+        const pagefind = new (window as any).PagefindUI({
+          element: "#pagefind-results",
+          showImages: false,
+          translations: {
+            placeholder: "Search products, brands, or categories...",
+            clear_search: "Clear",
+            load_more: "Load more results",
+            search_result: "Search result",
+            search_results: "Search results",
+            search_results_for: "Search results for",
+            search_result_for: "Search result for",
+            search_result_count: "{{count}} result",
+            search_result_count_plural: "{{count}} results",
+            search_result_count_for: "{{count}} result for",
+            search_result_count_for_plural: "{{count}} results for",
+          },
+          processResult: (result: any) => {
+            return {
+              ...result,
+              meta: {
+                ...result.meta,
+                title: result.meta.title || "Product",
+              },
+            };
+          },
+        });
+
+        // Handle search input for production
+        searchInput.addEventListener("input", function (e) {
+          const target = e.target as HTMLInputElement;
+          const searchTerm = target.value.toLowerCase().trim();
+
+          if (searchTerm === "") {
+            categorySections.forEach((section) => {
+              (section as HTMLElement).style.display = "block";
+              const products = section.querySelectorAll(".product-card");
+              products.forEach((product) => {
+                (product as HTMLElement).style.display = "block";
+              });
+            });
+            resultsContainer.style.display = "none";
+          } else {
+            categorySections.forEach((section) => {
+              (section as HTMLElement).style.display = "none";
+            });
+            resultsContainer.style.display = "block";
+          }
+        });
+      } else {
+        // Fallback search for development mode
+        searchInput.addEventListener("input", function (e) {
+          const target = e.target as HTMLInputElement;
+          const searchTerm = target.value.toLowerCase().trim();
+
+          categorySections.forEach((section) => {
+            const products = section.querySelectorAll(".product-card");
+            let hasVisibleProducts = false;
+
+            products.forEach((product) => {
+              const title =
+                product.querySelector("h3")?.textContent?.toLowerCase() || "";
+              const brand =
+                product
+                  .querySelector(".font-medium")
+                  ?.textContent?.toLowerCase() || "";
+              const description =
+                product.querySelector("p")?.textContent?.toLowerCase() || "";
+              const categoryName =
+                section.querySelector("h3")?.textContent?.toLowerCase() || "";
+
+              const isMatch =
+                title.includes(searchTerm) ||
+                brand.includes(searchTerm) ||
+                description.includes(searchTerm) ||
+                categoryName.includes(searchTerm);
+
+              if (isMatch || searchTerm === "") {
+                (product as HTMLElement).style.display = "block";
+                hasVisibleProducts = true;
+              } else {
+                (product as HTMLElement).style.display = "none";
+              }
+            });
+
+            if (hasVisibleProducts || searchTerm === "") {
+              (section as HTMLElement).style.display = "block";
+            } else {
+              (section as HTMLElement).style.display = "none";
+            }
+          });
+
+          resultsContainer.style.display = "none";
+        });
+      }
+
+      // Clear search functionality
+      searchInput.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          searchInput.value = "";
+          searchInput.dispatchEvent(new Event("input"));
+        }
+      });
+    });
+  </script>
 </Layout>

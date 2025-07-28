@@ -1,0 +1,12 @@
+# Pagefind configuration for wellness shop
+site: dist
+output_subdir: _pagefind
+exclude_selectors:
+  - "script"
+  - "style"
+  - "nav"
+  - "footer"
+  - ".swiper-button-prev"
+  - ".swiper-button-next"
+  - ".swiper-pagination"
+force_language: en
