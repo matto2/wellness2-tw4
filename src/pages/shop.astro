@@ -88,7 +88,7 @@ const getProductsByCategory = (categoryProductIds: string[]) => {
 ---
 
 <Layout title="Wellness Shop | Wellness Medical Center">
-  <section class="max-w-6xl mx-auto px-4 mt-24 xl:px-0">
+  <section class="max-w-6xl mx-auto px-4 mt-24 2xl:px-0">
     <div class="md:flex md:items-center md:gap-8">
       <div class="md:w-3/5">
         <h2 class="text-4xl text-[var(--color-primary)] font-medium mb-4 mt-8">
@@ -189,6 +189,15 @@ const getProductsByCategory = (categoryProductIds: string[]) => {
           );
         })
       }
+    </div>
+
+    <!-- FDA Disclaimer -->
+    <div class="mt-12 pt-8 border-t border-gray-200">
+      <p class="text-sm text-gray-500 text-center max-w-xl mx-auto">
+        These statements have not been evaluated by the Food and Drug
+        Administration. These products are not intended to diagnose, treat,
+        cure, or prevent any disease.
+      </p>
     </div>
   </section>
 
