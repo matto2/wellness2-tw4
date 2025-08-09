@@ -91,6 +91,7 @@ if (sanityPost?.body) {
     <BlogPostLayout
       title={sanityPost.title}
       pubDate={new Date(sanityPost.publishedAt)}
+      author={sanityPost.author}
       imageUrl={
         sanityPost.mainImage
           ? urlFor(sanityPost.mainImage)

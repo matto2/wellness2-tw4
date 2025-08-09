@@ -71,6 +71,8 @@ if (useSanity) {
                       {post.title}
                     </h2>
                     <div class="flex items-center gap-2 text-gray-600 mb-3 text-sm">
+                      {post.author && <span>{post.author}</span>}
+                      {post.author && <span>•</span>}
                       <time datetime={new Date(post.publishedAt).toISOString()}>
                         {new Date(post.publishedAt).toLocaleDateString(
                           "en-US",

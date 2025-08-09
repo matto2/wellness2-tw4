@@ -13,7 +13,9 @@ import welcomeImage from "../assets/3779245098.jpg";
 import maria1Image from "../assets/maria1.jpg";
 import mariaImage from "../assets/maria.jpg";
 import samayaImage from "../assets/samaya.jpg";
-import moxaStaticImage from "../assets/moxa-static.jpg";
+// Sanity client & queries for featured post
+import { sanity, urlFor } from "../lib/sanity";
+import { postsList } from "../lib/queries";
 import medicalLogo from "../assets/medical-logo.jpg";
 
 // Import all slideshow images
@@ -47,6 +49,15 @@ const slideshowImages = [
 // Supports weights 100-900
 import "@fontsource-variable/montserrat";
 import Motion from "../components/Motion.astro";
+
+// Load latest post from Sanity (acts as featured)
+let featuredPost: any | undefined;
+try {
+  const sanityPosts: any[] = await sanity.fetch(postsList);
+  featuredPost = sanityPosts?.[0];
+} catch (err) {
+  featuredPost = undefined;
+}
 ---
 
 <Layout title="Home | Wellness Medical Center">
@@ -505,108 +516,108 @@ import Motion from "../components/Motion.astro";
     </div>
   </section>
 
-  <!-- FEATURED HEALTH ARTICLE SECTION -->
-  <section class="max-w-screen-xl mx-auto px-4 2xl:px-0 py-8 sm:py-12 md:py-16">
-    <div class="text-center mb-8 sm:mb-12">
-      <h2
-        class="text-2xl sm:text-3xl md:text-4xl text-[var(--color-primary)] font-medium mb-4"
-      >
-        Featured Health Article
-      </h2>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-        Discover insights from our practitioners on traditional Chinese medicine
-        and holistic wellness
-      </p>
-    </div>
+  <!-- FEATURED HEALTH ARTICLE SECTION (Sanity) -->
+  {
+    featuredPost && (
+      <section class="max-w-screen-xl mx-auto px-4 2xl:px-0 py-8 sm:py-12 md:py-16">
+        <div class="text-center mb-8 sm:mb-12">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl text-[var(--color-primary)] font-medium mb-4">
+            Featured Health Article
+          </h2>
+        </div>
 
-    <div class="max-w-4xl mx-auto">
-      <article
-        class="bg-white rounded-[16px] sm:rounded-[24px] shadow-lg overflow-hidden"
-      >
-        <div class="md:flex">
-          <div class="md:w-1/3">
-            <Image
-              src={moxaStaticImage}
-              alt="Moxa treatment"
-              class="w-full h-48 md:h-full object-cover"
-              width={400}
-              height={300}
-              quality={80}
-            />
-          </div>
-          <div class="md:w-2/3 p-6 sm:p-8">
-            <div class="flex items-center gap-4 mb-4">
-              <span class="text-sm text-gray-500">March 20, 2024</span>
-              <span class="text-sm text-gray-500">•</span>
-              <span class="text-sm text-gray-500">5 min read</span>
-            </div>
-            <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-3">
-              Moxa Boxes: Traditional Chinese Medicine for Digestive Health
-            </h3>
-            <p class="text-gray-700 leading-relaxed mb-6">
-              Learn about the traditional Chinese medicine practice of
-              moxibustion and how moxa boxes are used in treatment to support
-              digestive function and overall wellness.
-            </p>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <div
-                  class="w-10 h-10 bg-[var(--color-primary)] rounded-full flex items-center justify-center"
-                >
-                  <span class="text-white font-semibold text-sm">MM</span>
+        <div class="max-w-4xl mx-auto">
+          <a
+            href={`/blog/${featuredPost.slug}`}
+            class="block group"
+            aria-label={`Read ${featuredPost.title}`}
+          >
+            <article class="bg-white rounded-[16px] sm:rounded-[24px] shadow-lg overflow-hidden group-hover:shadow-xl transition-shadow">
+              {featuredPost.mainImage && (
+                <img
+                  src={urlFor(featuredPost.mainImage)
+                    .width(1200)
+                    .height(675)
+                    .fit("crop")
+                    .auto("format")
+                    .url()}
+                  alt={featuredPost.title}
+                  class="w-full h-64 md:h-[420px] object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+
+              <div class="p-6 sm:p-8">
+                <div class="flex items-center gap-2 text-gray-600 mb-3 text-sm">
+                  {featuredPost.author && <span>{featuredPost.author}</span>}
+                  {featuredPost.author && <span>•</span>}
+                  <time
+                    datetime={new Date(featuredPost.publishedAt).toISOString()}
+                  >
+                    {new Date(featuredPost.publishedAt).toLocaleDateString(
+                      "en-US",
+                      {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      }
+                    )}
+                  </time>
                 </div>
-                <div>
-                  <p class="text-sm font-medium text-gray-900">
-                    Maria Mitchell, DTCM, L.Ac.
+                <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-3">
+                  {featuredPost.title}
+                </h3>
+                {featuredPost.excerpt && (
+                  <p class="text-gray-700 leading-relaxed mb-6">
+                    {featuredPost.excerpt}
                   </p>
-                  <p class="text-xs text-gray-500">Acupuncturist & Herbalist</p>
+                )}
+                <div class="inline-flex items-center gap-2 text-[var(--color-primary)] font-medium">
+                  Read Article
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
                 </div>
               </div>
-              <a
-                href="/blog/acupuncture-digestive-function"
-                class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-primary)] text-white rounded-full hover:bg-[var(--color-primary-dark)] transition-colors text-sm font-medium"
+            </article>
+          </a>
+
+          <div class="text-center mt-8">
+            <a
+              href="/blog"
+              class="inline-flex items-center gap-2 text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-medium transition-colors"
+            >
+              See all articles
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                Read Article
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </a>
           </div>
         </div>
-      </article>
-
-      <div class="text-center mt-8">
-        <a
-          href="/blog"
-          class="inline-flex items-center gap-2 text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-medium transition-colors"
-        >
-          See all articles
-          <svg
-            class="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 5l7 7-7 7"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
+      </section>
+    )
+  }
 </Layout>
 
 <style>
