@@ -7,14 +7,23 @@ interface Props {
   title: string;
   pubDate: Date;
   author?: string;
+  authorImage?: string;
   readTime?: string;
   image?: ImageMetadata;
   video?: string;
   imageUrl?: string;
 }
 
-const { title, pubDate, author, readTime, image, video, imageUrl } =
-  Astro.props;
+const {
+  title,
+  pubDate,
+  author,
+  authorImage,
+  readTime,
+  image,
+  video,
+  imageUrl,
+} = Astro.props;
 ---
 
 <BlogLayout title={`${title} | Wellness Medical Center`}>
@@ -27,8 +36,17 @@ const { title, pubDate, author, readTime, image, video, imageUrl } =
           {title}
         </h1>
         <div class="flex items-center justify-center gap-2 text-gray-600 mb-8">
-          {author && <span>{author}</span>}
-          {author && <span>•</span>}
+          {
+            authorImage && (
+              <img
+                src={authorImage}
+                alt={author || "Author"}
+                style="border-radius:50%;width:32px;height:32px;object-fit:cover"
+              />
+            )
+          }
+          {author && <span>By {author}</span>}
+          {author && <span style="color: var(--color-primary);">|</span>}
           <time datetime={pubDate.toISOString()}>
             {
               pubDate.toLocaleDateString("en-US", {

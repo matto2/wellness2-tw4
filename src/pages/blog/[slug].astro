@@ -1,47 +1,56 @@
 ---
-import { getCollection } from "astro:content";
 import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
-import type { CollectionEntry } from "astro:content";
-import type { ImageMetadata } from "astro";
-import boxVideo from "../../assets/moxa-static.jpg";
-import fallbackImage from "../../assets/fallback.jpg";
-import boxVideoFile from "../../assets/box.mp4";
+import { sanity, urlFor } from "../../lib/sanity";
+import { postBySlug, postSlugs } from "../../lib/queries";
+import { toHTML } from "@portabletext/to-html";
 
-// Image map for local blog post images
-const imageMap: Record<string, ImageMetadata> = {
-  "box-video.jpg": boxVideo,
-};
-
+// Build all slugs from Sanity
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
-  return posts.map((post: CollectionEntry<"blog">) => ({
-    params: { slug: post.slug },
-    props: { post },
+  const sSlugs: { slug: string }[] = await sanity.fetch(postSlugs);
+  return sSlugs.map(({ slug }) => ({
+    params: { slug },
   }));
 }
 
 const { slug } = Astro.params;
-const { post } = Astro.props;
-let AstroContent: any | undefined;
 
-// Render Astro content
-const rendered = await post.render();
-AstroContent = rendered.Content;
+// Fetch post from Sanity
+const sanityPost = await sanity.fetch(postBySlug, { slug });
+if (!sanityPost) throw new Error("Post not found");
 
-const isMoxaBoxesPost = post.slug === "acupuncture-digestive-function";
+const bodyHtml = sanityPost.content ? toHTML(sanityPost.content) : "";
 ---
 
 <BlogPostLayout
-  title={post.data.title}
-  pubDate={post.data.pubDate}
-  author={post.data.author}
-  readTime={post.data.readTime}
-  video={isMoxaBoxesPost ? boxVideoFile : undefined}
-  image={
-    !isMoxaBoxesPost
-      ? imageMap[post.data.image] || fallbackImage
-      : undefined
-  }
+  title={sanityPost.title}
+  pubDate={new Date(sanityPost.publishedAt || Date.now())}
+  author={sanityPost.author?.name}
+  authorImage={sanityPost.author?.image
+    ? urlFor(sanityPost.author.image).width(32).height(32).fit("crop").url()
+    : undefined}
+  imageUrl={sanityPost.coverImage
+    ? urlFor(sanityPost.coverImage).width(1600).fit("max").url()
+    : undefined}
 >
-  <div>{AstroContent && <AstroContent />}</div>
+  {
+    sanityPost.videoFile && (
+      <video
+        controls
+        preload="metadata"
+        style="max-width:100%;height:auto;margin:1rem 0"
+        poster={
+          sanityPost.videoPoster
+            ? urlFor(sanityPost.videoPoster).width(1200).auto("format").url()
+            : undefined
+        }
+      >
+        <source
+          src={`https://cdn.sanity.io/files/${import.meta.env.PUBLIC_SANITY_PROJECT_ID || "96tssprd"}/${import.meta.env.PUBLIC_SANITY_DATASET || "production"}/${sanityPost.videoFile.asset._ref.replace("file-", "").replace("-mp4", ".mp4")}`}
+          type="video/mp4"
+        />
+      </video>
+    )
+  }
+
+  {bodyHtml && <div class="prose" set:html={bodyHtml} />}
 </BlogPostLayout>
