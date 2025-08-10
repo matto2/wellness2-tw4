@@ -6,9 +6,6 @@ import type { ImageMetadata } from "astro";
 import boxVideo from "../../assets/moxa-static.jpg";
 import fallbackImage from "../../assets/fallback.jpg";
 import boxVideoFile from "../../assets/box.mp4";
-import { sanity, urlFor } from "../../lib/sanity";
-import { postBySlug, postSlugs } from "../../lib/queries";
-import { ptToHtml } from "../../lib/portableText";
 
 // Image map for local blog post images
 const imageMap: Record<string, ImageMetadata> = {
@@ -17,120 +14,34 @@ const imageMap: Record<string, ImageMetadata> = {
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
-  const astroPaths = posts.map((post: CollectionEntry<"blog">) => ({
+  return posts.map((post: CollectionEntry<"blog">) => ({
     params: { slug: post.slug },
     props: { post },
   }));
-
-  // Add Sanity slugs as extra paths
-  let sanityPaths: { params: { slug: string } }[] = [];
-  if (import.meta.env.PUBLIC_SANITY_PROJECT_ID) {
-    try {
-      const slugs: { slug: string }[] = await sanity.fetch(postSlugs);
-      sanityPaths = slugs
-        .filter((s) => !!s.slug)
-        .map((s) => ({ params: { slug: s.slug } }));
-    } catch (err) {
-      sanityPaths = [];
-    }
-  }
-
-  return [...astroPaths, ...sanityPaths];
 }
 
 const { slug } = Astro.params;
-let astroPost: CollectionEntry<"blog"> | undefined;
-let sanityPost: any | undefined;
+const { post } = Astro.props;
 let AstroContent: any | undefined;
 
-// Try local Astro content first
-const blogPosts = await getCollection("blog");
-astroPost = blogPosts.find((p) => p.slug === slug);
+// Render Astro content
+const rendered = await post.render();
+AstroContent = rendered.Content;
 
-// If no local post, try Sanity
-if (!astroPost && import.meta.env.PUBLIC_SANITY_PROJECT_ID) {
-  try {
-    sanityPost = await sanity.fetch(postBySlug, { slug });
-  } catch (err) {
-    sanityPost = undefined;
-  }
-}
-
-// Render Astro content if found
-if (astroPost) {
-  const rendered = await astroPost.render();
-  AstroContent = rendered.Content;
-}
-
-const isMoxaBoxesPost = astroPost?.slug === "acupuncture-digestive-function";
-
-// Portable Text → HTML for Sanity post
-let bodyHtml = "";
-if (sanityPost?.body) {
-  bodyHtml = ptToHtml(sanityPost.body);
-}
+const isMoxaBoxesPost = post.slug === "acupuncture-digestive-function";
 ---
 
-{
-  astroPost ? (
-    <BlogPostLayout
-      title={astroPost.data.title}
-      pubDate={astroPost.data.pubDate}
-      author={astroPost.data.author}
-      readTime={astroPost.data.readTime}
-      video={isMoxaBoxesPost ? boxVideoFile : undefined}
-      image={
-        !isMoxaBoxesPost
-          ? imageMap[astroPost.data.image] || fallbackImage
-          : undefined
-      }
-    >
-      <div>{AstroContent && <AstroContent />}</div>
-    </BlogPostLayout>
-  ) : sanityPost ? (
-    <BlogPostLayout
-      title={sanityPost.title}
-      pubDate={new Date(sanityPost.publishedAt)}
-      author={sanityPost.author}
-      imageUrl={
-        sanityPost.mainImage
-          ? urlFor(sanityPost.mainImage)
-              .width(1200)
-              .height(675)
-              .fit("crop")
-              .auto("format")
-              .url()
-          : undefined
-      }
-    >
-      <div class="max-w-none prose prose-amber">
-        {/* ✅ Video from Sanity */}
-        {sanityPost.videoUrl && (
-          <video
-            controls
-            preload="metadata"
-            style="max-width:100%;height:auto;display:block;margin:1rem 0;"
-            poster={
-              sanityPost.videoPoster
-                ? urlFor(sanityPost.videoPoster)
-                    .width(1200)
-                    .auto("format")
-                    .url()
-                : undefined
-            }
-          >
-            <source src={sanityPost.videoUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        )}
-
-        {sanityPost.excerpt && <p>{sanityPost.excerpt}</p>}
-        {bodyHtml && <div set:html={bodyHtml} />}
-      </div>
-    </BlogPostLayout>
-  ) : (
-    <BlogPostLayout title="Not found" pubDate={new Date()}>
-      <p>Post not found.</p>
-    </BlogPostLayout>
-  )
-}
+<BlogPostLayout
+  title={post.data.title}
+  pubDate={post.data.pubDate}
+  author={post.data.author}
+  readTime={post.data.readTime}
+  video={isMoxaBoxesPost ? boxVideoFile : undefined}
+  image={
+    !isMoxaBoxesPost
+      ? imageMap[post.data.image] || fallbackImage
+      : undefined
+  }
+>
+  <div>{AstroContent && <AstroContent />}</div>
+</BlogPostLayout>
