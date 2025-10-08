@@ -49,6 +49,12 @@ const { title, description } = Astro.props;
             });
           }
         });
+
+        // Handle confirmation and recovery tokens
+        const params = new URLSearchParams(window.location.hash.substring(1));
+        if (params.get('confirmation_token') || params.get('recovery_token') || params.get('invite_token')) {
+          window.netlifyIdentity.open();
+        }
       }
     </script>
   </body>
