@@ -50,6 +50,16 @@ const { title, description } = Astro.props;
             });
           }
         });
+
+        // Check for tokens in URL hash and open widget
+        if (window.location.hash) {
+          var hash = window.location.hash;
+          if (hash.indexOf('confirmation_token') > -1 ||
+              hash.indexOf('recovery_token') > -1 ||
+              hash.indexOf('invite_token') > -1) {
+            window.netlifyIdentity.open();
+          }
+        }
       }
     </script>
   </body>
