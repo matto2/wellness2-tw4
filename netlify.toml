@@ -1,0 +1,18 @@
+# Netlify configuration
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# Redirect settings for Netlify Identity
+[[redirects]]
+  from = "/*"
+  to = "/identity-redirect"
+  status = 200
+  force = false
+  conditions = {Role = ["admin"]}
+
+# Ensure the admin page is accessible
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
