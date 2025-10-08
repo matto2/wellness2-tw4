@@ -16,9 +16,8 @@ import samayaImage from "../assets/samaya.jpg";
 import medicalLogo from "../assets/medical-logo.jpg";
 import moxaStaticImage from "../assets/moxa-static.jpg";
 
-// Import Sanity for featured post
-import { sanity, urlFor } from "../lib/sanity";
-import { postsList } from "../lib/queries";
+// Import content collections for featured post
+import { getCollection } from "astro:content";
 
 // Import all slideshow images
 import clinic1 from "../assets/clinic/3780071716.jpg";
@@ -52,15 +51,12 @@ const slideshowImages = [
 import "@fontsource-variable/montserrat";
 import Motion from "../components/Motion.astro";
 
-// Fetch featured post from Sanity
-let featuredPost: any = null;
-try {
-  const posts = await sanity.fetch(postsList);
-  featuredPost = Array.isArray(posts) && posts.length > 0 ? posts[0] : null;
-} catch (error) {
-  console.error("Error fetching featured post from Sanity:", error);
-  featuredPost = null;
-}
+// Fetch featured post from content collections
+const blogPosts = await getCollection("blog");
+const sortedPosts = blogPosts.sort((a, b) =>
+  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+const featuredPost = sortedPosts.length > 0 ? sortedPosts[0] : null;
 ---
 
 <Layout title="Home | Wellness Medical Center">
@@ -542,15 +538,10 @@ try {
               <div class="md:flex">
                 <div class="md:w-1/2">
                   <div class="aspect-[4/3] md:aspect-square overflow-hidden">
-                    {featuredPost.coverImage ? (
+                    {featuredPost.data.image ? (
                       <img
-                        src={urlFor(featuredPost.coverImage)
-                          .width(600)
-                          .height(450)
-                          .fit("crop")
-                          .auto("format")
-                          .url()}
-                        alt={featuredPost.title}
+                        src={featuredPost.data.image}
+                        alt={featuredPost.data.title}
                         class="w-full h-full object-cover"
                         loading="lazy"
                       />
@@ -568,28 +559,26 @@ try {
                 </div>
                 <div class="md:w-1/2 p-6 sm:p-8 flex flex-col justify-center">
                   <h3 class="text-xl sm:text-2xl font-semibold text-[var(--color-primary)] mb-3">
-                    {featuredPost.title}
+                    {featuredPost.data.title}
                   </h3>
                   <div class="flex items-center gap-2 text-gray-600 mb-4 text-sm">
-                    {featuredPost.author?.name && (
-                      <span>{featuredPost.author.name}</span>
+                    {featuredPost.data.author && (
+                      <span>{featuredPost.data.author}</span>
                     )}
-                    {featuredPost.author?.name && <span>•</span>}
-                    {featuredPost.publishedAt && (
-                      <time datetime={featuredPost.publishedAt}>
-                        {new Date(featuredPost.publishedAt).toLocaleDateString(
-                          "en-US",
-                          {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          }
-                        )}
-                      </time>
-                    )}
+                    {featuredPost.data.author && <span>•</span>}
+                    <time datetime={featuredPost.data.pubDate.toISOString()}>
+                      {featuredPost.data.pubDate.toLocaleDateString(
+                        "en-US",
+                        {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        }
+                      )}
+                    </time>
                   </div>
                   <p class="text-gray-700 mb-6 leading-relaxed">
-                    {featuredPost.excerpt ||
+                    {featuredPost.data.description ||
                       "Read our latest health insights and wellness tips from our experienced practitioners."}
                   </p>
                   <div class="inline-flex items-center text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] font-medium text-sm transition-colors">

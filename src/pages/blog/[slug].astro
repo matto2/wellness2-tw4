@@ -1,56 +1,24 @@
 ---
 import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
-import { sanity, urlFor } from "../../lib/sanity";
-import { postBySlug, postSlugs } from "../../lib/queries";
-import { toHTML } from "@portabletext/to-html";
+import { getCollection } from "astro:content";
 
-// Build all slugs from Sanity
 export async function getStaticPaths() {
-  const sSlugs: { slug: string }[] = await sanity.fetch(postSlugs);
-  return sSlugs.map(({ slug }) => ({
-    params: { slug },
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
   }));
 }
 
-const { slug } = Astro.params;
-
-// Fetch post from Sanity
-const sanityPost = await sanity.fetch(postBySlug, { slug });
-if (!sanityPost) throw new Error("Post not found");
-
-const bodyHtml = sanityPost.content ? toHTML(sanityPost.content) : "";
+const { post } = Astro.props;
+const { Content } = await post.render();
 ---
 
 <BlogPostLayout
-  title={sanityPost.title}
-  pubDate={new Date(sanityPost.publishedAt || Date.now())}
-  author={sanityPost.author?.name}
-  authorImage={sanityPost.author?.image
-    ? urlFor(sanityPost.author.image).width(32).height(32).fit("crop").url()
-    : undefined}
-  imageUrl={sanityPost.coverImage
-    ? urlFor(sanityPost.coverImage).width(1600).fit("max").url()
-    : undefined}
+  title={post.data.title}
+  pubDate={post.data.pubDate}
+  author={post.data.author}
+  imageUrl={post.data.image}
 >
-  {
-    sanityPost.videoFile && (
-      <video
-        controls
-        preload="metadata"
-        style="max-width:100%;height:auto;margin:1rem 0"
-        poster={
-          sanityPost.videoPoster
-            ? urlFor(sanityPost.videoPoster).width(1200).auto("format").url()
-            : undefined
-        }
-      >
-        <source
-          src={`https://cdn.sanity.io/files/${import.meta.env.PUBLIC_SANITY_PROJECT_ID || "96tssprd"}/${import.meta.env.PUBLIC_SANITY_DATASET || "production"}/${sanityPost.videoFile.asset._ref.replace("file-", "").replace("-mp4", ".mp4")}`}
-          type="video/mp4"
-        />
-      </video>
-    )
-  }
-
-  {bodyHtml && <div class="prose" set:html={bodyHtml} />}
+  <Content />
 </BlogPostLayout>

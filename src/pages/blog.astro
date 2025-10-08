@@ -1,16 +1,12 @@
 ---
 import BlogLayout from "../layouts/BlogLayout.astro";
-import { sanity, urlFor } from "../lib/sanity";
-import { postsList } from "../lib/queries";
+import { getCollection } from "astro:content";
 
-let posts: any[] = [];
-try {
-  const res = await sanity.fetch(postsList);
-  posts = Array.isArray(res) ? res : [];
-} catch (error) {
-  console.error("Error fetching posts from Sanity:", error);
-  posts = [];
-}
+const posts = await getCollection("blog");
+// Sort by publish date, newest first
+const sortedPosts = posts.sort((a, b) =>
+  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
 ---
 
 <BlogLayout title="Health Education | Wellness Medical Center">
@@ -22,26 +18,21 @@ try {
     </h1>
 
     {
-      posts.length === 0 && (
+      sortedPosts.length === 0 && (
         <p class="text-center text-gray-600">No posts yet.</p>
       )
     }
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
-        posts.map((post) => (
+        sortedPosts.map((post) => (
           <a href={`/blog/${post.slug}`} class="block">
             <article class="bg-[var(--color-card-bg)] rounded-[24px] shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              {post.coverImage && (
+              {post.data.image && (
                 <div class="aspect-[16/9] overflow-hidden">
                   <img
-                    src={urlFor(post.coverImage)
-                      .width(800)
-                      .height(450)
-                      .fit("crop")
-                      .auto("format")
-                      .url()}
-                    alt={post.title}
+                    src={post.data.image}
+                    alt={post.data.title}
                     class="w-full h-full object-cover"
                     loading="lazy"
                   />
@@ -50,25 +41,23 @@ try {
 
               <div class="p-4">
                 <h2 class="text-xl font-medium text-[var(--color-primary)] mb-2">
-                  {post.title}
+                  {post.data.title}
                 </h2>
 
                 <div class="flex items-center gap-2 text-gray-600 mb-3 text-sm">
-                  {post.author?.name && <span>{post.author.name}</span>}
-                  {post.author?.name && <span>•</span>}
-                  {post.publishedAt && (
-                    <time datetime={post.publishedAt}>
-                      {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </time>
-                  )}
+                  {post.data.author && <span>{post.data.author}</span>}
+                  {post.data.author && <span>•</span>}
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </time>
                 </div>
 
-                {post.excerpt && (
-                  <p class="text-gray-700 mb-3 text-sm">{post.excerpt}</p>
+                {post.data.description && (
+                  <p class="text-gray-700 mb-3 text-sm">{post.data.description}</p>
                 )}
 
                 <div class="inline-flex items-center text-[var(--color-primary)] hover:text-amber-800 font-medium text-sm">
