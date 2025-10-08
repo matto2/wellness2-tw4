@@ -41,21 +41,27 @@ const { title, description } = Astro.props;
       </div>
     </div>
     <script is:inline>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
+      // Wait for Netlify Identity to load
+      window.addEventListener('DOMContentLoaded', function() {
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on("init", function(user) {
+            if (!user) {
+              window.netlifyIdentity.on("login", function() {
+                document.location.href = "/admin/";
+              });
+            }
+          });
 
-        // Handle confirmation and recovery tokens
-        const params = new URLSearchParams(window.location.hash.substring(1));
-        if (params.get('confirmation_token') || params.get('recovery_token') || params.get('invite_token')) {
-          window.netlifyIdentity.open();
+          // Handle confirmation and recovery tokens
+          var hash = window.location.hash.substring(1);
+          if (hash) {
+            var params = new URLSearchParams(hash);
+            if (params.get('confirmation_token') || params.get('recovery_token') || params.get('invite_token')) {
+              window.netlifyIdentity.open();
+            }
+          }
         }
-      }
+      });
     </script>
   </body>
 </html>
