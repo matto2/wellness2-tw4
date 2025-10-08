@@ -10,9 +10,10 @@ interface Props {
   image: any; // Astro image import
   shopUrl?: string;
   description?: string;
+  category?: string;
 }
 
-const { title, brand, quantity, price, salePrice, image, shopUrl, description } = Astro.props;
+const { title, brand, quantity, price, salePrice, image, shopUrl, description, category } = Astro.props;
 ---
 
 {shopUrl ? (
@@ -23,20 +24,20 @@ const { title, brand, quantity, price, salePrice, image, shopUrl, description } 
     class="block w-full"
   >
     <div
-      class="w-full flex flex-col md:flex-row rounded-xl overflow-hidden bg-white product-card"
+      class="w-full flex flex-col rounded-xl overflow-hidden bg-white product-card relative h-full"
     >
       <!-- Product Image -->
-      <div class="w-full md:w-1/4 flex-shrink-0 flex items-center justify-center bg-white p-4 md:h-48 md:py-4 md:px-2">
-        <Image 
-          src={image} 
-          alt={title} 
-          class="object-contain h-32 md:h-40 w-auto max-w-full"
-          width={160}
-          height={160}
+      <div class="w-full flex items-center justify-center bg-white p-6 h-48">
+        <Image
+          src={image}
+          alt={title}
+          class="object-contain h-full w-auto max-w-full"
+          width={200}
+          height={200}
         />
       </div>
       <!-- Product Info -->
-      <div class="flex flex-col p-4 md:p-6 flex-1">
+      <div class="flex flex-col p-4 flex-1">
         <h3 class="text-lg font-semibold text-gray-900 mb-2">
           {title}
         </h3>
@@ -55,13 +56,13 @@ const { title, brand, quantity, price, salePrice, image, shopUrl, description } 
               ${price.toFixed(2)}
             </span>
           )}
-          <span class="text-xl font-bold text-[var(--color-primary)]">
+          <span class="text-sm font-semibold text-[var(--color-primary)]">
             ${salePrice.toFixed(2)}
           </span>
         </div>
-        <div class="mt-auto flex md:justify-start">
+        <div class="mt-auto">
           <div
-            class="w-full md:max-w-[180px] bg-[var(--color-primary)] text-white py-2 px-4 rounded-full hover:bg-[var(--color-primary-dark)] transition-colors duration-300 text-center font-medium text-sm"
+            class="w-full bg-[var(--color-primary)] text-white py-2 px-4 rounded-full hover:bg-[var(--color-primary-dark)] transition-colors duration-300 text-center font-medium text-sm"
           >
             View in Shop
           </div>
@@ -71,20 +72,20 @@ const { title, brand, quantity, price, salePrice, image, shopUrl, description } 
   </a>
 ) : (
   <div
-    class="w-full flex flex-col md:flex-row rounded-xl overflow-hidden bg-white product-card"
+    class="w-full flex flex-col rounded-xl overflow-hidden bg-white product-card relative h-full"
   >
     <!-- Product Image -->
-    <div class="w-full md:w-1/4 flex-shrink-0 flex items-center justify-center bg-white p-4 md:h-48 md:py-4 md:px-2">
-      <Image 
-        src={image} 
-        alt={title} 
-        class="object-contain h-32 md:h-40 w-auto max-w-full"
-        width={160}
-        height={160}
+    <div class="w-full flex items-center justify-center bg-white p-6 h-48">
+      <Image
+        src={image}
+        alt={title}
+        class="object-contain h-full w-auto max-w-full"
+        width={200}
+        height={200}
       />
     </div>
     <!-- Product Info -->
-    <div class="flex flex-col p-4 md:p-6 flex-1">
+    <div class="flex flex-col p-4 flex-1">
       <h3 class="text-lg font-semibold text-gray-900 mb-2">
         {title}
       </h3>
@@ -103,13 +104,13 @@ const { title, brand, quantity, price, salePrice, image, shopUrl, description } 
             ${price.toFixed(2)}
           </span>
         )}
-        <span class="text-xl font-bold text-[var(--color-primary)]">
+        <span class="text-sm font-semibold text-[var(--color-primary)]">
           ${salePrice.toFixed(2)}
         </span>
       </div>
-      <div class="mt-auto flex md:justify-start">
+      <div class="mt-auto">
         <button
-          class="w-full md:max-w-[180px] bg-[var(--color-primary)] text-white py-2 px-4 rounded-full hover:bg-[var(--color-primary-dark)] transition-colors duration-300 font-medium text-center text-sm"
+          class="w-full bg-[var(--color-primary)] text-white py-2 px-4 rounded-full hover:bg-[var(--color-primary-dark)] transition-colors duration-300 font-medium text-center text-sm"
         >
           Buy in Our Shop
         </button>

@@ -37,11 +37,6 @@ const imageMap: Record<string, any> = {
 // Define product categories
 const categories = [
   {
-    name: "Pregnancy & Postpartum",
-    description: "Essential nutrition for moms and developing babies",
-    products: ["baby-me-prenatal.md", "baby-me-postnatal.md"],
-  },
-  {
     name: "Heart & Blood Sugar Health",
     description: "Support for cardiovascular health and blood sugar regulation",
     products: [
@@ -49,6 +44,11 @@ const categories = [
       "hawthorn-solid-extract.md",
       "promega-blood-sugar.md",
     ],
+  },
+  {
+    name: "Pregnancy & Postpartum",
+    description: "Essential nutrition for moms and developing babies",
+    products: ["baby-me-prenatal.md", "baby-me-postnatal.md"],
   },
   {
     name: "Stress, Sleep & Nervous System",
@@ -103,7 +103,7 @@ const getProductsByCategory = (categoryProductIds: string[]) => {
     <!-- Search Bar -->
     <div class="mb-8">
       <div class="flex flex-col sm:flex-row sm:items-end gap-3">
-        <div class="relative max-w-md">
+        <div class="relative flex-1">
           <input
             type="text"
             id="shop-search"
@@ -150,7 +150,7 @@ const getProductsByCategory = (categoryProductIds: string[]) => {
       </div>
     </div>
 
-    <div class="flex flex-col gap-16 w-full">
+    <div class="flex flex-col gap-12 w-full">
       {
         categories.map((category) => {
           const categoryProducts = getProductsByCategory(category.products);
@@ -158,17 +158,22 @@ const getProductsByCategory = (categoryProductIds: string[]) => {
 
           return (
             <div class="category-section">
-              <div class="mb-8">
-                <h3 class="text-2xl font-semibold text-[var(--color-primary)] mb-2">
+              <div class="mb-6">
+                <h3 class="text-xl font-semibold text-[var(--color-primary)] mb-1">
                   {category.name}
                 </h3>
-                <p class="text-gray-600 text-lg">{category.description}</p>
+                <p class="text-gray-600 text-sm">{category.description}</p>
               </div>
 
-              <div class="flex flex-col gap-8">
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {categoryProducts.map((product) => {
                   if (!product) return null;
                   const image = imageMap[product.id];
+                  const description = product.data.description || "";
+                  const truncatedDescription = description.length > 200
+                    ? description.substring(0, 200) + "..."
+                    : description;
+
                   return (
                     <ProductCard
                       title={product.data.title}
@@ -180,7 +185,7 @@ const getProductsByCategory = (categoryProductIds: string[]) => {
                       }
                       image={image || ocudyneImage}
                       shopUrl={product.data.shopUrl}
-                      description={product.data.description}
+                      description={truncatedDescription}
                     />
                   );
                 })}

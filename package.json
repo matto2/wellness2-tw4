@@ -18,7 +18,7 @@
     "@tailwindcss/postcss": "^4.1.8",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.8",
-    "astro": "^5.12.8",
+    "astro": "^5.14.1",
     "groq": "^4.3.0",
     "motion": "^12.18.1",
     "pagefind": "^1.3.0",

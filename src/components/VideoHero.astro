@@ -20,6 +20,8 @@ const { videoSrc, overlayOpacity = 40 } = Astro.props;
       <source src={videoSrc} type="video/mp4" />
     </video>
   </div>
+  <!-- Teal overlay scrim -->
+  <div class="absolute inset-0 w-full h-full bg-[#378b8b]/30"></div>
   <!-- Content -->
   <div
     class="relative z-10 h-full flex flex-col items-center justify-center text-center px-4"
