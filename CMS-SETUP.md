@@ -26,24 +26,43 @@ The page will show a login button. Click "Login" and you can now create and edit
 
 > **Note:** Both servers must be running. The Decap server runs on port 8081 and acts as a local git proxy.
 
-### Production (After Deployment)
+### Production (GitHub OAuth)
 
-You'll need to set up authentication. Two options:
+The site is configured to use GitHub authentication for production. Here's how to set it up:
 
-#### Option 1: Git Gateway (Recommended for Netlify)
-1. Deploy to Netlify
-2. Enable Identity in Netlify dashboard
-3. Enable Git Gateway in Netlify dashboard
-4. Navigate to `https://yoursite.com/admin`
+#### Step 1: Create a GitHub OAuth App
 
-#### Option 2: GitHub Backend (Direct GitHub Auth)
-Update `/public/admin/config.yml`:
-```yaml
-backend:
-  name: github
-  repo: your-username/your-repo-name
-  branch: main
-```
+1. Go to: https://github.com/settings/developers
+2. Click "New OAuth App"
+3. Fill in:
+   - **Application name:** Wellness Medical Center CMS
+   - **Homepage URL:** `https://your-deployed-site.com`
+   - **Authorization callback URL:** `https://api.netlify.com/auth/done`
+
+   > **Note:** Even if not on Netlify, use the Netlify callback URL - Decap CMS uses Netlify's OAuth service
+
+4. Click "Register application"
+5. Copy the **Client ID** (you'll need this)
+6. Click "Generate a new client secret" and copy it (you'll need this too)
+
+#### Step 2: Deploy with Netlify (Easiest Option)
+
+1. Deploy your site to Netlify
+2. In Netlify dashboard, go to **Site settings > Access control > OAuth**
+3. Under "Authentication providers", click "Install provider"
+4. Select **GitHub**
+5. Paste your **Client ID** and **Client Secret**
+6. Save
+
+Now navigate to `https://yoursite.netlify.app/admin` and click "Login with GitHub"!
+
+#### Alternative: Self-Hosted OAuth
+
+If not using Netlify, you'll need to run your own OAuth server:
+- Use [netlify-cms-github-oauth-provider](https://github.com/vencax/netlify-cms-github-oauth-provider)
+- Or use a service like [decap-server-oauth](https://github.com/i40west/decap-server-oauth)
+
+This is more complex - **Netlify is recommended** for simplicity.
 
 ## How It Works
 

@@ -2,9 +2,6 @@ backend:
   name: git-gateway
   branch: main
 
-# Enable local backend for development
-local_backend: true
-
 media_folder: "src/content/blog/images"
 public_folder: "/src/content/blog/images"
 
