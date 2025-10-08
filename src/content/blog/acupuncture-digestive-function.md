@@ -1,9 +1,9 @@
 ---
 title: Moxa Boxes
-pubDate: 2024-03-20
+pubDate: 2025-10-08T06:09:00.000-07:00
 author: Maria Mitchell, DTCM, L.Ac.
 readTime: 5 min read
-image: /src/content/blog/images/moxa-static.jpg
+image: /images/blog/moxa-static.jpg
 description: ""
 ---
 Learn about the traditional Chinese medicine practice of moxibustion and how moxa boxes are used in treatment.
