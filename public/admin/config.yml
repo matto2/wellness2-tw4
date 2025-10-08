@@ -3,8 +3,8 @@ backend:
   repo: matto2/wellness2-tw4
   branch: main
 
-media_folder: "src/content/blog/images"
-public_folder: "/src/content/blog/images"
+media_folder: "public/images/blog"
+public_folder: "/images/blog"
 
 collections:
   - name: "blog"
