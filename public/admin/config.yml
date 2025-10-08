@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: matto2/wellness2-tw4
   branch: main
 
 media_folder: "src/content/blog/images"
