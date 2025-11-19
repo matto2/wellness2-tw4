@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const headline = "Test Store (Preview)";
+---
+
+<Layout title="Test Store | Wellness Medical Center">
+  <section class="max-w-6xl mx-auto px-4 mt-24 2xl:px-0">
+    <!-- Test Store Banner -->
+    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm text-yellow-700">
+            <strong>Test Store:</strong> This page is for preview/testing only. Not visible in main navigation.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:flex md:items-center md:gap-8">
+      <div class="md:w-3/5">
+        <h2 class="text-4xl text-[var(--color-primary)] font-medium mb-4 mt-8">
+          {headline}
+        </h2>
+        <p class="text-2xl mb-8">
+          Test products will appear here.
+        </p>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="text-center py-16">
+      <svg class="mx-auto h-24 w-24 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
+      </svg>
+      <h3 class="mt-4 text-lg font-medium text-gray-900">No test products yet</h3>
+      <p class="mt-2 text-gray-500">This page is ready for test products to be added.</p>
+    </div>
+
+    <!-- FDA Disclaimer -->
+    <div class="mt-12 pt-8 border-t border-gray-200">
+      <p class="text-sm text-gray-500 text-center max-w-xl mx-auto">
+        These statements have not been evaluated by the Food and Drug
+        Administration. These products are not intended to diagnose, treat,
+        cure, or prevent any disease.
+      </p>
+    </div>
+  </section>
+</Layout>
