@@ -9,9 +9,9 @@ interface Props {
 const { name, image, quantity, shopUrl } = Astro.props;
 ---
 
-<div class="product-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+<div class="product-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
   <!-- Product Image -->
-  <div class="aspect-square bg-gray-50 flex items-center justify-center p-6">
+  <div class="bg-gray-50 flex items-center justify-center p-4 md:p-6" style="height: 240px;">
     <img
       src={image}
       alt={name}
@@ -24,12 +24,12 @@ const { name, image, quantity, shopUrl } = Astro.props;
   </div>
 
   <!-- Product Info -->
-  <div class="p-4 text-center flex flex-col flex-1">
-    <h3 class="font-medium text-gray-900 mb-1 min-h-[3rem] flex items-center justify-center">
+  <div class="p-3 md:p-4 text-center flex flex-col">
+    <h3 class="font-medium text-gray-900 mb-1 text-sm md:text-base line-clamp-2" style="min-height: 2.5rem;">
       {name}
     </h3>
-    <p class="text-sm text-gray-600 mb-4">
-      {quantity}
+    <p class="text-xs md:text-sm text-gray-600 mb-3" style="min-height: 1.25rem;">
+      {quantity || '\u00A0'}
     </p>
 
     <!-- View Product Button -->
@@ -37,7 +37,7 @@ const { name, image, quantity, shopUrl } = Astro.props;
       href={shopUrl}
       target="_blank"
       rel="noopener noreferrer"
-      class="mt-auto block w-full bg-[#2d6b4f] hover:bg-[#245840] text-white font-medium py-3 px-4 rounded transition-colors"
+      class="block w-full bg-[#2d6b4f] hover:bg-[#245840] text-white font-medium py-2 md:py-3 px-3 md:px-4 rounded transition-colors text-sm"
     >
       View product
     </a>
