@@ -532,7 +532,7 @@ const featuredPost = sortedPosts.length > 0 ? sortedPosts[0] : null;
         {
           featuredPost ? (
             <a
-              href={`/blog/${featuredPost.slug}`}
+              href={`/blog/${featuredPost.id.replace(/\.mdx?$/, "")}`}
               class="block bg-[var(--color-card-bg)] rounded-[16px] sm:rounded-[24px] shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
             >
               <div class="md:flex">
