@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is an Astro-based website for Wellness Medical Center, a traditional Chinese medicine clinic in Santa Cruz. The site features practitioner information, blog functionality via Sanity CMS, a product shop, and booking integration.
+This is an Astro-based website for Wellness Medical Center, a traditional Chinese medicine clinic in Santa Cruz. The site features practitioner information, a markdown-based blog, a product shop, and booking integration.
 
 ## Development Commands
 
@@ -17,44 +17,30 @@ This is an Astro-based website for Wellness Medical Center, a traditional Chines
 
 ## Tech Stack
 
-- **Framework**: Astro 5.14+ (static site generation)
+- **Framework**: Astro 6+ (static site generation)
 - **Styling**: Tailwind CSS 4.1+ (using new v4 Vite plugin)
-- **CMS**: Sanity (headless CMS for blog posts)
-- **Content**: Astro Content Collections (for products and local blog content)
+- **Content**: Astro Content Collections (blog posts as markdown files)
 - **Animations**: Motion (motion.dev)
 - **UI Components**: Swiper (carousels/slideshows)
 
 ## Architecture
 
-### Content Management Dual System
+### Content System
 
-This project uses **two separate content systems**:
+Blog posts are markdown files in `src/content/blog/`. The collection schema is defined in `src/content.config.ts` using Astro's Content Layer API (glob loader).
 
-1. **Sanity CMS** (src/lib/sanity.ts): Used for blog posts with dynamic content
-   - Posts fetched via GROQ queries (src/lib/queries.ts)
-   - Images served through Sanity CDN with imageUrlBuilder
-   - Videos stored as Sanity file assets
-   - Content rendered using Portable Text (src/lib/portableText.ts)
+Blog frontmatter fields: `title`, `pubDate`, `author`, `readTime`, `image`, `description` (optional)
 
-2. **Astro Content Collections** (src/content/): Used for products and any local blog posts
-   - Schema defined in src/content/config.ts
-   - Blog collection: markdown files with frontmatter (title, pubDate, author, etc.)
-   - Products collection: markdown files with product metadata (price, brand, image, shopUrl)
-
-### Environment Variables
-
-The project uses a `.env` file for Sanity configuration:
-- `PUBLIC_SANITY_PROJECT_ID`: Sanity project ID (defaults to "96tssprd")
-- `PUBLIC_SANITY_DATASET`: Sanity dataset (defaults to "production")
+Products are defined in `src/data/products.json` and rendered by `src/pages/shop.astro`.
 
 ### Page Routes
 
 - `/` - Homepage (src/pages/index.astro)
 - `/about` - About page
 - `/blog` - Blog listing page
-- `/blog/[slug]` - Dynamic blog post pages (from Sanity)
+- `/blog/[slug]` - Dynamic blog post pages (from markdown files)
 - `/shop` - Product listing page
-- `/sandbox` - Development sandbox page
+- `/identity-redirect` - Netlify Identity callback for Decap CMS admin
 
 ### Layouts
 
@@ -88,32 +74,17 @@ The project uses a `.env` file for Sanity configuration:
 - Astro Image component used for optimized images with width/height/quality params
 - Build assets output to `_assets/` directory (configured in astro.config.mjs)
 
-### Blog Post Rendering
-
-Blog posts from Sanity use:
-1. GROQ queries to fetch post data (src/lib/queries.ts)
-2. Portable Text converted to HTML via @portabletext/to-html
-3. Images served through urlFor() helper with Sanity's image CDN
-4. getStaticPaths() to generate all post routes at build time
-
-### Sanity Integration Pattern
-
-When working with Sanity data:
-- Always use the `urlFor()` helper from src/lib/sanity.ts for images
-- Reference queries from src/lib/queries.ts
-- Handle missing/optional data gracefully (author, coverImage, etc.)
-- Use try/catch when fetching from Sanity to handle connection errors
-
 ## Common Development Patterns
 
-### Adding a New Blog Post (Sanity)
-Create content in Sanity Studio - posts will automatically appear via GROQ queries.
+### Adding a New Blog Post
+Create a `.md` file in `src/content/blog/` with the required frontmatter. It will appear automatically — no CMS or external service needed.
 
 ### Adding a New Product
-Create a markdown file in src/content/products/ following the schema in src/content/config.ts.
+Add an entry to `src/data/products.json`.
 
 ### Working with Content Collections
-Import and query using `import { getCollection } from 'astro:content'`.
+Import and query using `import { getCollection, render } from 'astro:content'`.
+Use `post.id.replace(/\.mdx?$/, '')` to generate URL slugs from entry IDs.
 
 ### TypeScript Configuration
 Uses strict Astro TypeScript config (extends "astro/tsconfigs/strict").
@@ -121,4 +92,4 @@ Uses strict Astro TypeScript config (extends "astro/tsconfigs/strict").
 ## Git Branch Information
 
 - Main branch: `main`
-- Recent work includes blog functionality, Sanity integration, and removing old Sanity implementation
+- Deployed automatically via Netlify on push to main
